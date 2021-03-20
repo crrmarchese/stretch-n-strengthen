@@ -1,0 +1,32 @@
+{
+  "name": "stretch-n-strengthen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crrmarchese/stretch-n-strengthen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crrmarchese/stretch-n-strengthen/issues"
+  },
+  "homepage": "https://github.com/crrmarchese/stretch-n-strengthen#readme",
+  "dependencies": {
+    "auth0": "^2.33.0",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
+    "fast-average-color": "^6.3.0",
+    "mysql2": "^2.2.5",
+    "passport": "^0.4.1",
+    "sequelize": "^6.5.1"
+  }
+}
