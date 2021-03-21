@@ -11,7 +11,7 @@ Exercises.init(
             defaultValue: Sequelize.UUIDV4,
             allowNull: false
         },
-        cateogry: {
+        category: {
 
         },
         description: {
@@ -20,7 +20,7 @@ Exercises.init(
         name: {
 
         },
-        
+
     }
 )
 
