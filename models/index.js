@@ -17,17 +17,25 @@ Exercises.hasMany(Category, {
 
 });
 
-Muscle.belongsToMany(Category, {
-    foreignKey: 'name',
+Muscle.belongsToMany(Exercises, {
+    foreignKey: 'id',
     through: {
-        model: Category, 
+        model: Exercises, 
         unique: false,
     },
-})
+});
+
+Equipment.belongsToMany(Exercises, {
+    foreignKey: 'id',
+    through: {
+        model: Exercises,
+        unique: false
+    }
+});
 
 Equipment.belongsToMany(Exercises, {
 
-})
+});
 
 module.exports = { User, Exercises };
 
