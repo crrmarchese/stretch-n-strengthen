@@ -1,5 +1,5 @@
 const User = require('./User');
-const { Exercises } = require('./Exercises');
+const  Exercise  = require('./Exercise');
 const { Category }  = require('./Category')
 const { Muscle } = require('./Muscle');
 const { Equipment } = require('./Equipment');
@@ -13,7 +13,7 @@ Category.belongsTo(Exercises, {
     // as: 'name'
 });
 
-Exercises.hasMany(Category, {
+Exercise.hasMany(Category, {
 
 });
 
