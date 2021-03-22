@@ -8,8 +8,7 @@ class Category extends Model {}
 Category.init(
     {
         id: {
-            type: DataTypes.UUIDV4,
-            defaultValue: Sequelize.UUIDV4,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         name: {
