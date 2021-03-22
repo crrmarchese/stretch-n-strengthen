@@ -1,22 +1,27 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const Sequelize = require('../config/connection');
-const Exercises = require('./Exercises')
 
-class ExerciseCategory extends Model {}
+class Equipment extends Model {}
 
-ExerciseCategory.init(
+Equipment.init(
     {
         id: {
             type: DataTypes.UUIDV4,
             defaultValue: Sequelize.UUIDV4,
             allowNull: false
         },
+        category: {
+
+        },
+        description: {
+
+        },
         name: {
-            type: DataTypes.STRING,
-        }
-}
+
+        },
+
+    }
 )
 
-
-module.exports = { ExerciseCategory }
+module.exports = { Equipment }
