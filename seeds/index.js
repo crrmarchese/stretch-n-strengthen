@@ -7,6 +7,15 @@ const seedAll = async () => {
 
     await seedExercises();
     console.log('\n----- EXERCISES SEEDED -----\n');
+
+    await seedMuscle();
+    console.log('\n----- EXERCISES SEEDED -----\n');
+
+    await seedEquipment();
+    console.log('\n----- EXERCISES SEEDED -----\n');
+
+    await seedCategory();
+    console.log('\n----- EXERCISES SEEDED -----\n');
   
     process.exit(0);
 };
