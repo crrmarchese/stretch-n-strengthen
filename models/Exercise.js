@@ -9,7 +9,8 @@ Exercise.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true,
     },
     // do we need this?
     category: {
