@@ -22,7 +22,6 @@ const exerciseMuscleData = async () => {
                     muscle_id: ele2
                 });
             });
-            
         });
         
         return exerciseMuscleArray;

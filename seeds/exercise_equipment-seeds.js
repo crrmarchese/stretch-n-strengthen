@@ -10,10 +10,26 @@ const exerciseData = async () => {
     }
 }
 
+const replaceNull = async () => {
+    try{
+        const exData = await exerciseData();
+
+        exData.forEach((ele) => {
+            if (ele.equipment.length === 0) {
+                ele.equipment.push(7);
+            }
+        });
+        return exData;
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 const exerciseEquipmentData = async () => {
     try{
         const exerciseEquipmentArray = [];
-        const exData = await exerciseData();
+        const exData = await replaceNull();
 
         exData.forEach((ele1) => {
             ele1.equipment.forEach((ele2) => {
