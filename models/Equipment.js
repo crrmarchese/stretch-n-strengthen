@@ -5,18 +5,18 @@ class Equipment extends Model { }
 
 Equipment.init(
     {
-        // not sure if this will work but YEEEEHAW
-        // results: {
-            id: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                primaryKey: true,
-            },
-            // equipment name ie - name: barbell 
-            name: {
-                type: DataTypes.STRING,
-            }
-        // }
+    // not sure if this will work but YEEEEHAW
+    // results: {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+        },
+        // equipment name ie - name: barbell 
+        name: {
+            type: DataTypes.STRING,
+        }
+    // }
     },
     {
         sequelize,
