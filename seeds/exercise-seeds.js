@@ -5,7 +5,6 @@ const exerciseData = async () => {
     try {
         const res = await axios.get('https://wger.de/api/v2/exercise.json/?limit=5&language=2');
         console.log(res.data.results)
-        console.log(res.data.results.id)
         return res.data.results
     } catch (err) {
         console.log(err);
