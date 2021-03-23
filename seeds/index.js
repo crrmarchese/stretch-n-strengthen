@@ -2,6 +2,8 @@ const seedExercises = require('./exercise-seeds');
 const seedMuscle = require('./muscle-seeds');
 const seedEquipment = require('./equipment-seeds');
 const seedCategory = require('./category-seeds');
+const seedExerciseEquipment = require('./exercise_equipment-seeds');
+const seedExerciseMuscle= require('./exercise_muscle-seeds');
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
@@ -19,6 +21,12 @@ const seedAll = async () => {
 
     await seedCategory();
     console.log('\n----- EXERCISES SEEDED -----\n');
+
+    await seedExerciseEquipment();
+    console.log('\n----- EXERCISE EQUIPMENT JOIN SEEDED -----\n');
+
+    await seedExerciseMuscle();
+    console.log('\n----- EXERCISE MUSCLE JOIN SEEDED -----\n');
   
     process.exit(0);
 };

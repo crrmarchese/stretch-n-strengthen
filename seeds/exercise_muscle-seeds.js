@@ -1,5 +1,5 @@
 const axios = require('axios').default;
-const { Exercise_Equipment } = require('../models');
+const { Exercise_Muscle } = require('../models');
 
 const exerciseData = async () => {
     try {
@@ -10,28 +10,28 @@ const exerciseData = async () => {
     }
 }
 
-const exerciseEquipmentData = async () => {
+const exerciseMuscleData = async () => {
     try{
-        const exerciseEquipmentArray = [];
+        const exerciseMuscleArray = [];
         const exData = await exerciseData();
 
         exData.forEach((ele1) => {
-            ele1.equipment.forEach((ele2) => {
-                exerciseEquipmentArray.push({
+            ele1.muscle.forEach((ele2) => {
+                exerciseMuscleArray.push({
                     exercise_id: ele1.id,
-                    equipment_id: ele2
+                    muscle_id: ele2
                 });
             });
             
         });
         
-        return exerciseEquipmentArray;
+        return exerciseMuscleArray;
 
     } catch (err) {
         console.log(err);
     }
 }
 
-const seedExerciseEquipment = async () => Exercise_Equipment.bulkCreate(await exerciseEquipmentData());
+const seedExerciseMuscle = async () => Exercise_Muscle.bulkCreate(await exerciseMuscleData());
 
-module.exports = seedExerciseEquipment;
+module.exports = seedExerciseMuscle;
