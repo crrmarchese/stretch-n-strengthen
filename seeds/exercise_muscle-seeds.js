@@ -16,7 +16,7 @@ const exerciseMuscleData = async () => {
         const exData = await exerciseData();
 
         exData.forEach((ele1) => {
-            ele1.muscle.forEach((ele2) => {
+            ele1.muscles.forEach((ele2) => {
                 exerciseMuscleArray.push({
                     exercise_id: ele1.id,
                     muscle_id: ele2

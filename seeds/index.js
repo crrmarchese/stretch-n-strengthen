@@ -14,13 +14,13 @@ const seedAll = async () => {
     console.log('\n----- EXERCISES SEEDED -----\n');
 
     await seedMuscle();
-    console.log('\n----- EXERCISES SEEDED -----\n');
+    console.log('\n----- MUSCLES SEEDED -----\n');
 
     await seedEquipment();
-    console.log('\n----- EXERCISES SEEDED -----\n');
+    console.log('\n----- EQUIPMENT SEEDED -----\n');
 
     await seedCategory();
-    console.log('\n----- EXERCISES SEEDED -----\n');
+    console.log('\n----- CATEGORIES SEEDED -----\n');
 
     await seedExerciseEquipment();
     console.log('\n----- EXERCISE EQUIPMENT JOIN SEEDED -----\n');

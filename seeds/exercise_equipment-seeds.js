@@ -32,6 +32,6 @@ const exerciseEquipmentData = async () => {
     }
 }
 
-const seedExerciseEquipment = async () => Exercise_Equipment.bulkCreate(await exerciseEquipmentData());
+const seedExerciseEquipment = async () => Exercise_Equipment.bulkCreate(await exerciseEquipmentData()) 
 
 module.exports = seedExerciseEquipment;
