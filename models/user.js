@@ -15,9 +15,6 @@ const sequelize = require('../config/connection')
 //             defaultValue: sequelize.UUIDV4,
 //              allowNull: false,
 //              primaryKey: true,
-//             // don't think we need the below since it's using UUID
-//             // primaryKey: true,
-//             // autoIncrement: true
 //         },
 //         // **** default user_name === Email ****
 //         user_name: {
@@ -49,4 +46,4 @@ const sequelize = require('../config/connection')
 
 // )
   
-module.exports = { User }
+// module.exports = { User }
