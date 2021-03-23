@@ -11,6 +11,6 @@ const categoryData = async () => {
     }
 }
 
-const seedCategory= async () => Exercise.bulkCreate(await categoryData());
+const seedCategory= async () => Category.bulkCreate(await categoryData());
 
 module.exports = seedCategory;

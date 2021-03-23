@@ -1,15 +1,14 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const Sequelize = require('../config/connection');
+const sequelize = require('../config/connection');
 
-class Muscle extends Model { }
+class Muscle extends Model {}
 
 Muscle.init(
     {
-        results: {
             id: {
                 type: DataTypes.INTEGER,
-                allowNull: false
+                allowNull: false,
+                primaryKey: true,
             },
             name: {
                 type: DataTypes.STRING,
@@ -17,7 +16,6 @@ Muscle.init(
             image_url_main: {
                 type: DataTypes.STRING,
             }
-        }
     },
     {
         sequelize,

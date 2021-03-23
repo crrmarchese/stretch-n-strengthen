@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const Sequelize = require('../config/connection');
+const sequelize = require('../config/connection');
 const Exercise = require('./Exercise')
 
 class Category extends Model {}
@@ -9,7 +8,8 @@ Category.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true,
         },
         name: {
             type: DataTypes.STRING,

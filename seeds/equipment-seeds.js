@@ -11,6 +11,6 @@ const equipmentData = async () => {
     }
 }
 
-const seedEquipment= async () => Exercise.bulkCreate(await equipmentData());
+const seedEquipment= async () => Equipment.bulkCreate(await equipmentData());
 
 module.exports = seedEquipment;

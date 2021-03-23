@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-
 const sequelize = require('../config/connection.js');
 
 
@@ -12,7 +11,6 @@ Exercise.init(
       allowNull: false,
       primaryKey: true,
     },
-    // do we need this?
     category: {
       type: DataTypes.INTEGER,
     },
@@ -20,7 +18,7 @@ Exercise.init(
       type: DataTypes.STRING,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
   },
   {
