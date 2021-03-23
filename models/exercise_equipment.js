@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-
 class Exercise_Equipment extends Model {}
 
 Exercise_Equipment.init(
@@ -14,15 +13,15 @@ Exercise_Equipment.init(
       exercise_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: "Exercise",
-            key: "id"
+            model: 'exercise',
+            key: 'id'
         },
       },
       equipment_id: {
           type: DataTypes.INTEGER,
           references: {
-              model: "Equipment",
-              key: "id"
+              model: 'equipment',
+              key: 'id'
           }
         },
       },
