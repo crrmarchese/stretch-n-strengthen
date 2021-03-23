@@ -4,38 +4,38 @@ const { Muscle } = require('./Muscle');
 const { Equipment } = require('./Equipment');
 // const { User } = require('./user');
 
-// Category.belongsTo(Exercise, {
-//     foreignKey: 'name',
-//     through: {
-//         model: Exercise,
-//         unique: false,
-//     },
-//     // as: 'name'
-// });
+Category.belongsTo(Exercise, {
+    foreignKey: 'name',
+    through: {
+        model: Exercise,
+        unique: false,
+    },
+    // as: 'name'
+});
 
-// // Exercise.hasMany(Category, {
-
-// // });
-
-// Muscle.belongsToMany(Exercise, {
-//     foreignKey: 'id',
-//     through: {
-//         model: Exercise, 
-//         unique: false,
-//     },
-// });
-
-// Equipment.belongsToMany(Exercise, {
-//     foreignKey: 'id',
-//     through: {
-//         model: Exercise,
-//         unique: false
-//     }
-// });
-
-// Equipment.belongsToMany(Exercise, {
+// Exercise.hasMany(Category, {
 
 // });
+
+Muscle.belongsToMany(Exercise, {
+    foreignKey: 'id',
+    through: {
+        model: Exercise, 
+        unique: false,
+    },
+});
+
+Equipment.belongsToMany(Exercise, {
+    foreignKey: 'id',
+    through: {
+        model: Exercise,
+        unique: false
+    }
+});
+
+Equipment.belongsToMany(Exercise, {
+
+});
 
 module.exports = {  Exercise, Category, Equipment, Muscle };
 
