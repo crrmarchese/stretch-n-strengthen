@@ -4,6 +4,7 @@ const { Exercise } = require('../models');
 const exerciseData = async () => {
     try {
         const res = await axios.get('https://wger.de/api/v2/exercise.json/?limit=999&language=2');
+        console.log(res.data.results)
         return res.data.results
     } catch (err) {
         console.log(err);

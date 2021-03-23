@@ -17,19 +17,22 @@ Category.hasMany(Exercise, {
   
 Exercise.belongsToMany(Muscle, {
     through: Exercise_Muscle,
-    foreignKey: 'muscle_id',
+    foreignKey: 'exercise_id',
 });
+
 Exercise.belongsToMany(Equipment, {
     through: Exercise_Equipment,
-    foreignKey: 'equipment_id',
+    foreignKey: 'exercise_id',
 });
+
 Muscle.belongsToMany(Exercise, {
     through: Exercise_Muscle,
-    foreignKey: 'exercise_id',
+    foreignKey: 'muscle_id',
 });
+
 Equipment.belongsToMany(Exercise, {
     through: Exercise_Equipment,
-    foreignKey: 'exercise_id',
+    foreignKey: 'equipment_id',
 });
 
 module.exports = { Exercise, Category, Equipment, Muscle, Exercise_Equipment, Exercise_Muscle };
