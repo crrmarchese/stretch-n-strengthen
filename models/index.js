@@ -4,7 +4,6 @@ const { Muscle } = require('./Muscle');
 const { Equipment } = require('./Equipment');
 const { Exercise_Equipment } = require('./exercise_equipment');
 const { Exercise_Muscle }  = require('./exercise_muscle')
-const { Exercise_Category } = require('./exercise_category');
 
 
 Exercise.belongsTo(Category, {
