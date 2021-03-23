@@ -2,7 +2,7 @@ const { Exercise } = require('./Exercise');
 const { Category }  = require('./Category')
 const { Muscle } = require('./Muscle');
 const { Equipment } = require('./Equipment');
-// const { Exercise_Equipment } = require('./Exercise_Equipment');
+const { Exercise_Equipment } = require('./Exercise_Equipment');
 // const { Exercise_Muscle }  = require('./exercise_muscle')
 
 
@@ -30,4 +30,4 @@ const { Equipment } = require('./Equipment');
 //     through: Exercise_Equipment,
 //     foreignKey: 'exercise_id',
 // });
-module.exports = { Exercise, Category, Equipment, Muscle };
+module.exports = { Exercise, Category, Equipment, Muscle, Exercise_Equipment };
