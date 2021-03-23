@@ -1,44 +1,30 @@
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
+const Sequelize = require('../config/connection');
+const Exercise = require('./Exercise')
 
-const sequelize = require('../config/connection.js');
+class Category extends Model {}
 
-
-class Exercise extends Model {}
-
-Exercise.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
+Category.init(
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        name: {
+            type: DataTypes.STRING,
+        }, 
     },
-    // do we need this?
-    category: {
-      type: DataTypes.INTEGER,
-    },
-    name: {
-      type: DataTypes.STRING,
-    },
-    description: {
-      type: DataTypes.STRING,
-    },
-  },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'exercise',
-  }
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'category',
+      }
 );
 
-module.exports = { Exercise }
-
-
-
-// const { Model, DataTypes } = require('sequelize');
-// const bcrypt = require('bcrypt');
-// const Sequelize = require('../config/connection');
+module.exports = { Category }
 
 
 //  seed the Exercises DB with Data from the 3rd party API - object the API returns below
@@ -59,3 +45,11 @@ module.exports = { Exercise }
 //     uuid: '80d318b3-4b8a-41aa-9c6c-0a2a921fe1e6',
 //     variations: 7
 //   },
+
+// {
+//     "id": 2,
+//     "name": "Anterior deltoid",
+//     "is_front": true,
+//     "image_url_main": "/static/images/muscles/main/muscle-2.svg",
+//     "image_url_secondary": "/static/images/muscles/secondary/muscle-2.svg"
+// }
