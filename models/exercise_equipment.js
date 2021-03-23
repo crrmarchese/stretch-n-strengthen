@@ -14,15 +14,15 @@ Exercise_Equipment.init(
       exercise_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: "Exercise",
-            key: "id"
+            model: 'exercise',
+            key: 'id'
         },
       },
       equipment_id: {
           type: DataTypes.INTEGER,
           references: {
-              model: "Equipment",
-              key: "id"
+              model: 'equipment',
+              key: 'id'
           }
         },
       },
