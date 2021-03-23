@@ -2,20 +2,30 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const Sequelize = require('../config/connection');
 
-class Equipment extends Model {}
+class Equipment extends Model { }
 
 Equipment.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        // equipment name ie - name: barbell 
-        name: {
-            type: DataTypes.STRING,
+        // not sure if this will work but YEEEEHAW
+        results: {
+            id: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
+            // equipment name ie - name: barbell 
+            name: {
+                type: DataTypes.STRING,
+            }
         }
-    }
-)
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'equipment',
+      }
+);
 
 module.exports = { Equipment }
 

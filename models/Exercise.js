@@ -2,19 +2,24 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
+
 class Exercise extends Model {}
 
 Exercise.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
+      allowNull: false
+    },
+    // do we need this?
+    category: {
+      type: DataTypes.INTEGER,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
     },
   },
   {
@@ -26,34 +31,15 @@ Exercise.init(
   }
 );
 
-module.exports = Exercise;
+module.exports = { Exercise }
+
 
 
 // const { Model, DataTypes } = require('sequelize');
 // const bcrypt = require('bcrypt');
 // const Sequelize = require('../config/connection');
 
-// class Exercises extends Model {}
 
-// Exercises.init(
-//     {
-//         id: {
-//             type: DataTypes.INTEGER,
-//             allowNull: false
-//         },
-//         category: {
-//             type: DataTypes.INTEGER,
-//         },
-//         name: {
-//             type: DataTypes.STRING,
-//         },
-//         description: {
-//             type: DataTypes.STRING,
-//         },
-//     }
-// )
-
-// module.exports = { Exercises }
 //  seed the Exercises DB with Data from the 3rd party API - object the API returns below
 // 
 // {
