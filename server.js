@@ -18,6 +18,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const path = require('path');
+const passport = require('passport')
 // const routes = require('./routes');
 const sequelize = require('./config/connection');
 // const helpers = require('./utils/helpers');
