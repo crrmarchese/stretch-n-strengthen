@@ -11,6 +11,10 @@ Exercise.init(
     },
     category: {
       type: DataTypes.INTEGER,
+      references: {
+        model: 'category',
+        key: 'id',
+      },
     },
     name: {
       type: DataTypes.STRING,

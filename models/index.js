@@ -7,12 +7,12 @@ const { Exercise_Muscle }  = require('./Exercise_Muscle')
 
 
 Exercise.belongsTo(Category, {
-    foreignKey: 'category_id',
+    foreignKey: 'category',
     as: 'Category_ID'
   });
   
 Category.hasMany(Exercise, {
-    foreignKey: 'category_id',
+    foreignKey: 'category',
   });
   
 Exercise.belongsToMany(Muscle, {
