@@ -1,43 +1,43 @@
-const User = require('./User');
 const { Exercise } = require('./Exercise');
 const { Category }  = require('./Category')
 const { Muscle } = require('./Muscle');
 const { Equipment } = require('./Equipment');
+// const { User } = require('./user');
 
-Category.belongsTo(Exercises, {
-    foreignKey: 'name',
-    through: {
-        model: Exercises,
-        unique: false,
-    },
-    // as: 'name'
-});
+// Category.belongsTo(Exercise, {
+//     foreignKey: 'name',
+//     through: {
+//         model: Exercise,
+//         unique: false,
+//     },
+//     // as: 'name'
+// });
 
-Exercise.hasMany(Category, {
+// // Exercise.hasMany(Category, {
 
-});
+// // });
 
-Muscle.belongsToMany(Exercise, {
-    foreignKey: 'id',
-    through: {
-        model: Exercise, 
-        unique: false,
-    },
-});
+// Muscle.belongsToMany(Exercise, {
+//     foreignKey: 'id',
+//     through: {
+//         model: Exercise, 
+//         unique: false,
+//     },
+// });
 
-Equipment.belongsToMany(Exercise, {
-    foreignKey: 'id',
-    through: {
-        model: Exercise,
-        unique: false
-    }
-});
+// Equipment.belongsToMany(Exercise, {
+//     foreignKey: 'id',
+//     through: {
+//         model: Exercise,
+//         unique: false
+//     }
+// });
 
-Equipment.belongsToMany(Exercises, {
+// Equipment.belongsToMany(Exercise, {
 
-});
+// });
 
-module.exports = { User, Exercise, Category, Equipment,  };
+module.exports = {  Exercise, Category, Equipment, Muscle };
 
 //exercise (parent model)
 // muscles has many to many
