@@ -10,6 +10,23 @@ const exerciseData = async () => {
     }
 }
 
-const seedExercise = async () => Exercise.bulkCreate(await exerciseData());
+const replaceNull = async () => {
+    try{
+        const exData = await exerciseData();
+
+        exData.forEach((ele) => {
+            if (ele.equipment.length === 0) {
+                ele.equipment.push(7);
+            }
+        });
+        console.log(exData)
+        return exData;
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const seedExercise = async () => Exercise.bulkCreate(await replaceNull());
 
 module.exports = seedExercise;
