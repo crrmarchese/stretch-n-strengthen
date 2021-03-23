@@ -1,21 +1,31 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const Sequelize = require('../config/connection');
+const sequelize = require('../config/connection');
 
-class Equipment extends Model {}
+class Equipment extends Model { }
 
 Equipment.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        equipment: {
-            type: DataTypes.STRING,
-        }
-
-    }
-)
+        // not sure if this will work but YEEEEHAW
+        // results: {
+            id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                primaryKey: true,
+            },
+            // equipment name ie - name: barbell 
+            name: {
+                type: DataTypes.STRING,
+            }
+        // }
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'equipment',
+      }
+);
 
 module.exports = { Equipment }
 
@@ -35,3 +45,51 @@ module.exports = { Equipment }
 //     uuid: '80d318b3-4b8a-41aa-9c6c-0a2a921fe1e6',
 //     variations: 7
 //   },
+
+// {
+//     "count": 10,
+//     "next": null,
+//     "previous": null,
+//     "results": [
+//         {
+//             "id": 1,
+//             "name": "Barbell"
+//         },
+//         {
+//             "id": 8,
+//             "name": "Bench"
+//         },
+//         {
+//             "id": 3,
+//             "name": "Dumbbell"
+//         },
+//         {
+//             "id": 4,
+//             "name": "Gym mat"
+//         },
+//         {
+//             "id": 9,
+//             "name": "Incline bench"
+//         },
+//         {
+//             "id": 10,
+//             "name": "Kettlebell"
+//         },
+//         {
+//             "id": 7,
+//             "name": "none (bodyweight exercise)"
+//         },
+//         {
+//             "id": 6,
+//             "name": "Pull-up bar"
+//         },
+//         {
+//             "id": 5,
+//             "name": "Swiss Ball"
+//         },
+//         {
+//             "id": 2,
+//             "name": "SZ-Bar"
+//         }
+//     ]
+// }
