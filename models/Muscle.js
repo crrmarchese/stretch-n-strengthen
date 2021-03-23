@@ -5,7 +5,6 @@ class Muscle extends Model {}
 
 Muscle.init(
     {
-        // results: {
             id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -17,7 +16,6 @@ Muscle.init(
             image_url_main: {
                 type: DataTypes.STRING,
             }
-        // }
     },
     {
         sequelize,

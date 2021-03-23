@@ -35,8 +35,8 @@ Exercise_Category.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'exercise',
+    modelName: 'exercise_category',
   }
 );
 
-module.exports = { Exercise }
+module.exports = { Exercise_Category }

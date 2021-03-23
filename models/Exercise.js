@@ -11,7 +11,6 @@ Exercise.init(
       allowNull: false,
       primaryKey: true,
     },
-    // do we need this?
     category: {
       type: DataTypes.INTEGER,
     },

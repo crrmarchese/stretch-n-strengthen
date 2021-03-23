@@ -31,6 +31,8 @@ Exercise_Muscle.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'exercise',
+      modelName: 'exercise_muscle',
     }
   );
+
+  module.exports = { Exercise_Muscle }

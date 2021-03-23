@@ -1,5 +1,3 @@
-// id exercise
-// id other table 
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -33,6 +31,8 @@ Exercise_Equipment.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'exercise',
+      modelName: 'exercise_equipment',
     }
   );
+
+  module.exports = { Exercise_Equipment }
