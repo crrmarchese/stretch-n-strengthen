@@ -2,19 +2,31 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const Sequelize = require('../config/connection');
 
-class Muscle extends Model {}
+class Muscle extends Model { }
 
 Muscle.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-    muscle: {
-        type: DataTypes.STRING,
-    }
-}   
-)
+        results: {
+            id: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
+            name: {
+                type: DataTypes.STRING,
+            },
+            image_url_main: {
+                type: DataTypes.STRING,
+            }
+        }
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'muscle',
+      }
+);
 
 module.exports = { Muscle }
 
@@ -34,3 +46,11 @@ module.exports = { Muscle }
     //     uuid: '80d318b3-4b8a-41aa-9c6c-0a2a921fe1e6',
     //     variations: 7
     //   },
+// array returned from Muscles 
+    // {
+    //     "id": 2,
+    //     "name": "Anterior deltoid",
+    //     "is_front": true,
+    //     "image_url_main": "/static/images/muscles/main/muscle-2.svg",
+    //     "image_url_secondary": "/static/images/muscles/secondary/muscle-2.svg"
+    // }
