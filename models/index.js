@@ -2,18 +2,18 @@ const { Exercise } = require('./Exercise');
 const { Category }  = require('./Category')
 const { Muscle } = require('./Muscle');
 const { Equipment } = require('./Equipment');
-const { Exercise_Equipment } = require('./Exercise_Equipment');
-const { Exercise_Muscle }  = require('./exercise_muscle')
+// const { Exercise_Equipment } = require('./Exercise_Equipment');
+// const { Exercise_Muscle }  = require('./exercise_muscle')
 
 
-Exercise.belongsTo(Category, {
-    foreignKey: 'category_id',
-    as: 'Category_ID'
-  });
+// Exercise.belongsTo(Category, {
+//     foreignKey: 'category_id',
+//     as: 'Category_ID'
+//   });
   
-Category.hasMany(Exercise, {
-    foreignKey: 'category_id',
-  });
+// Category.hasMany(Exercise, {
+//     foreignKey: 'category_id',
+//   });
 // Exercise.belongsToMany(Muscle, {
 //     through: Exercise_Muscle,
 //     foreignKey: 'muscle_id',
