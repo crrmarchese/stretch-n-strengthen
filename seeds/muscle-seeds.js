@@ -11,6 +11,6 @@ const muscleData = async () => {
     }
 }
 
-const seedMuscle= async () => Exercise.bulkCreate(await muscleData());
+const seedMuscle = async () => Muscle.bulkCreate(await muscleData());
 
 module.exports = seedMuscle;

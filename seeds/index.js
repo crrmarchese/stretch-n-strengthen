@@ -1,4 +1,7 @@
 const seedExercises = require('./exercise-seeds');
+const seedMuscle = require('./muscle-seeds');
+const seedEquipment = require('./equipment-seeds');
+const seedCategory = require('./category-seeds');
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
