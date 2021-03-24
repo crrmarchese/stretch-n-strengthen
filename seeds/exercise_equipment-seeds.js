@@ -17,7 +17,6 @@ const replaceNull = async () => {
         exData.forEach((ele) => {
             if (ele.equipment.length === 0) ele.equipment.push(7);
         });
-        console.log(exData)
         return exData;
 
     } catch (err) {
