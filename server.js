@@ -1,19 +1,8 @@
-// const path = require('path');
-// const express = require('express');
-// const exphbs = require('express-handlebars');
 // const routes = require('./controllers');
 // const helpers = require('./utils/helpers');
-//const sequelize = require('./config/connection');
-
 
 // Create the Handlebars.js engine object with custom helper functions
 //const hbs = exphbs.create({ helpers });
-
-// Inform Express.js which template engine we're using
-//app.engine('handlebars', hbs.engine);
-//app.set('view engine', 'handlebars');
-
-
 const express = require('express');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
@@ -36,7 +25,8 @@ require('./config/passport')(passport)
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Handlebars stuff, can be found in class assignments
+
+// Inform Express.js which template engine we're using
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
