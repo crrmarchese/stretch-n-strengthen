@@ -30,6 +30,10 @@ const PORT = process.env.PORT || 3001;
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
 // SESSIONS, must be above passport middleware
 const sess = {
   secret: 'Secret secret',
@@ -70,4 +74,4 @@ sequelize.sync({ force: false, alter: true }).then(() => {
   app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}!`);
   });
-});
+}).catch(err => console.log(err));

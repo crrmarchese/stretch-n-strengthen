@@ -11,6 +11,10 @@ Exercise.init(
     },
     category: {
       type: DataTypes.INTEGER,
+      through: {
+        model: 'category',
+        foreignKey: 'id'
+      }
     },
     name: {
       type: DataTypes.STRING,
