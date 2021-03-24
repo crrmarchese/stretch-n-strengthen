@@ -1,4 +1,4 @@
-const { Model, DataTypes, Sequelize } = require('sequelize');
+const { Model, DataTypes, Sequelize, STRING } = require('sequelize');
 // const { Sequelize } = require('sequelize/types')
 const sequelize = require('../config/connection')
 
@@ -20,7 +20,13 @@ User.init(
         user_name: {
             type: DataTypes.STRING,
             required: true,
+            allowNull: false,
         },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+        }
         // password: {
         //     // hash password here
         // },

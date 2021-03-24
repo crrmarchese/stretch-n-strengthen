@@ -7,7 +7,8 @@ const User = require('../models/user');
 const path = require('path');
 
 // post req to 'create' a new user, and add them to DB 
-// should be /api/auths??
+// path is currently localhost:3001/auth/
+
 router.post('/', async (req,res) => {
     try {
         const newUser = await User.create(req.body);
@@ -16,7 +17,7 @@ router.post('/', async (req,res) => {
             req.session.user_name = newUser.user_name, 
             req.session.logged_in = true;
 
-            res.status(200).json(newUser.user_name)
+            res.status(200).json(newUser)
         })
     } catch (err) {
         res.status(400).json(err)
