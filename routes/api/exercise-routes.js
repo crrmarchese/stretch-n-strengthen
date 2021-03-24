@@ -4,13 +4,13 @@ const { Category, Exercise, Equipment} = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const exerciseData = await Exercise.findAll({
-      include: [{model: Equipment}, {model: Category}],
+      include: [{model: Category}, {model: Equipment}],
     });
     res.status(200).json(exerciseData);
-} catch (err) {
-  res.status(500).json(err);
-}
-
+  } catch (err) {
+    console.log(err) ;
+    res.status(500).json(err);
+  }
 });
 
 router.get('/:id', async (req, res) => {

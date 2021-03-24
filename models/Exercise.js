@@ -9,7 +9,7 @@ Exercise.init(
       allowNull: false,
       primaryKey: true,
     },
-    category: {
+    category_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'category',
