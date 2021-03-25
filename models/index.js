@@ -7,7 +7,7 @@ const { User } = require('./User');
 const { Exercise_Equipment } = require('./Exercise_Equipment');
 const { Exercise_Muscle }  = require('./Exercise_Muscle');
 const { Routine_Exercise }  = require('./Routine_Exercise');
-const { User_User }  = require('./User_User')
+const { User_User }  = require('./User_User');
 
 // Many Exercises to One Category
 Exercise.belongsTo(Category, {
