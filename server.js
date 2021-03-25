@@ -1,41 +1,31 @@
-const express = require('express');
-const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
-const path = require('path');
-const passport = require('passport')
-const session = require('express-session')
+// Env
 require('dotenv').config()
-const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
-// const helpers = require('./utils/helpers');
-const routes = require('./routes')
-// const controllers = require('./controllers')
 
-// // PASSPORT CONFIG
-require('./config/passport')(passport)
+// Path
+const path = require('path');
 
+// Controllers
+const controllers = require('./controllers')
 
-// // const hbs = exphbs.create({ helpers });
-
+// Express
+const express = require('express');
+const session = require('express-session')
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// // Handlebars stuff, can be found in class assignments
-// =========================
-// so when I change it to app.use(controllers), get request shows 200OK status, but I get the 'wrong route' message when I try to get request
-//  same with post request
-// will be back around 630 to delve into this and get it fixed fixed 
-// =========================
-app.use(routes);
-// app.use(controllers)
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+// Handlebars
+const exphbs = require('express-handlebars');
+const helpers = require('./utils/helpers');
+const hbs = exphbs.create({ helpers });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+// Sequelize
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
 
-// SESSIONS, must be above passport middleware
+// Passport
+const passport = require('passport')
+
+// Sessions
 const sess = {
   secret: 'Secret secret',
   cookie: {}, 
@@ -46,7 +36,31 @@ const sess = {
   })
 };
 
+
+
+// // PASSPORT CONFIG
+// require('./config/passport')(passport)
+
+
+// // const hbs = exphbs.create({ helpers });
+
+// // Handlebars stuff, can be found in class assignments
+// =========================
+// so when I change it to app.use(controllers), get request shows 200OK status, but I get the 'wrong route' message when I try to get request
+//  same with post request
+// will be back around 630 to delve into this and get it fixed fixed 
+// =========================
+// app.use(routes);
+
+// Middleware
 app.use(session(sess))
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(controllers);
+app.use(require('./controllers/hammond'));
 
 //PASSPORT
 app.use(session({
@@ -60,13 +74,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(require('./controllers/hammond'));
-app.use(require('./controllers/'));
 app.use('/auth', require('./controllers/auths'));
-
-
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
