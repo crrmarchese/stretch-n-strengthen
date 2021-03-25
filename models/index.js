@@ -17,14 +17,14 @@ Category.hasMany(Exercise, {
     foreignKey: 'category_id',
   });
 
-// // Many Routine to One User
-// Routine.belongsTo(User, {
-//     foreignKey: 'routine_id',
-//   });
+// Many Routine to One User
+Routine.belongsTo(User, {
+    foreignKey: 'routine_id',
+  });
   
-// User.hasMany(Routine, {
-//     foreignKey: 'routine_id',
-//   });
+User.hasMany(Routine, {
+    foreignKey: 'routine_id',
+  });
 
 // Many Exercise to Many Muscle
 Exercise.belongsToMany(Muscle, {
