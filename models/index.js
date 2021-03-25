@@ -60,4 +60,4 @@ Exercise.belongsToMany(Equipment, {
 });
 
 
-module.exports = { Exercise, Category, Equipment, Muscle, Routine, Exercise_Equipment, Exercise_Muscle, Routine_Exercise };
+module.exports = { Exercise, Category, Equipment, Muscle, Routine, User, Exercise_Equipment, Exercise_Muscle, Routine_Exercise };

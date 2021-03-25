@@ -11,10 +11,10 @@ Routine.init(
         },
         id_user: {      
             type: DataTypes.INTEGER,
-            // references: {
-            //   model: 'user',
-            //   key: 'id',
-            // },
+            references: {
+              model: 'user',
+              key: 'id',
+            },
         },
         name: {
             type: DataTypes.STRING,
