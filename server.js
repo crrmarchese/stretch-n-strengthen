@@ -21,12 +21,8 @@ require('./config/passport')(passport)
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
-const path = require('path');
-
 // Handlebars stuff, can be found in class assignments
-app.use(routes);
+// app.use(routes);
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
@@ -68,7 +64,7 @@ app.use('/auth', require('./controllers/auths'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}!`);
   });
