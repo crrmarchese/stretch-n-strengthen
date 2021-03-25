@@ -7,7 +7,7 @@ const exerciseData = async () => {
         console.log(res.data.results)
         res.data.results.forEach((ele) => {
             ele.category_id = ele.category;
-            delete ele.category
+            delete ele.category;
         })
         return res.data.results
     } catch (err) {
