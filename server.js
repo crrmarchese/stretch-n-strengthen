@@ -25,7 +25,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store)
 // Passport
 const passport = require('passport')
 
-// Sessions
+// Session
 const sess = {
   secret: 'Secret secret',
   cookie: {}, 
