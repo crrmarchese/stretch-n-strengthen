@@ -1,5 +1,6 @@
 const express = require('express');
 const routes = require('./routes');
+const controllers = require('./controllers');
 const sequelize = require('./config/connection');
 
 const app = express();
@@ -10,7 +11,8 @@ const hbs = exphbs.create({});
 const path = require('path');
 
 // Handlebars stuff, can be found in class assignments
-app.use(routes);
+// app.use(routes);
+app.use(controllers);
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
