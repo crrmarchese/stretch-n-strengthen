@@ -5,13 +5,13 @@ class Routine extends Model {}
 Routine.init(
     {
         id: {
-            type: DataTypes.UUIDV4,
-            defaultValue: sequelize.UUIDV4,
-            allowNull: false,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            // allowNull: false,
             primaryKey: true,
         },
         id_user: {      
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             references: {
               model: 'user',
               key: 'id',

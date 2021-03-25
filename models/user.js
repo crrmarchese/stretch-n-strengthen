@@ -10,9 +10,9 @@ class User extends Model {}
 User.init( 
     {
         id: {
-            type: DataTypes.UUIDV4,
-            defaultValue: sequelize.UUIDV4,
-            allowNull: false,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            // allowNull: false,
             primaryKey: true,
             // don't think we need the below since it's using UUID
             // primaryKey: true,
