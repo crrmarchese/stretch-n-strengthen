@@ -24,7 +24,6 @@ const replaceNull = async () => {
                 ele.equipment.push(7);
             }
         });
-        console.log(exData)
         return exData;
 
     } catch (err) {
