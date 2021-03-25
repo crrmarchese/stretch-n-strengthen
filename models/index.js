@@ -64,13 +64,13 @@ Exercise.belongsToMany(Equipment, {
 User.belongsToMany(User, {
   through: User_User,
   foreignKey: 'lead_id',
-  as: "lead_id"
+  as: "leader"
 });
 
 User.belongsToMany(User, {
   through: User_User,
   foreignKey: 'follow_id',
-  as: 'follow_id'
+  as: 'follower'
 });
 
 module.exports = { Exercise, Category, Equipment, Muscle, Routine, User, Exercise_Equipment, Exercise_Muscle, Routine_Exercise, User_User };

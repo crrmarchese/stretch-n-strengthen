@@ -5,7 +5,8 @@ class Routine extends Model {}
 Routine.init(
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUIDV4,
+            defaultValue: sequelize.UUIDV4,
             allowNull: false,
             primaryKey: true,
         },

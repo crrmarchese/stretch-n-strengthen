@@ -5,10 +5,10 @@ class User_User extends Model {}
 User_User.init(
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUIDV4,
+        defaultValue: sequelize.UUIDV4,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true,
       },
       lead_id: {
         type: DataTypes.INTEGER,

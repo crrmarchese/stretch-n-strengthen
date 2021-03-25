@@ -10,14 +10,13 @@ class User extends Model {}
 User.init( 
     {
         id: {
-            type: DataTypes.INTEGER,
-            // type: DataTypes.UUIDV4,
-            // defaultValue: sequelize.UUIDV4,
-             allowNull: false,
-             primaryKey: true,
+            type: DataTypes.UUIDV4,
+            defaultValue: sequelize.UUIDV4,
+            allowNull: false,
+            primaryKey: true,
             // don't think we need the below since it's using UUID
             // primaryKey: true,
-            autoIncrement: true
+            // autoIncrement: true
         },
 //         // **** default user_name === Email ****
 //         user_name: {

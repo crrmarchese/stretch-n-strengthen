@@ -5,10 +5,10 @@ class Routine_Exercise extends Model {}
 Routine_Exercise.init(
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUIDV4,
+        defaultValue: sequelize.UUIDV4,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true,
       },
       routine_id: {
         type: DataTypes.INTEGER,
