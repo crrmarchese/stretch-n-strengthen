@@ -1,6 +1,6 @@
-const router = require('express').Router();
-const exerciseRoutes = require('./exercise-routes');
+// const router = require('express').Router();
+// const exerciseRoutes = require('./exercise-routes');
 
-router.use('/exercise', exerciseRoutes);
+// router.use('/exercise', exerciseRoutes);
 
-module.exports = router;
+// module.exports = router;

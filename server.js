@@ -7,19 +7,20 @@ const session = require('express-session')
 require('dotenv').config()
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
-const helpers = require('./utils/helpers');
+// const helpers = require('./utils/helpers');
+const routes = require('./routes')
 
-// PASSPORT CONFIG
+// // PASSPORT CONFIG
 require('./config/passport')(passport)
 
 
-// const hbs = exphbs.create({ helpers });
+// // const hbs = exphbs.create({ helpers });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Handlebars stuff, can be found in class assignments
-
+// // Handlebars stuff, can be found in class assignments
+app.use(routes);
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
@@ -55,14 +56,40 @@ app.use(passport.session())
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./controllers/hammond'));
-app.use('/auth', require('./controllers/auths'))
+app.use(require('./controllers/'));
+app.use('/auth', require('./controllers/auths'));
 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}!`);
   });
 }).catch(err => console.log(err));
+
+// const express = require('express');
+// const routes = require('./routes');
+// const sequelize = require('./config/connection');
+
+// const app = express();
+// const PORT = process.env.PORT || 3001;
+
+// const exphbs = require('express-handlebars');
+// const hbs = exphbs.create({});
+// const path = require('path');
+
+// // Handlebars stuff, can be found in class assignments
+// app.use(routes);
+// app.engine('handlebars', hbs.engine);
+// app.set('view engine', 'handlebars');
+// app.use(express.static(path.join(__dirname, 'public')));
+// // app.use(require('./controllers/hammond'));
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// sequelize.sync({ force: true }).then(() => {
+//   app.listen(PORT, () => {
+//     console.log(`App listening on port ${PORT}!`);
+//   });
+// });
