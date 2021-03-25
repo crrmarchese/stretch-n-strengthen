@@ -29,7 +29,7 @@ Routine.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'muscle',
+        modelName: 'routine',
       }
 );
 
