@@ -10,4 +10,13 @@ const withAuth = require('../utils/auth');
 router.use('/auth', authRoutes);
 router.use('/api', withAuth, apiRoutes);
 
+router.use((req, res) => {
+  res.send("<h1>Wrong Route!</h1>")
+});
+
 module.exports = router;
+
+
+
+
+
