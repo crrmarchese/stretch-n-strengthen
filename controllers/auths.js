@@ -36,25 +36,28 @@ router.post('/login', async (req, res) => {
         return;
       }
   
-    //   const validPassword = await newUser.checkPassword(req.body.password);
+      const validPassword = await newUser.checkPassword(req.body.password);
   
-    //   if (!validPassword) {
-    //     res
-    //       .status(400)
-    //       .json({ message: 'Incorrect email or password, please try again' });
-    //     return;
-    //   }
+      if (!validPassword) {
+        res
+          .status(400)
+          .json({ message: 'Incorrect email or password, please try again' });
+        return;
+      }
   
-    //   req.session.save(() => {
-    //     req.session.user_id = newUser.id;
-    //     req.session.logged_in = true;
+      req.session.save(() => {
+        req.session.user_id = newUser.id;
+        req.session.logged_in = true;
         
-    //     res.json({ user: newUser, message: 'You are now logged in!' });
-    //   });
+        res.json({ user: newUser, message: 'You are now logged in!' });
+      });
   
-    } catch (err) {
-      res.status(400).json(err);
+    } catch (err){
+        res.json(console.log(err))
     }
+    // {
+    //   res.status(400).json(err);
+    // }
   });
 
 module.exports = router;
