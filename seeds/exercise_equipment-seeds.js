@@ -15,11 +15,8 @@ const replaceNull = async () => {
         const exData = await exerciseData();
 
         exData.forEach((ele) => {
-            if (ele.equipment.length === 0) {
-                ele.equipment.push(7);
-            }
+            if (ele.equipment.length === 0) ele.equipment.push(7);
         });
-        console.log(exData)
         return exData;
 
     } catch (err) {

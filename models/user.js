@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
-// const { Sequelize } = require('sequelize/types')
-const sequelize = require('../config/connection')
-// class User extends Model {
+// const { Model, DataTypes } = require('sequelize');
+// // const { Sequelize } = require('sequelize/types')
+// const sequelize = require('../config/connection')
+// class User extends Model {}
     
 // // checkPassword(loginPw) {
 // //     return bcrypt.compareSync(loginPw, this.password)
@@ -49,4 +49,4 @@ const sequelize = require('../config/connection')
 
 // )
   
-module.exports = { User }
+// module.exports = { User }
