@@ -6,7 +6,8 @@ const { Routine } = require('./Routine');
 const { User } = require('./User');
 const { Exercise_Equipment } = require('./Exercise_Equipment');
 const { Exercise_Muscle }  = require('./Exercise_Muscle');
-const { Routine_Exercise }  = require('./Routine_Exercise')
+const { Routine_Exercise }  = require('./Routine_Exercise');
+const { User_User }  = require('./User_User')
 
 // Many Exercises to One Category
 Exercise.belongsTo(Category, {
@@ -37,7 +38,7 @@ Muscle.belongsToMany(Exercise, {
     foreignKey: 'muscle_id',
 });
 
-// Many Exercise to Many Routines
+// Many Exercises to Many Routines
 Exercise.belongsToMany(Routine, {
     through: Routine_Exercise,
     foreignKey: 'exercise_id',
@@ -59,4 +60,17 @@ Exercise.belongsToMany(Equipment, {
     foreignKey: 'exercise_id',
 });
 
-module.exports = { Exercise, Category, Equipment, Muscle, Routine, User, Exercise_Equipment, Exercise_Muscle, Routine_Exercise };
+// Many Users to Many Users
+User.belongsToMany(User, {
+  through: User_User,
+  foreignKey: 'lead_id',
+  as: "lead_id"
+});
+
+User.belongsToMany(User, {
+  through: User_User,
+  foreignKey: 'follow_id',
+  as: 'follow_id'
+});
+
+module.exports = { Exercise, Category, Equipment, Muscle, Routine, User, Exercise_Equipment, Exercise_Muscle, Routine_Exercise, User_User };
