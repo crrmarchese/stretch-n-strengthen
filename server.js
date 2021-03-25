@@ -5,12 +5,10 @@ const path = require('path');
 const passport = require('passport')
 const session = require('express-session')
 require('dotenv').config()
-
-
-// const routes = require('./routes');
 const routes = require('./routes');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
+
 // PASSPORT CONFIG
 require('./config/passport')(passport)
 

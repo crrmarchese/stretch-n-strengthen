@@ -37,10 +37,10 @@ User.init(
               newUserData.password = await bcrypt.hash(newUserData.password, 10);
               return newUserData;
             },
-            // beforeUpdate: async (updatedUserData) => {
-            //   updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-            //   return updatedUserData;
-            // },
+            beforeUpdate: async (updatedUserData) => {
+              updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+              return updatedUserData;
+            },
           },
         
             sequelize,
@@ -50,33 +50,6 @@ User.init(
             modelName: 'user'
     }
 )
-// **** default user_name === Email ****
-//     displayName: {
-//         type: DataTypes.STRING,
-//         allowNull: false
-//     },
-//     firstName: {
-//         type: DataTypes.STRING,
-//         allowNull: false,
-//     },
-//     lastName: {
-//         type: DataTypes.STRING,
-//         allowNull: false
-//     },
-//     image: {
-//         type: DataTypes.STRING,
-//     },
-//     createdAt: {
-//         type: Date,
-//         default: Date.now()
-//     }
-// },
-// hooks: {
-//     beforeCreate: async (newUserData) => {
-//         newUserData.password = await bcrypt.hash(newUserData.password, 10);
-//         return newUserData
-//     }
-// },
 
 
 module.exports = User

@@ -1,6 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy
-const sequelize = require('./connection');
-const user = require('../models/user')
+const Sequelize = require('sequelize');
+const Google = require('../models/Google')
 require('dotenv').config()
 
 module.exports = function (passport) {

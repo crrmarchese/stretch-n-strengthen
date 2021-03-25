@@ -69,9 +69,3 @@ router.post('/login', async (req, res) => {
   });
 
 module.exports = router;
-// get /auth/google
-// router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
-
-// router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-//     res.redirect('homepage ')
-// })
