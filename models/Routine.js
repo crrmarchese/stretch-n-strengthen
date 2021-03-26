@@ -10,13 +10,16 @@ Routine.init(
             // allowNull: false,
             primaryKey: true,
         },
-        id_user: {      
-            type: DataTypes.UUID,
-            references: {
-              model: 'user',
-              key: 'id',
-            },
-        },
+        // ==================
+        //had to comment this out - was getting foreign key constraight with this uncommented 
+           // ==================
+        // id_user: {      
+        //     type: DataTypes.UUID,
+        //     references: {
+        //       model: 'user',
+        //       key: 'id',
+        //     },
+        // },
         name: {
             type: DataTypes.STRING,
             allowNull: false
