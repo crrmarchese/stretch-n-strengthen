@@ -4,13 +4,13 @@ const express = require('express');
 const passport = require('passport');
 const { route } = require('./hammond');
 const router = express.Router();
-const User = require('../models/user');
+const { User } = require('../models/User');
 const path = require('path');
 
 // post req to 'create' a new user, and add them to DB 
 // path is currently localhost:3001/auth/
 
-router.post('/', async (req,res) => {
+router.post('/', async (req, res) => {
     try {
         const newUser = await User.create(req.body);
 
