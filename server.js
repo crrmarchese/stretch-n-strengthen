@@ -50,7 +50,6 @@ const sess = {
 //  same with post request
 // will be back around 630 to delve into this and get it fixed fixed 
 // =========================
-// app.use(routes);
 
 // Middleware
 app.use(session(sess))
