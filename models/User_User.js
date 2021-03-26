@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-class Routine_Exercise extends Model {}
+class User_User extends Model {}
 
-Routine_Exercise.init(
+User_User.init(
     {
       id: {
         type: DataTypes.UUID,
@@ -10,18 +10,18 @@ Routine_Exercise.init(
         // allowNull: false,
         primaryKey: true,
       },
-      routine_id: {
+      lead_id: {
         type: DataTypes.UUID,
         references: {
-            model: 'routine',
-            key: 'id'
+            model: "user",
+            key: "id"
         },
       },
-      exercise_id: {
+      follow_id: {
           type: DataTypes.UUID,
           references: {
-              model: 'exercise',
-              key: 'id'
+              model: "user",
+              key: "id"
           }
         },
       },
@@ -30,8 +30,8 @@ Routine_Exercise.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'routine_exercise',
+      modelName: 'user_user',
     }
   );
 
-  module.exports = { Routine_Exercise }
+  module.exports = { User_User }

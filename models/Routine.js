@@ -5,16 +5,17 @@ class Routine extends Model {}
 Routine.init(
     {
         id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            // allowNull: false,
             primaryKey: true,
         },
         id_user: {      
-            type: DataTypes.INTEGER,
-            // references: {
-            //   model: 'user',
-            //   key: 'id',
-            // },
+            type: DataTypes.UUID,
+            references: {
+              model: 'user',
+              key: 'id',
+            },
         },
         name: {
             type: DataTypes.STRING,
@@ -29,7 +30,7 @@ Routine.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'muscle',
+        modelName: 'routine',
       }
 );
 
