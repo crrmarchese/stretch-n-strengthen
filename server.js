@@ -1,15 +1,16 @@
 // Env
-require('dotenv').config()
+require('dotenv').config();
 
 // Path
 const path = require('path');
 
 // Controllers
-const controllers = require('./controllers')
+const controllers = require('./controllers');
+// const routes = require('./controllers/');
 
 // Express
 const express = require('express');
-const session = require('express-session')
+const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -20,15 +21,15 @@ const hbs = exphbs.create({ helpers });
 
 // Sequelize
 const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Passport
-const passport = require('passport')
+const passport = require('passport');
 
 // Session
 const sess = {
   secret: 'Secret secret',
-  cookie: {}, 
+  cookie: {},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -60,7 +61,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false, // don't create a session until something is stored 
   // store value here (how to use with mysql?)
-}))
+}));
 
 // PASSPORT MIDDLEWARE
 app.use(passport.initialize())
