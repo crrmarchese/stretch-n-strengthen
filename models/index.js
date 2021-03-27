@@ -20,11 +20,11 @@ Category.hasMany(Exercise, {
 
 // Many Routines to One User
 Routine.belongsTo(User, {
-    foreignKey: 'routine_id',
+    foreignKey: 'user_id',
   });
   
 User.hasMany(Routine, {
-    foreignKey: 'routine_id',
+    foreignKey: 'user_id',
   });
 
 // Many Exercises to Many Muscles
