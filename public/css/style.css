@@ -224,4 +224,15 @@ h3 {
 /* Full HD 1408px and above */
 /* @media screen and (min-width: 1408px) {
 
-} */
+    
+/* This would hide logout button */
+/* .btn-no-style {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 100%;
+    transition: color 0.1s;
+    margin-left: 16px;
+  } */
