@@ -1,0 +1,19 @@
+:root {
+    /* group1  */
+    --color1: #feae47;
+    --color2: #56bde0;
+    --color3: #fff;
+    --color4: #434652;
+
+    /* group2 */
+    --color5: #081845;
+    --color6: #4ac7ee;
+    --color7: #fff;
+    --color8: #f9c80e;
+
+    /* group 3 */
+    --color9: #5284ce;
+    --color10: #ef5743;
+    --color11: #6ebc87;
+    --color12: #fd8125;
+}
