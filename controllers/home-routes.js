@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Muscle, Exercise } = require('../models');
+const { Muscle, Exercise, User } = require('../models');
 // const withAuth = require('../utils/auth');
 
 // This gets the home route and renders the homepage template
@@ -106,14 +106,66 @@ router.get('/routines', (req, res) => {
 // note this is made with session.loggedIn copy paste
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect to the homepage
-  // if (req.session.loggedIn) {
-    // res.redirect('/');
-    // return;
-  // }  
+  if (req.session.loggedIn) {
+    res.render('/exercise');
+    return;
+  }  
 
   // we will probably need try/catch auth code on every page to check if user is logged in.
   // Otherwise, render the 'login' template
   res.render('login');
 });  
 
+router.post('/', async (req, res) => {
+  try {
+      const newUser = await User.create(req.body);
+
+      req.session.save(() => {
+          req.session.id = newUser.id;
+          req.session.logged_in = true;
+
+          res.status(200)
+          // .json(newUser)
+      })
+  } catch (err) {
+      res.status(400).json(err)
+      console.log(err)
+  }
+});
+
+router.post('/login', async (req, res) => {
+try {
+  const newUser = await User.findOne({ where: { email: req.body.email } });
+
+  if (!newUser) {
+    res
+      .status(400)
+      .json({ message: 'Incorrect email or password, please try again' });
+    return;
+  }
+
+  const validPassword = await newUser.checkPassword(req.body.password);
+
+  if (!validPassword) {
+    res
+      .status(400)
+      .json({ message: 'Incorrect email or password, please try again' });
+    return;
+  }
+
+  req.session.save(() => {
+    req.session.user_id = newUser.id;
+    req.session.logged_in = true;
+    
+    res.json({ user: newUser, message: 'You are now logged in!' });
+    res.redirect('/api/exercise')
+  });
+
+} catch (err){
+    res.json(console.log(err))
+}
+});
+
+
 module.exports = router;
+
