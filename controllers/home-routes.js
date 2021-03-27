@@ -29,22 +29,22 @@ router.get('/about', (req, res) => {
 // loops each muscle into a card on the muscles page
 // 
 router.get('/muscles', async (req, res) => {
-  try {
-    const dbMuscleData = await Muscle.findAll({
-      include: [
-        {
-          // model: Exercise,
-          // attributes: ['name', 'category'],
-        },
-      ],
-    });
+  // try {
+  //   const dbMuscleData = await Muscle.findAll({
+  //     include: [
+  //       {
+  //         // model: Exercise,
+  //         // attributes: ['name', 'category'],
+  //       },
+  //     ],
+  //   });
 
-    const muscles = dbMuscleData.map((muscle) =>
-    muscle.get({ plain: true })
-    );
+  //   const muscles = dbMuscleData.map((muscle) =>
+  //   muscle.get({ plain: true })
+  //   );
 
     res.render('muscles', {
-      muscles,
+      // muscles,
     });
     // we will probably need try/catch auth code on every page to check if user is logged in.
 
@@ -53,10 +53,10 @@ router.get('/muscles', async (req, res) => {
         //   muscles,
         //   loggedIn: req.session.loggedIn,
         // });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+  // } catch (err) {
+  //   console.log(err);
+  //   res.status(500).json(err);
+  // }
 });
 
 // GET one muscle
