@@ -11,26 +11,37 @@
 
 <body>
   <div class="wrapper">
-      <header class="hero">
-          <div>
-            <nav class="nav">
-                    <a class="link" href="/">Home</a>
+      <header>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <img src="./assets/images/logo.png" alt="Stay healthy with exercise">
+            </a>    
 
-                    <a class="link" href="/about">About</a>
-                    <a class="link" href="/muscles">Exercises</a>
-                    <a class="link" href="/routines">Routines</a>
+             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="nav-navbar-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>     
 
-                    {{!-- {{#if loggedIn}} --}}
-                    <a class="link" href="/" id="logout">Logout</a>
-                    {{!-- <button id="logout" class="btn-no-style">Logout</button> --}}
-                    {{!-- {{else}} --}}
-                    <a class="link" href="/login">Login</a>
-                    {{!-- {{/if}} --}}
-
-                </nav>          
+        <div id="nav-navbar-menu" class="navbar-menu">
+          <div class="navbar-start">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="/about">About</a>
+                <a class="navbar-item" href="/exercises">Exercises</a>
+                <a class="navbar-item" href="/routines">Routines</a>
           </div>
-
-          <h1 class="app-title"><i class="fab "></i>Stretch N Strengthen</h1>
+      
+          <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button button-login" href="/login">Log in</a>
+                    </div>
+                </div>
+          </div>
+        </div>
+      </nav>
       </header>
 
     <main>
