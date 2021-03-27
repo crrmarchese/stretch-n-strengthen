@@ -12,7 +12,7 @@ class User extends Model {
 User.init(
     {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.UUID,
             defaultValue: Sequelize.UUIDV4,
             required: true,
             primaryKey: true,
