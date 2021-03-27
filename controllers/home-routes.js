@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const { Muscle, Exercise } = require('../models');
+const { Muscle, Exercise } = require('../models');
 // const withAuth = require('../utils/auth');
 
 // This gets the home route and renders the homepage template
@@ -21,90 +21,71 @@ router.get('/about', (req, res) => {
    // we will probably need try/catch auth code on every page to check if user is logged in.
 });
 
-
-
-
-// User clicks 'Exercise' nav-item, gets page that lists body parts to choose exercises from
-// renders the muscles template, queries all Muscle models, strips away Sequelize objects
-// loops each muscle into a card on the muscles page
-// 
-router.get('/muscles', async (req, res) => {
-  // try {
-  //   const dbMuscleData = await Muscle.findAll({
-  //     include: [
-  //       {
-  //         // model: Exercise,
-  //         // attributes: ['name', 'category'],
-  //       },
-  //     ],
-  //   });
-
-  //   const muscles = dbMuscleData.map((muscle) =>
-  //   muscle.get({ plain: true })
-  //   );
-
-    res.render('muscles', {
-      // muscles,
-    });
-    // we will probably need try/catch auth code on every page to check if user is logged in.
-
-        // Send over the 'loggedIn' session variable to the 'homepage' template
-        // res.render('muscles', {
-        //   muscles,
-        //   loggedIn: req.session.loggedIn,
-        // });
-  // } catch (err) {
-  //   console.log(err);
-  //   res.status(500).json(err);
-  // }
-});
-
-// GET one muscle
-router.get('/muscles/:id', async (req, res) => {
-
+router.get('/muscle', async (req, res) => {
   try {
-    // const dbMuscleData = await Muscle.findByPk(req.params.id, {
-    //   include: [
-    //     {
-    //       // model: Exercise,
-    //       attributes: [
-    //         // 'id',
-    //         // 'category',
-    //         // 'name',
-    //         // 'description',
-    //       ],
-    //     },
-    //   ],
-    // });
-
-    // This isn't right, because it will be looping over each of the exercises
-    // const muscle = dbMuscleData.get({ plain: true });
-    res.render('muscle-specific', { muscle });
-
-    // we will probably need try/catch auth code on every page to check if user is logged in.
-
-    // Send over the 'loggedIn' session variable to the 'gallery' template
-    // res.render('muscle-specific', { muscle, loggedIn: req.session.loggedIn });
+    const dbMuscleData = await Muscle.findAll({
+      // include: [
+      //   {
+      //     model: Exercise,
+      //   },
+      // ],
+    });
+    const muscles = dbMuscleData.map((muscle) =>
+      muscle.get({ plain: true })
+    );
+    console.log(muscles[0]);
+    res.render('muscles', {
+      muscles,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
-
 });
 
-// GET one exercise for that muscle
+// GET one muscle
+router.get('/muscle/:id', async (req, res) => {
+  try {
+    const dbMuscleData = await Muscle.findByPk(req.params.id, {
+        include: [
+          {
+            model: Exercise,
+            attributes: [
+              'id',
+              'category_id',
+              'name',
+              'description',
+            ],
+          },
+        ],
+      });
+    const muscle = dbMuscleData.get({ plain: true });
+    console.log(muscle[0]);
+    res.render('muscle-specific', { muscle });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get('/exercise/:id', async (req, res) => {
   try {
-    // const dbExerciseData = await Exercise.findByPk(req.params.id);
-
-    // const exercise = dbExerciseData.get({ plain: true });
-
+    const dbExercise = await Exercise.findByPk(req.params.id, {
+        include: [
+          {
+            model: Muscle,
+            attributes: [
+              'id',
+              'name',
+              'image_url_main',
+            ],
+          },
+        ],
+      });
+    const exercise = dbExercise.get({ plain: true });
+    // console.log(exercise.muscles[0].image_url_main);
+    console.log(exercise.description);
     res.render('exercise', { exercise });
-
-    // we will probably need try/catch auth code on every page to check if user is logged in.
-
-    // Send over the 'loggedIn' session variable to the 'homepage' template
-    // res.render('exercise', { exercise, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
