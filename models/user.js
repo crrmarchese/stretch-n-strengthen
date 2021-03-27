@@ -12,8 +12,8 @@ class User extends Model {
 User.init(
     {
         id: {
-            type: DataTypes.STRING,
-            defaultValue: Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             required: true,
             primaryKey: true,
         },
