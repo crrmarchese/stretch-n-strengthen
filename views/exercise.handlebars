@@ -1,10 +1,20 @@
 {{!-- SAMPLE IDEA --}}
-<section class="exercise">
   {{!-- If time allows, we can use an npm package to make backaground color based off image that populates --}}
-  <img src="/images/{{muscle.image_file_url}}" alt="{{muscle.description}}">
+<section class="exercise">
+  {{!-- <img src="{{{ concat 'https://wger.de' exercise.muscles.[0].image_url_main }}}" alt="bodypart"> --}}
+
+{{!-- <div 
+class="muscle-background mx-auto" 
+style="
+  background-image: url({{{ concat 'https://wger.de' exercise.muscles.[0].image_url_main }}}),
+  url(https://wger.de/static/images/muscles/muscular_system_front.svg);">
+</div>  --}}
+
   <div class="exercise-details">
     <h3>{{exercise.name}}</h3>
-    <p>By: {{exercise.description}}</p>
+    {{!-- Category comes from Category model. This needs to be included --}}
+    {{!-- {{{exercise.category}}} --}}
+    {{{exercise.description}}}
     {{!-- <a href="">Link to Video</a> --}}
     {{!-- <a href="">Link to Article</a> --}}
   </div>
