@@ -4,7 +4,7 @@ const express = require('express');
 const passport = require('passport');
 // const { route } = require('./hammond');
 const router = express.Router();
-const { User } = require('../models/User');
+const { User } = require('../../models/User');
 const path = require('path');
 
 // post req to 'create' a new user, and add them to DB 
