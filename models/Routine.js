@@ -10,7 +10,7 @@ Routine.init(
             // allowNull: false,
             primaryKey: true,
         },
-        id_user: {      
+        user_id: {      
             type: DataTypes.UUID,
             references: {
               model: 'user',
