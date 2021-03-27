@@ -5,6 +5,7 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password-login').value.trim();
   
     // originally: /api/users/login
+    // have this set to redirect to /api/exercise now, will need to change to 'userhomepage' at some point
     if (email && password) {
       const response = await fetch('/api/exercise', {
         method: 'POST',
@@ -13,7 +14,7 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/api/exercise');
+        document.location.replace('/');
       } else {
         alert('Failed to log in.');
       }
