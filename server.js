@@ -37,8 +37,6 @@ const sess = {
   })
 };
 
-
-
 // // PASSPORT CONFIG
 // require('./config/passport')(passport)
 
@@ -46,11 +44,6 @@ const sess = {
 // // const hbs = exphbs.create({ helpers });
 
 // // Handlebars stuff, can be found in class assignments
-// =========================
-// so when I change it to app.use(controllers), get request shows 200OK status, but I get the 'wrong route' message when I try to get request
-//  same with post request
-// will be back around 630 to delve into this and get it fixed fixed 
-// =========================
 
 // Middleware
 app.use(session(sess))
@@ -60,7 +53,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(controllers);
-app.use(require('./controllers/hammond'));
+// app.use(require('./controllers/hammond'));
 
 //PASSPORT
 app.use(session({
