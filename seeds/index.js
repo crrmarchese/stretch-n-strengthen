@@ -10,6 +10,9 @@ const seedAll = async () => {
     await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');
 
+    await seedCategory();
+    console.log('\n----- CATEGORIES SEEDED -----\n');
+
     await seedExercises();
     console.log('\n----- EXERCISES SEEDED -----\n');
 
@@ -18,9 +21,6 @@ const seedAll = async () => {
 
     await seedEquipment();
     console.log('\n----- EQUIPMENT SEEDED -----\n');
-
-    await seedCategory();
-    console.log('\n----- CATEGORIES SEEDED -----\n');
 
     await seedExerciseEquipment();
     console.log('\n----- EXERCISE EQUIPMENT JOIN SEEDED -----\n');
