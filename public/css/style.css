@@ -1,5 +1,227 @@
 /* @import 'bulma/css/bulma.css' */
 
-body {
-    background: #efefef;
+:root {
+    --light-grayish-cyan:#2C3E50;
+    --bright-red: #E74C3C;
+    --bright-blue: #3498DB;
+    --strong-blue: #2980B9;
+    --white: #fff;
 }
+
+body {
+    background: #fafafa;
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden; /* Bulma hack for mobile-remove space on right side */
+}
+
+h3 {
+    font-size: 1.5rem; 
+    line-height: 1.2;
+    margin-bottom: 1em;
+    font-weight: 700;
+}
+
+.navbar, .navbar-menu {
+    background-color: var(--strong-blue);
+}
+
+.navbar-item {
+    color: var(--white);
+    font-weight: 700;
+}
+
+.navbar-link.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover {
+    background-color: var(--bright-blue);
+    color: var(--white);
+}
+
+.navbar-burger, .navbar-burger:hover {
+    color: var(--white);
+}
+
+.navbar-burger span {
+ height: 2px;
+}
+
+.navbar-item img {
+    max-height: 2.75rem; 
+}
+
+.button-login,
+.button-login-inverse:hover,
+.button-signup-inverse:hover {
+    background-color: var(--bright-red);
+    border-color: #e53c2b;
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+.button-login-inverse,
+.button-signup-inverse {
+    text-transform: uppercase;  
+}
+
+.button.login-button.is-hovered, 
+.button.button-login:hover, 
+.button-login-inverse,
+.button-signup-inverse {
+    background-color: var(--white);
+    border-color: #e53c2b;
+    color: var(--bright-red);
+}
+
+.button-classic {
+    background-color: var(--strong-blue);
+    color: var(--white);
+}
+
+.button-classic:hover {
+    background-color: var(--bright-blue);
+    color: var(--white);
+}
+
+.login-subtitle, .signup-subtitle {
+    margin-bottom: 5rem;
+    font-weight: 700;
+}
+
+.avatar-box {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    color: #4a4a4a;
+    display: block;
+    padding: 1.25rem;
+    margin: 1.75rem 0;
+}
+
+.avatar {
+    margin-top: -70px;
+    padding-bottom: 20px;
+}
+
+.avatar img {
+    padding: 5px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
+    box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
+}
+
+.hero-body.hero-main{
+    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../../mockup/assets/images/AdobeStock_216127199_Preview-reflect.jpg') center top/cover no-repeat;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; 
+    align-items: flex-start;
+    min-height: 600px;
+}
+
+.hero-body.hero-signup {
+    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../../mockup/assets/images/home-fitness-equipment-1840858_1920.jpg') center top/cover no-repeat;
+}
+
+.hero-title {
+    text-transform: uppercase;
+    font-weight: 400;   
+    padding: 0 1.25rem;
+    font-size: 2.25rem;
+    line-height: 1.5;
+    color: var(--white);    
+}
+
+.hero-subtitle {
+    background-color: #e12e1c;
+    font-weight: 900;
+    display: inline-block;
+    padding: .5rem 1.25rem;
+    font-size: 2.625rem;
+    color: var(--white);    
+}
+
+.signup-block {
+    background-color: #fafafa;   
+}
+
+.signup-hr {
+    color: #ededed;
+}
+
+#workout-benefits {
+    background: #CBE854 url(../../mockup/assets/images/triangle-pattern.png) center top/cover repeat-x;
+    padding: 2.5rem 0;
+}
+
+.info-box i {
+    font-size: 3rem;
+    padding-bottom: .5em;
+}
+
+.card-content .media-content {
+    border-bottom: 1px #eaeaea solid;
+}
+
+.circle {
+    width: 4rem;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 1rem;
+    border: 2px solid #2C3E50;
+}
+
+.card-workout-content {
+    background-color:rgba(214, 234, 248, .20);
+}
+
+.workout-content h4.title {
+    font-weight: normal;
+    margin-bottom: .25em;
+}
+
+.content.workout-content p {
+    margin-bottom: 1.5rem;
+}
+
+/******** MEDIA QUERIES *******/
+/* Mobile up to 768px */
+@media screen and (max-width: 768px) {
+    .info-box {
+       padding: 1.25rem; 
+    }
+}
+
+/* Tablet between 769px  and 1023px*/
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    .hero-title{
+        font-size: 2.625rem;
+    }
+    .hero-subtitle {
+        font-size: 3rem;
+    }
+}
+
+/* Desktop between 1024px and 1215px*/
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
+    .hero-title{
+        font-size: 4.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 4.5rem;
+    }
+}
+/* Widescreen between 1216px and 1407px */
+@media screen and (min-width: 1216px) {
+    .hero-title{
+        font-size: 4.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 5rem;
+    }
+}
+
+/* Full HD 1408px and above */
+/* @media screen and (min-width: 1408px) {
+
+} */
