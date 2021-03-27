@@ -1,5 +1,12 @@
 /* @import 'bulma/css/bulma.css' */
 
+div.muscle-background {
+    width: 150px;
+    height: 276px;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
 :root {
     --light-grayish-cyan:#2C3E50;
     --bright-red: #E74C3C;
