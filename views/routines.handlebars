@@ -1,90 +1,17 @@
-{{!-- Bulma starter code --}}
-{{!-- Find to do list starter code from an old assignment --}}
-{{!-- Here users can READ their routines, DELETE their routines, and probably UPDATE too. --}}
-{{!-- 
-Q:What are routines?
-A: - Routines user-defined collections of exercises customized for easy access.
 
-Q:Where do routines come from on the backend?
-A: - ??? ask Ryan/Roni
-A: (guess) Routines will come from Sequelize queries and/or tables, not sure yet
-
-Q:Where do routines come from on the frontend?
-A: - User clicks on the 'Routines' navigation
-A: - If they don't have a routine, a panel will tell them that, and ask if they want to make one.
-A: - If they have one, they get it from adding exercises to a query.
-A: - Depending on how our data looks, we might not want a routine to have each section at once.
-A: - look back to Assignment 4-Handlebars to see how Object /Array data can be plugged in.
- --}}
-
-{{> navbar }}
-
-<section class="section">
-    <div class="container">
-        <nav class="panel">
-            <p class="panel-heading">
-                Routines
-            </p>
-            <div class="panel-block">
-                <p class="control has-icons-left">
-                    <input class="input" type="text" placeholder="Search">
-                    <span class="icon is-left">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                    </span>
-                </p>
-            </div>
-            {{!-- <p class="panel-tabs">
-                <a class="is-active">All</a>
-                <a>Public</a>
-                <a>Private</a>
-                <a>Sources</a>
-                <a>Forks</a>
-            </p> --}}
-            <a class="panel-block is-active">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                mornings
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                weekends
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                chest/tris
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                </span>
-                leg day
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-code-branch" aria-hidden="true"></i>
-                </span>
-                washboard abs
-            </a>
-            <a class="panel-block">
-                <span class="panel-icon">
-                    <i class="fas fa-code-branch" aria-hidden="true"></i>
-                </span>
-                back/biceps
-            </a>
-            <label class="panel-block">
-                <input type="checkbox">
-                rehab
-            </label>
-            <div class="panel-block">
-                <button class="button is-link is-outlined is-fullwidth">
-                    Delete all Routines
-                </button>
-            </div>
-        </nav>
-    </div>
+<section class="container">
+  <h3 class="routine-name">{{exercise.name}}</h3>
+  <!-- If the user is logged in, render the gallery content -->
+  {{!-- {{#if loggedIn}} --}}
+  <section class="flex-row justify-center">
+      {{!-- Not sure what would go here, maybe a loop over exercises --}}
+    {{!-- {{#each routines.exercises as |routine|}}
+    {{> routine-details}}
+    {{/each}} --}}
+  </section>
 </section>
+<!-- Otherwise, provide a link to login -->
+{{!-- {{else}} --}}
+{{!-- Links to login page --}}
+<a href="/login">You must login first to access the routines feature</a>
+{{!-- {{/if}} --}}
