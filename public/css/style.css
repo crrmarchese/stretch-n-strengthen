@@ -109,7 +109,7 @@ h3 {
 }
 
 .hero-body.hero-main{
-    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../../mockup/assets/images/AdobeStock_216127199_Preview-reflect.jpg') center top/cover no-repeat;
+    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../assets/images/AdobeStock_216127199_Preview-reflect.jpg') center top/cover no-repeat;
     display: flex;
     flex-direction: row;
     justify-content: flex-start; 
@@ -118,7 +118,7 @@ h3 {
 }
 
 .hero-body.hero-signup {
-    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../../mockup/assets/images/home-fitness-equipment-1840858_1920.jpg') center top/cover no-repeat;
+    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../assets/images/home-fitness-equipment-1840858_1920.jpg') center top/cover no-repeat;
 }
 
 .hero-title {
