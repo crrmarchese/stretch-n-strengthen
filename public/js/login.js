@@ -18,11 +18,10 @@ const loginFormHandler = async (event) => {
        "email": email,
        "password": password
      }, 
-    )
-    // .then((response) => {
-    //   console.log(response)
-    //   console.log("yay")
-    // })
+    ).then((response) => {
+      document.location.replace('http://localhost:3001/routines')
+      console.log("yay")
+    })
   });
   
     // if (email && password) {
@@ -48,32 +47,32 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
 
 
-       if ( email && password) {
-      const response = await fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
+    //    if ( email && password) {
+    //   const response = await fetch('/api/users', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ email, password }),
+    //     headers: { 'Content-Type': 'application/json' },
+    //   });
   
-      if (response.ok) {
-        document.location.replace('/api/exercise');
-      } else {
-        alert('Failed to sign up.');
-      }
-    }
-  //   const url = "http://localhost:3001/login"
-  //   $('#loginbtn').on('click', function () {
-  //    $.post(url, 
-  //    {
-  //      email: $('#email-signup'),
-  //      password: $('password-signup')
-  //    }, 
-  //   ).then((response) => {
-  //     alert('logged in')
-  //     console.log(response)
-  //     console.log("yay")
-  //   })
-  // });
+    //   if (response.ok) {
+    //     document.location.replace('/api/exercise');
+    //   } else {
+    //     alert('Failed to sign up.');
+    //   }
+    // }
+    const url = "http://localhost:3001/login"
+    $('#signupbtn').on('click', function () {
+     $.post(url, 
+     {
+       email: $('#email-signup'),
+       password: $('password-signup')
+     }, 
+    ).then((response) => {
+      document.location.replace('http://localhost:3001/routines')
+      console.log(response)
+      console.log("yay")
+    })
+  });
 
 };
 

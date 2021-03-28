@@ -124,19 +124,25 @@ router.get('/login', async (req, res, next) => {
   // POST ROUTE FOR SIGNUP 
 router.post('/signup', async (req, res, next) => {
   try {
-      const newUser = await User.create(req.body);
+      const newUser = await User.create({
+        email: req.body.email,
+        password: req.body.password
+      });
 
       req.session.save(() => {
-          req.session.id = newUser.id;
-          req.session.logged_in = true;
+        req.session.logged_in = true;
 
-          res.status(200)
-          .json(newUser)
-          // .next()
+        res.status(200).json(newUser)
       })
+      // req.session.save(() => {
+      //     req.session.id = newUser.id;
+      //     req.session.logged_in = true;
+
+      //     res.status(200).json(newUser).next()
+      // })
   } catch (err) {
-      res.status(400).json(err)
-      console.log(err)
+    console.log(err)
+    return res.status(400).json(err)
   }
 });
 
@@ -147,7 +153,6 @@ try {
 
   if (!newUser) {
     return res.status(400).json({ message: 'Incorrect email or password, please try again' });
-    
   }
 
   const validPassword = await newUser.checkPassword(req.body.password);
