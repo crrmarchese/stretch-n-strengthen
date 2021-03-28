@@ -13,10 +13,11 @@
         <input class="form-input" type="password" id="password-login" />
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
+        <button class="btn btn-primary" id="loginbtn" type="submit">login</button>
       </div>
     </form>
   </div>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
   <div class="login-card">
     <h2 class="page-title">Signup</h2>
     <form class="form signup-form">
@@ -39,4 +40,5 @@
   </div>
 </div>
 
+{{!-- <script src="https://apis.google.com/js/platform.js" async defer></script> --}}
 <script src="./js/login.js"></script>

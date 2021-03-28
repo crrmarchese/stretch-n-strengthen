@@ -109,17 +109,21 @@ router.get('/routines', (req, res) => {
 // note this is made with session.loggedIn copy paste
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect to the homepage
+  
   if (req.session.loggedIn) {
     res.render('/exercise');
     return;
   }  
-
+  
   // we will probably need try/catch auth code on every page to check if user is logged in.
   // Otherwise, render the 'login' template
-  res.render('login');
-});  
+  
+    res.render('login');
+    return;
+  });  
 
-router.post('/', async (req, res) => {
+  // POST ROUTE FOR SIGNUP 
+router.post('/signup', async (req, res, next) => {
   try {
       const newUser = await User.create(req.body);
 
@@ -128,7 +132,8 @@ router.post('/', async (req, res) => {
           req.session.logged_in = true;
 
           res.status(200)
-          // .json(newUser)
+          .json(newUser)
+          .next()
       })
   } catch (err) {
       res.status(400).json(err)
@@ -136,6 +141,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// POST ROUTE FOR LOGIN 
 router.post('/login', async (req, res) => {
 try {
   const newUser = await User.findOne({ where: { email: req.body.email } });
@@ -162,6 +168,7 @@ try {
     
     res.json({ user: newUser, message: 'You are now logged in!' });
     res.redirect('/api/exercise')
+    return;
   });
 
 } catch (err){
@@ -169,6 +176,15 @@ try {
 }
 });
 
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
 module.exports = router;
 
