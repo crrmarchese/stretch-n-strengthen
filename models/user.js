@@ -13,7 +13,7 @@ User.init(
     {
         id: {
             type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+            defaultValue: Sequelize.UUIDV4,
             required: true,
             primaryKey: true,
         },
