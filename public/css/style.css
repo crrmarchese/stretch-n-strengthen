@@ -1,5 +1,12 @@
 /* @import 'bulma/css/bulma.css' */
 
+div.muscle-background {
+    width: 150px;
+    height: 276px;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
 :root {
     --light-grayish-cyan:#2C3E50;
     --bright-red: #E74C3C;
@@ -109,7 +116,7 @@ h3 {
 }
 
 .hero-body.hero-main{
-    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../../mockup/assets/images/AdobeStock_216127199_Preview-reflect.jpg') center top/cover no-repeat;
+    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../assets/images/AdobeStock_216127199_Preview-reflect.jpg') center top/cover no-repeat;
     display: flex;
     flex-direction: row;
     justify-content: flex-start; 
@@ -118,7 +125,7 @@ h3 {
 }
 
 .hero-body.hero-signup {
-    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../../mockup/assets/images/home-fitness-equipment-1840858_1920.jpg') center top/cover no-repeat;
+    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../assets/images/home-fitness-equipment-1840858_1920.jpg') center top/cover no-repeat;
 }
 
 .hero-title {
@@ -148,7 +155,7 @@ h3 {
 }
 
 #workout-benefits {
-    background: #CBE854 url(../../mockup/assets/images/triangle-pattern.png) center top/cover repeat-x;
+    background: #CBE854 url(../assets/images/triangle-pattern.png) center top/cover repeat-x;
     padding: 2.5rem 0;
 }
 

@@ -1,3 +1,29 @@
+
+
+// router.get('/exercise', async (req, res) => {
+//   try {
+//     const dbExerciseData = await Exercise.findAll({
+//       include: [
+//         {
+//           model: Muscle,
+//         },
+//       ],
+//     });
+//     const exercises = dbExerciseData.map((exercise) =>
+//       exercise.get({ plain: true })
+//     );
+//     console.log(exercises[0]);
+//     res.render('exercise', {
+//       exercises,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+
+
 const router = require('express').Router();
 // const { Muscle, Exercise } = require('../models');
 // const withAuth = require('../utils/auth');
