@@ -135,7 +135,7 @@ router.post('/signup', async (req, res, next) => {
 
         res.status(200).json(newUser)
       })
-      // req.session.save(() => {
+      // req.session.save(() => {comment 
       //     req.session.id = newUser.id;
       //     req.session.logged_in = true;
 
