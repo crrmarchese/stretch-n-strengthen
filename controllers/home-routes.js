@@ -110,15 +110,14 @@ router.get('/routines', (req, res) => {
 // note this is made with session.loggedIn copy paste
 router.get('/login', async (req, res, next) => {
   // If the user is already logged in, redirect to the homepage
-    if (req.session.logged_in) {
+    if (req.session.loggedIn) {
     res.redirect('/exercise')
     // .next()
     return;
-  }
-  // we will probably need try/catch auth code on every page to check if user is logged in.
-  // Otherwise, render the 'login' template
+  } else{
     res.render('login');
     return;
+  }
   });  
 
   // POST ROUTE FOR SIGNUP 
