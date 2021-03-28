@@ -122,6 +122,7 @@ router.get('/login', async (req, res, next) => {
   });  
 
   // POST ROUTE FOR SIGNUP 
+  // was '/signup' need a sign in HTML page for this post to work 
 router.post('/signup', async (req, res, next) => {
   try {
       const newUser = await User.create({
