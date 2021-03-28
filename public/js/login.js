@@ -1,45 +1,95 @@
+$( document ).ready(function() {
+  console.log( "ready!" );
+
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
   
-    if (email && password) {
-      const response = await fetch('/api/users/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
+    // originally: /api/users/login
+    // have this set to redirect to /api/exercise now, will need to change to 'userhomepage' at some point
   
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to log in.');
-      }
-    }
+    const url = "http://localhost:3001/login"
+
+    $('#loginbtn').on('click', function () {
+     $.post(url, 
+     {
+       "email": email,
+       "password": password
+     }, 
+    ).then((response) => {
+      document.location.replace('http://localhost:3001/routines')
+      console.log("yay")
+    })
+  });
+  
+    // if (email && password) {
+    //   const response = await fetch('/api/exercise', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ email, password }),
+    //     headers: { 'Content-Type': 'application/json' },
+    //   });
+  
+    //   if (response.ok) {
+    //     document.location.replace('/api/exercise');
+    //   } else {
+    //     alert(response.statusText);
+    //   }
+    // }
   };
   
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
-    const username = document.querySelector('#username-signup').value.trim();
+    // const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
+
+
+    //    if ( email && password) {
+    //   const response = await fetch('/api/users', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ email, password }),
+    //     headers: { 'Content-Type': 'application/json' },
+    //   });
   
-    if (username && email && password) {
-      const response = await fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify({ username, email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
+    //   if (response.ok) {
+    //     document.location.replace('/api/exercise');
+    //   } else {
+    //     alert('Failed to sign up.');
+    //   }
+    // }
+    const url = "http://localhost:3001/login"
+    $('#signupbtn').on('click', function () {
+     $.post(url, 
+     {
+       email: $('#email-signup'),
+       password: $('password-signup')
+     }, 
+    ).then((response) => {
+      document.location.replace('http://localhost:3001/routines')
+      console.log(response)
+      console.log("yay")
+    })
+  });
+
+};
+
   
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to sign up.');
-      }
-    }
-  };
+    // if ( email && password) {
+    //   const response = await fetch('/api/users', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ email, password }),
+    //     headers: { 'Content-Type': 'application/json' },
+    //   });
+  
+    //   if (response.ok) {
+    //     document.location.replace('/api/exercise');
+    //   } else {
+    //     alert('Failed to sign up.');
+    //   }
+    // }
   
   document
     .querySelector('.login-form')
@@ -49,3 +99,5 @@ const loginFormHandler = async (event) => {
     .querySelector('.signup-form')
     .addEventListener('submit', signupFormHandler);
   
+
+  });

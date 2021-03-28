@@ -14,6 +14,10 @@ class User extends Model {
                   return await bcrypt.compare(loginPw, this.password)
                 }
    }
+// async checkPassword(loginPw) {
+//                 return await bcrypt.compare(loginPw, this.password)
+//               }
+//  }
 
 User.init(
     {
