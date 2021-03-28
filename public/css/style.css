@@ -1,12 +1,5 @@
 /* @import 'bulma/css/bulma.css' */
 
-div.muscle-background {
-    width: 150px;
-    height: 276px;
-    background-size: 150px;
-    background-repeat: no-repeat;
-}
-
 :root {
     --light-grayish-cyan:#2C3E50;
     --bright-red: #E74C3C;
@@ -116,7 +109,7 @@ h3 {
 }
 
 .hero-body.hero-main{
-    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../assets/images/AdobeStock_216127199_Preview-reflect.jpg') center top/cover no-repeat;
+    background: linear-gradient(90deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%), url('../assets/images/man-looking-at-phone-working-out.jpg') center top/cover no-repeat;
     display: flex;
     flex-direction: row;
     justify-content: flex-start; 
@@ -189,6 +182,52 @@ h3 {
     margin-bottom: 1.5rem;
 }
 
+div.muscle-background {
+    width: 150px;
+    height: 276px;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.ss-list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.ss-list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1rem;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #efefef;
+    margin: .25rem 0;
+    width: 40%;
+    text-align: center;
+    border-radius: .5rem;
+}
+
+.ss-list-group-item:hover {
+    box-shadow: 0 .5em .5em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02);
+    left: .1875rem;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    background-color:rgba(41, 128, 185, .01);
+}
+
+.ss-list-group-item:hover a {
+    color: var(--strong-blue);
+}
+
+.ss-list-group-item a {
+    color: inherit;
+}
+
+
 /******** MEDIA QUERIES *******/
 /* Mobile up to 768px */
 @media screen and (max-width: 768px) {
@@ -215,6 +254,9 @@ h3 {
 
     .hero-subtitle {
         font-size: 4.5rem;
+    }
+    .ss-list-group-item {
+        width: 40%;
     }
 }
 /* Widescreen between 1216px and 1407px */
