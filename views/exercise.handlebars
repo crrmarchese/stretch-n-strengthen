@@ -9,14 +9,21 @@ style="
   background-image: url({{{ concat 'https://wger.de' exercise.muscles.[0].image_url_main }}}),
   url(https://wger.de/static/images/muscles/muscular_system_front.svg);">
 </div>  --}}
+    <div class="container">
+      <h1 class="title is-size-1">{{exercise.name}}</h1>
+          <div class="columns is-mobile">
+              <div class="column is-half">
 
-  <div class="exercise-details">
-    <h3>{{exercise.name}}</h3>
-    {{!-- Category comes from Category model. This needs to be included --}}
-    {{!-- {{{exercise.category}}} --}}
-    {{{exercise.description}}}
-    {{!-- <a href="">Link to Video</a> --}}
-    {{!-- <a href="">Link to Article</a> --}}
-  </div>
+              </div>
+            
+          </div>
+        <div class="exercise-details">
+          {{!-- Category comes from Category model. This needs to be included --}}
+          {{!-- {{{exercise.category}}} --}}
+          {{{exercise.description}}}
+          {{!-- <a href="">Link to Video</a> --}}
+          {{!-- <a href="">Link to Article</a> --}}
+        </div>
+    </div>    
 </section>
 
