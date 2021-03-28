@@ -12,16 +12,17 @@ const loginFormHandler = async (event) => {
   
     const url = "http://localhost:3001/login"
 
-    $('#loginbtn').on('click', function () {
+    $('#loginbtn').on('click', function (request, response) {
      $.post(url, 
      {
-       email: $('#email-signup'),
-       password: $('password-signup')
+       "email": (email),
+       "password": (password)
      }, 
-    ).then((response) => {
-      console.log(response)
-      console.log("yay")
-    })
+    )
+    // .then((response) => {
+    //   console.log(response)
+    //   console.log("yay")
+    // })
   });
   
     // if (email && password) {
@@ -61,7 +62,7 @@ const loginFormHandler = async (event) => {
       }
     }
   //   const url = "http://localhost:3001/login"
-  //   $('loginbtn').on('click', function () {
+  //   $('#loginbtn').on('click', function () {
   //    $.post(url, 
   //    {
   //      email: $('#email-signup'),
