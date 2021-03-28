@@ -10,6 +10,9 @@ const loginFormHandler = async (event) => {
     // originally: /api/users/login
     // have this set to redirect to /api/exercise now, will need to change to 'userhomepage' at some point
   
+  // ===================
+  // LOGINNNNNNN 
+  // ===================
     const url = "http://localhost:3001/login"
 
     $('#loginbtn').on('click', function () {
@@ -20,6 +23,7 @@ const loginFormHandler = async (event) => {
      }, 
     ).then((response) => {
       document.location.replace('http://localhost:3001/routines')
+      console.log(response)
       console.log("yay")
     })
   });
@@ -39,6 +43,9 @@ const loginFormHandler = async (event) => {
     // }
   };
   
+  // ===================
+  // SIGN UPPPPPPPPPPP 
+  // ===================
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
@@ -62,17 +69,17 @@ const loginFormHandler = async (event) => {
     // }
     const url = "http://localhost:3001/login"
     $('#signupbtn').on('click', function () {
-     $.post(url, 
-     {
-       email: $('#email-signup'),
-       password: $('password-signup')
-     }, 
-    ).then((response) => {
-      document.location.replace('http://localhost:3001/routines')
-      console.log(response)
-      console.log("yay")
-    })
-  });
+      $.post(url, 
+      {
+        "email": email,
+        "password": password
+      }, 
+     ).then((response) => {
+       document.location.replace('http://localhost:3001/routines')
+       console.log(response)
+       console.log("yay")
+     })
+   });
 
 };
 
