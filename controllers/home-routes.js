@@ -104,13 +104,13 @@ router.get('/routines', (req, res) => {
 // end of elose statement }
 });
 
-
-// GET ROUTE FOR LOGIN PAGE 
-
+// =========================
+// LOGIN STUFF HERE 
+// =========================
 // note this is made with session.loggedIn copy paste
 router.get('/login', async (req, res, next) => {
   // If the user is already logged in, redirect to the homepage
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
     res.redirect('/exercise')
     // .next()
     return;
