@@ -105,7 +105,7 @@ router.get('/routines', (req, res) => {
 });
 
 // =========================
-// LOGIN STUFF HERE 
+// LOGIN STUFF BELOW HERE 
 // =========================
 // note this is made with session.loggedIn copy paste
 router.get('/login', async (req, res, next) => {
