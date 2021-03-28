@@ -7,9 +7,6 @@ const loginFormHandler = async (event) => {
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
   
-    // originally: /api/users/login
-    // have this set to redirect to /api/exercise now, will need to change to 'userhomepage' at some point
-  
   // ===================
   // LOGINNNNNNN 
   // ===================
