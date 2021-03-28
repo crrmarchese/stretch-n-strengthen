@@ -105,19 +105,18 @@ router.get('/routines', (req, res) => {
 });
 
 
-// Login route
+// GET ROUTE FOR LOGIN PAGE 
+
 // note this is made with session.loggedIn copy paste
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res, next) => {
   // If the user is already logged in, redirect to the homepage
-  
-  if (req.session.loggedIn) {
-    res.render('/exercise');
-    return;
-  }  
-  
+    if (req.session.loggedIn) {
+    res.redirect('/exercise')
+    // .next()
+    // return;
+  }
   // we will probably need try/catch auth code on every page to check if user is logged in.
   // Otherwise, render the 'login' template
-  
     res.render('login');
     return;
   });  
@@ -133,7 +132,7 @@ router.post('/signup', async (req, res, next) => {
 
           res.status(200)
           .json(newUser)
-          .next()
+          // .next()
       })
   } catch (err) {
       res.status(400).json(err)
@@ -147,19 +146,18 @@ try {
   const newUser = await User.findOne({ where: { email: req.body.email } });
 
   if (!newUser) {
-    res
-      .status(400)
+    return res.status(400)
       .json({ message: 'Incorrect email or password, please try again' });
-    return;
+    
   }
 
   const validPassword = await newUser.checkPassword(req.body.password);
 
   if (!validPassword) {
-    res
+   return res
       .status(400)
       .json({ message: 'Incorrect email or password, please try again' });
-    return;
+   
   }
 
   req.session.save(() => {

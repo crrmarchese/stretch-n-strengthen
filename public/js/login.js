@@ -12,11 +12,11 @@ const loginFormHandler = async (event) => {
   
     const url = "http://localhost:3001/login"
 
-    $('#loginbtn').on('click', function (request, response) {
+    $('#loginbtn').on('click', function () {
      $.post(url, 
      {
-       "email": (email),
-       "password": (password)
+       "email": email,
+       "password": password
      }, 
     )
     // .then((response) => {
