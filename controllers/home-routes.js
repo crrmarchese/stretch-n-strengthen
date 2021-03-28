@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Muscle, Exercise } = require('../models');
+const { Muscle, Exercise, Equipment, Exercise_Equipment } = require('../models');
 // const withAuth = require('../utils/auth');
 
 // This gets the home route and renders the homepage template
@@ -83,10 +83,20 @@ router.get('/exercise/:id', async (req, res) => {
               'image_url_main',
             ],
           },
+          {
+            model: Equipment,
+            attributes: [
+              'name',
+            ],
+          }
         ],
       });
-    const exercise = dbExercise.get({ plain: true });
-    console.log(exercise.muscles[0].image_url_main);
+      const exercise = dbExercise.get({ plain: true });
+      console.log('test');
+      // console.log(exercise.equipment);
+      console.log(exercise.equipment[0].name);
+      // console.log(exercise.equipment.name);
+    // console.log(exercise.muscles[0].image_url_main);
     // console.log(exercise.description);
     res.render('exercise', { exercise });
   } catch (err) {
