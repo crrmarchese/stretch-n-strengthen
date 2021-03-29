@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const passport = require('passport')
 const { Muscle, Exercise, User } = require('../models');
 // const withAuth = require('../utils/auth');
 
@@ -148,37 +149,43 @@ router.post('/signup', async (req, res, next) => {
 });
 
 // POST ROUTE FOR LOGIN 
-router.post('/login', async (req, res) => {
-try {
-  const newUser = await User.findOne({ where: { email: req.body.email } });
 
-  if (!newUser) {
-    return res.status(400).json({ message: 'Incorrect email or password, please try again' });
-  }
+router.post('/login',
+  passport.authenticate('local', { successRedirect: '/routines',
+                                   failureRedirect: '/login' }));
 
-  const validPassword = await newUser.checkPassword(req.body.password);
 
-  if (!validPassword) {
-   return res.status(400).json({ message: 'Incorrect email or password, please try again' });
+// router.post('/login', async (req, res) => {
+// try {
+//   const newUser = await User.findOne({ where: { email: req.body.email } });
+
+//   if (!newUser) {
+//     return res.status(400).json({ message: 'Incorrect email or password, please try again' });
+//   }
+
+//   const validPassword = await newUser.checkPassword(req.body.password);
+
+//   if (!validPassword) {
+//    return res.status(400).json({ message: 'Incorrect email or password, please try again' });
    
-  }
-    else {
-      res.json({ user: newUser, message: 'Now logged in!'});
-      // return res.redirect('/api/exercise')
-    }
-  // req.session.save(() => {
-  //   req.session.user_id = newUser.id;
-  //   req.session.logged_in = true;
+//   }
+//     else {
+//       res.json({ user: newUser, message: 'Now logged in!'});
+//       // return res.redirect('/api/exercise')
+//     }
+//   // req.session.save(() => {
+//   //   req.session.user_id = newUser.id;
+//   //   req.session.logged_in = true;
     
-  //   res.json({ user: newUser, message: 'You are now logged in!' });
-  //  res.redirect('/api/exercise')
-  //   return;
-  // });
+//   //   res.json({ user: newUser, message: 'You are now logged in!' });
+//   //  res.redirect('/api/exercise')
+//   //   return;
+//   // });
 
-} catch (err){
-   return res.json(console.log(err))
-}
-});
+// } catch (err){
+//    return res.json(console.log(err))
+// }
+// });
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
