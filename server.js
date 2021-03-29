@@ -37,13 +37,7 @@ const sess = {
   })
 };
 
-// // PASSPORT CONFIG
-// require('./config/passport')(passport)
-
-
 // // const hbs = exphbs.create({ helpers });
-
-// // Handlebars stuff, can be found in class assignments
 
 // Middleware
 app.use(session(sess));
@@ -53,7 +47,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(controllers);
-// app.use(require('./controllers/hammond'));
 
 //PASSPORT
 app.use(session({
