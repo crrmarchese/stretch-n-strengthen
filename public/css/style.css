@@ -30,6 +30,13 @@ h3 {
 main {
     flex: 1;
 }
+p {
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+.mx-auto {
+    margin: 0 auto;
+}
 
  /*** Navigation ***/
 .navbar, .navbar-menu {
@@ -243,7 +250,7 @@ main {
     color: inherit;
 }
 
- /*** Jonathan ***/
+ /*** API images ***/
 div.muscle-background {
     width: 150px;
     height: 276px;
