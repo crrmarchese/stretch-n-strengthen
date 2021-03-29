@@ -68,7 +68,9 @@ app.use(passport.initialize())
 app.use(passport.session())
 require('./config/passport')(passport);
 
+
 app.use('/auth', require('./controllers/api/auths'));
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {

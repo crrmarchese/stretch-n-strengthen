@@ -122,6 +122,11 @@ router.get('/login', async (req, res, next) => {
     return;
   });  
 
+// get reqeust for signup page
+  router.get('/signup', async(req, res, next) => {
+    res.render('signup')
+  })
+
   // POST ROUTE FOR SIGNUP 
   // was '/signup' need a sign in HTML page for this post to work 
 router.post('/signup', async (req, res, next) => {
@@ -150,23 +155,25 @@ router.post('/signup', async (req, res, next) => {
 
 // POST ROUTE FOR LOGIN 
 
-router.post('/login',
-  passport.authenticate('local', { successRedirect: '/routines',
-                                   failureRedirect: '/login' }));
+// router.post('/login',
+//   passport.authenticate('local', { successRedirect: '/routines',
+//                                    failureRedirect: '/login' }));
 
 
-// router.post('/login', async (req, res) => {
+// router.post('/login', 
+// // passport.authenticate('local', {successRedirect: '/routines', failureRedirect: '/login'}), 
+// async (req, res) => {
 // try {
 //   const newUser = await User.findOne({ where: { email: req.body.email } });
 
 //   if (!newUser) {
-//     return res.status(400).json({ message: 'Incorrect email or password, please try again' });
+//     return res.status(401).json({ message: 'Incorrect email or password, please try again' });
 //   }
 
 //   const validPassword = await newUser.checkPassword(req.body.password);
 
 //   if (!validPassword) {
-//    return res.status(400).json({ message: 'Incorrect email or password, please try again' });
+//    return res.status(401).json({ message: 'Incorrect email or password, please try again' });
    
 //   }
 //     else {
@@ -186,6 +193,16 @@ router.post('/login',
 //    return res.json(console.log(err))
 // }
 // });
+
+// router.post('/login', 
+// passport.authenticate('local', { failureRedirect: '/login'}), 
+// function(req, res) {
+//   res.redirect('/login');
+// },
+// passport.authenticate('local', {successRedirect: '/routines'}), 
+// function(req, res) {
+//   res.redirect('/routines')
+// })
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
