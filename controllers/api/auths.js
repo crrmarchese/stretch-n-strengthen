@@ -3,21 +3,25 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
-const Google = require('../../models/Google');
-const path = require('path');
 
-router.get('/google', passport.authenticate('google', { scope: ['profile']  }))
+
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile']  }))
 
 // google auth callback
 
 // /auth/google/callback
 router.get(
-  '/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/' }),
+  '/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/', }),
   (req, res) => {
+    console.log('heck')
     res.redirect('/routines')
 }) 
 
+router.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/')
+})
 // post req to 'create' a new user, and add them to DB 
 // path is currently localhost:3001/auth/
 

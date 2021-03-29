@@ -40,7 +40,7 @@ Google.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Google'
+        modelName: 'google'
     }
 )
 
