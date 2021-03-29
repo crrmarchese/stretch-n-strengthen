@@ -33,7 +33,7 @@ router.get('/muscle', async (req, res) => {
     const muscles = dbMuscleData.map((muscle) =>
       muscle.get({ plain: true })
     );
-    console.log(muscles[0]);
+    // console.log(muscles[0]);
     res.render('muscles', {
       muscles,
     });
@@ -61,8 +61,8 @@ router.get('/muscle/:id', async (req, res) => {
       });
     const muscle = dbMuscleData.get({ plain: true });
     console.log('\n');
-    console.log(muscle);
-    console.log(muscle[0]);
+    // console.log(muscle);
+    // console.log(muscle[0]);
     console.log('\n');
     res.render('muscle-specific', { muscle });
   } catch (err) {
@@ -92,9 +92,9 @@ router.get('/exercise/:id', async (req, res) => {
         ],
       });
       const exercise = dbExercise.get({ plain: true });
-      console.log('test');
+      // console.log('test');
       // console.log(exercise.equipment);
-      console.log(exercise.equipment[0].name);
+      // console.log(exercise.equipment[0].name);
       // console.log(exercise.equipment.name);
     // console.log(exercise.muscles[0].image_url_main);
     // console.log(exercise.description);
