@@ -119,7 +119,21 @@ router.get('/login', async (req, res, next) => {
   // Otherwise, render the 'login' template
     res.render('login');
     return;
-  });  
+  }); 
+  
+//  GET ROUTE for signup page
+
+  router.get('/signup', (req, res) => {
+    // if (req.session.loggedIn) {
+    //   res.redirect('/');
+    //   return;
+    // }
+  
+    res.render('signup');
+    // return;
+  });
+
+
 
   // POST ROUTE FOR SIGNUP 
 router.post('/signup', async (req, res, next) => {
@@ -191,12 +205,7 @@ router.post('/logout', (req, res) => {
 
    
   
-router.get('/signup', (req, res) => {
-      res.redirect('/');
-      
-    
-  res.render('signup');
-});
+
 
 module.exports = router;
 
