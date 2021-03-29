@@ -9,7 +9,7 @@ const withAuth = require('../../utils/auth')
 router.use('/exercise', exerciseRoutes);
 router.use('/muscle', muscleRoutes);
 router.use('/equipment', equipmentRoutes);
-router.use('/user', withAuth, userRoutes);
-router.use('/routine', withAuth, routineRoutes);
+router.use('/user', userRoutes);
+router.use('/routine', routineRoutes);
 
 module.exports = router;
