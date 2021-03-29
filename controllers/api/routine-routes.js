@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const routineData = await Routine_Exercise.findByPk(req.params.id, {
-      include: [{model: Routine_Exercise}],
+      include: [{model: Exercise}],
     });
 
     if (!routineData) {
@@ -29,5 +29,28 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+router.post('/', async (req, res) => {
+  try{
+    const routineData = await Routine.create(req.body);
+    res.status(200).json(routineData);
+  } catch (err) {
+    res.status(400).json(err)
+  }
+});
+
+router.post('/:routine&:exercise', async (req, res) => {
+  try {
+    const routineExerciseData = await Routine_Exercise.create({
+      routine_id: req.params.routine,
+      exercise_id: req.params.exercise,
+    });
+    res.status(200).json(routineExerciseData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;

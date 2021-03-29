@@ -30,6 +30,7 @@
     "express-openid-connect": "^2.3.0",
     "express-session": "^1.17.1",
     "fast-average-color": "^6.3.0",
+    "jquery": "^3.6.0",
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
