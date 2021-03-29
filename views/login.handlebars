@@ -1,44 +1,39 @@
-{{!-- same page, two divs in one, login form, other is signup form --}}
-{{!-- ties into public/js/login.js --}}
-<div class="row justify-space-between-md">
-  <div class="login-card">
-    <h2 class="page-title">Login</h2>
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">Email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">Password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" id="loginbtn" type="submit">login</button>
-      </div>
-    </form>
-  </div>
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
-  <div class="login-card">
-    <h2 class="page-title">Signup</h2>
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="username-signup">Username:</label>
-        <input class="form-input" type="text" id="username-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">Email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">Password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" id="signupbtn" type="submit">signup</button>
-      </div>
-    </form>
-  </div>
-</div>
+<main>
+    <section id="login-section" class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h2 class="title">Login</h2>
+                    <hr class="login-hr">
+                    <p class="login-subtitle">Please login to proceed.</p>
+                    <div class="avatar-box">
+                        <figure class="avatar">
+                            <img src="./assets/images/logo_color.png">
+                        </figure>
+                        <form class="form login-form">
+                            <div class="field">
+                                <div class="control email-login">
+                                    <input class="input is-large" type="text" id="email-login" placeholder="Your Email" autofocus="">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control password-login">
+                                    <input class="input is-large" type="password" id="password-login" placeholder="Your Password">
+                                </div>
+                            </div>
+                            <button class="button button-login-inverse is-block is-large is-fullwidth" id="loginbtn" type="submit">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                    <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+                    <p>
+                        <a href="/signup">Sign Up</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+   </main>
 
 {{!-- <script src="https://apis.google.com/js/platform.js" async defer></script> --}}
-<script src="./js/login.js"></script>
+<script src="/js/login.js"></script>
