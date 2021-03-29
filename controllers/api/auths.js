@@ -3,7 +3,7 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
-
+const withAuth = require('../../utils/auth')
 
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile']  }))
 
@@ -22,65 +22,108 @@ router.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
-// post req to 'create' a new user, and add them to DB 
-// path is currently localhost:3001/auth/
+router.get('/login', async (req, res, next) => {
+  // If the user is already logged in, redirect to the homepage
+    if (req.session.loggedIn) {
+    res.redirect('/exercise')
+    // .next()
+    return;
+  }
+  // we will probably need try/catch auth code on every page to check if user is logged in.
+  // Otherwise, render the 'login' template
+    res.render('login');
+    return;
+  });  
 
-// router.post('/', async (req, res) => {
-//     try {
-//         const newUser = await User.create(req.body);
+// get reqeust for signup page
+  router.get('/signup', async(req, res, next) => {
+    res.render('signup')
+  })
 
-//         req.session.save(() => {
-//             req.session.id = newUser.id;
-//             req.session.logged_in = true;
+  // POST ROUTE FOR SIGNUP 
+  // was '/signup' need a sign in HTML page for this post to work 
+router.post('/signup', async (req, res, next) => {
+  try {
+      const newUser = await User.create({
+        email: req.body.email,
+        password: req.body.password
+      });
 
-//             res.status(200).json(newUser)
-//         })
-//     } catch (err) {
-//         res.status(400).json(err)
-//         console.log(err)
-//     }
-// })
+      req.session.save(() => {
+        req.session.logged_in = true;
 
-// router.post('/login', async (req, res) => {
-//     try {
-//       const newUser = await User.findOne({ where: { email: req.body.email } });
-  
-//       if (!newUser) {
-//         res
-//           .status(400)
-//           .json({ message: 'Incorrect email or password, please try again' });
-//         return;
-//       }
-  
-//       const validPassword = await newUser.checkPassword(req.body.password);
-  
-//       if (!validPassword) {
-//         res
-//           .status(400)
-//           .json({ message: 'Incorrect email or password, please try again' });
-//         return;
-//       }
-  
-//       req.session.save(() => {
-//         req.session.user_id = newUser.id;
-//         req.session.logged_in = true;
-        
-//         res.json({ user: newUser, message: 'You are now logged in!' });
-//       });
-  
-//     } catch (err){
-//         res.json(console.log(err))
-//     }
-//   });
+        res.status(200).json(newUser)
+      })
+      // req.session.save(() => {
+      //     req.session.id = newUser.id;
+      //     req.session.logged_in = true;
 
-  // router.post('/logout', (req, res) => {
-  //   if (req.session.logged_in) {
-  //     req.session.destroy(() => {
-  //       res.status(204).end();
-  //     });
-  //   } else {
-  //     res.status(404).end();
-  //   }
+      //     res.status(200).json(newUser).next()
+      // })
+  } catch (err) {
+    console.log(err)
+    return res.status(400).json(err)
+  }
+});
+
+// POST ROUTE FOR LOGIN 
+
+// router.post('/login',
+//   passport.authenticate('local', { successRedirect: '/routines',
+//                                    failureRedirect: '/login' }));
+
+
+router.post('/login', withAuth, 
+// passport.authenticate('local', {successRedirect: '/routines', failureRedirect: '/login'}), 
+async (req, res) => {
+try {
+  const newUser = await User.findOne({ where: { email: req.body.email } });
+
+  if (!newUser) {
+    return res.status(401).json({ message: 'Incorrect email or password, please try again' });
+  }
+
+  const validPassword = await newUser.checkPassword(req.body.password);
+
+  if (!validPassword) {
+   return res.status(401).json({ message: 'Incorrect email or password, please try again' });
+   
+  }
+    else {
+      res.json({ user: newUser, message: 'Now logged in!'});
+      // return res.redirect('/api/exercise')
+    }
+  // req.session.save(() => {
+  //   req.session.user_id = newUser.id;
+  //   req.session.logged_in = true;
+    
+  //   res.json({ user: newUser, message: 'You are now logged in!' });
+  //  res.redirect('/api/exercise')
+  //   return;
   // });
 
+} catch (err){
+   return res.json(console.log(err))
+}
+});
+
+// router.post('/login', 
+// passport.authenticate('local', { failureRedirect: '/login'}), 
+// function(req, res) {
+//   res.redirect('/login');
+// },
+// passport.authenticate('local', {successRedirect: '/routines'}), 
+// function(req, res) {
+//   res.redirect('/routines')
+// })
+
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 module.exports = router;
