@@ -13,6 +13,10 @@ body {
     background: #fafafa;
     font-family: 'Lato', sans-serif;
     overflow-x: hidden; /* Bulma hack for mobile-remove space on right side */
+    /* Sticky Footer */
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 h3 {
@@ -20,6 +24,18 @@ h3 {
     line-height: 1.2;
     margin-bottom: 1em;
     font-weight: 700;
+}
+
+/* Sticky Footer */
+main {
+    flex: 1;
+}
+p {
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+.mx-auto {
+    margin: 0 auto;
 }
 
  /*** Navigation ***/
@@ -30,6 +46,7 @@ h3 {
 .navbar-item {
     color: var(--white);
     font-weight: 700;
+    font-size: 1.125rem;
 }
 
 .navbar-link.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover {
@@ -153,7 +170,7 @@ h3 {
 
  /*** Info boxes home ***/
 #workout-benefits {
-    background: #CBE854 url(../assets/images/triangle-pattern.png) center top/cover repeat-x;
+    background: #CBE854 url('../assets/images/triangle-pattern.png') center top/cover repeat-x;
     padding: 2.5rem 0;
 }
 
@@ -194,7 +211,7 @@ h3 {
     flex: none;
     width: unset
  }
- 
+
 .ss-list-group {
     display: flex;
     flex-direction: column;
@@ -231,9 +248,10 @@ h3 {
 
 .ss-list-group-item a {
     color: inherit;
+    display: block;
 }
 
- /*** Jonathan ***/
+ /*** API images ***/
 div.muscle-background {
     width: 150px;
     height: 276px;

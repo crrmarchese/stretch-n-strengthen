@@ -2,10 +2,16 @@
   "name": "stretch-n-strengthen",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
@@ -32,9 +38,11 @@
     "fast-average-color": "^6.3.0",
     "jquery": "^3.6.0",
     "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
     "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
     "passport-oauth": "^1.0.0",
     "sequelize": "^6.5.1"
   }

@@ -3,6 +3,7 @@ const { Routine, Exercise, Routine_Exercise } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
+    console.log('blaablabla')
     const routineData = await Routine.findAll({
       include: [{model: Routine}],
     });

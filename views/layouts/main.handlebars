@@ -23,7 +23,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="#">
-                <img src="../assets/images/logo_white.png" alt="Stay healthy with exercise">
+                <img src="../assets/images/logo-main.png" alt="Stay healthy with exercise">
             </a>
         
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="nav-navbar-menu">
@@ -44,12 +44,12 @@
           <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        {{!-- {{#if loggedIn}} --}}
-                        {{!-- <a class="link" href="/" id="logout">Logout</a> --}}
-                        {{!-- <button id="logout" class="btn-no-style">Logout</button> --}}
-                        {{!-- {{else}} --}}
+                        {{#if loggedIn}}
+                        <a class="link" href="/" id="logout">Logout</a>
+                        <button id="logout" class="btn-no-style">Logout</button>
+                        {{else}}
                         <a class="button button-login" href="/login">Log in</a>
-                        {{!-- {{/if}} --}}
+                        {{/if}}
                     </div>
                 </div>
           </div>
