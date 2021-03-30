@@ -1,8 +1,6 @@
 const passport = require('passport')
 const Sequelize = require('sequelize');
 const sequelize = require('./connection')
-// const User = require('../models').User
-// const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const Google = require('../models/Google')
 require('dotenv').config()
