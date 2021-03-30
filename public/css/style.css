@@ -248,6 +248,7 @@ p {
 
 .ss-list-group-item a {
     color: inherit;
+    display: block;
 }
 
  /*** API images ***/
