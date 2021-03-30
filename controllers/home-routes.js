@@ -2,7 +2,7 @@ const router = require('express').Router();
 const passport = require('passport')
 // const { Muscle, Exercise } = require('../models');
 const { Muscle, Exercise, Equipment, Exercise_Equipment, User } = require('../models');
-// const withAuth = require('../utils/auth');
+
 
 // This gets the home route and renders the homepage template
 router.get('/', (req, res) => {
@@ -106,12 +106,12 @@ router.get('/exercise/:id', async (req, res) => {
 
 
 router.get('/routines', (req, res) => {
-  if (!req.session.loggedIn) { res.redirect('/login'); }
-  else {
+  // if (!req.session.loggedIn) { res.redirect('/login'); }
+  // else {
 
     // we will probably need try/catch auth code on every page to check if user is logged in.    
     res.render('routines');
-  }
+ // }
 });
 
 
@@ -120,10 +120,10 @@ router.get('/routines', (req, res) => {
 // note this is made with session.loggedIn copy paste
 router.get('/login', async (req, res, next) => {
   // If the user is already logged in, redirect to the homepage
-  if (req.session.loggedIn) {
-    res.redirect('/routines')
-    return;
-  }
+  // if (req.session.loggedIn) {
+  //   res.redirect('/routines')
+  //   return;
+  // }
   res.render('login');
   return;
 });

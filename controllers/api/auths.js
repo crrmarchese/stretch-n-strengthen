@@ -32,7 +32,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/login', async (req, res, next) => {
   // If the user is already logged in, redirect to the homepage
-    if (req.session.logged_in) {
+    if (req.session.loggedIn) {
     res.redirect('/routines')
     // .next()
     return;
@@ -58,7 +58,7 @@ router.post('/signup', async (req, res, next) => {
       });
 
       req.session.save(() => {
-        req.session.logged_in = true;
+        req.session.loggedIn = true;
 
         res.status(200).json(newUser)
       })
@@ -105,7 +105,7 @@ try {
 
 
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
