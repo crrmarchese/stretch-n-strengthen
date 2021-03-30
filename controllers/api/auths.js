@@ -1,7 +1,8 @@
 
 // const router = require('express').Router();
 const express = require('express');
-const passport = require('passport');
+ const passport = require('passport');
+// const passport = require('../../config/passport')
 const router = express.Router();
 const { User }  = require('../../models/User')
 const withAuth = require('../../utils/auth')
@@ -24,7 +25,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/login', async (req, res, next) => {
   // If the user is already logged in, redirect to the homepage
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
     res.redirect('/exercise')
     // .next()
     return;

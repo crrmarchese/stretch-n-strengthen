@@ -56,18 +56,18 @@ app.use(controllers);
 // app.use(require('./controllers/hammond'));
 
 //PASSPORT
-app.use(session({
-  secret: 'secret secret',
-  resave: false,
-  saveUninitialized: false, // don't create a session until something is stored 
-  // store value here (how to use with mysql?)
-}));
+// app.use(session({
+//   secret: 'secret secret',
+//   resave: false,
+//   saveUninitialized: false, // don't create a session until something is stored 
+//   // store value here (how to use with mysql?)
+// }));
 
 // PASSPORT MIDDLEWARE
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use('/auth', require('./controllers/api/auths'));
+// app.use('/auth', require('./controllers/api/auths'));
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
