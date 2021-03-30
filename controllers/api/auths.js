@@ -3,6 +3,7 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
+const { User }  = require('../../models/User')
 const withAuth = require('../../utils/auth')
 
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile']  }))
@@ -20,10 +21,11 @@ router.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
+
 router.get('/login', async (req, res, next) => {
   // If the user is already logged in, redirect to the homepage
     if (req.session.loggedIn) {
-    res.redirect('/exercise')
+    res.redirect('/routines')
     // .next()
     return;
   }
@@ -61,8 +63,7 @@ router.post('/signup', async (req, res, next) => {
 // POST ROUTE FOR LOGIN 
 
 
-router.post('/login', withAuth, 
-// passport.authenticate('local', {successRedirect: '/routines', failureRedirect: '/login'}), 
+router.post('/login',
 async (req, res) => {
 try {
   const newUser = await User.findOne({ where: { email: req.body.email } });
@@ -79,16 +80,15 @@ try {
   }
     else {
       res.json({ user: newUser, message: 'Now logged in!'});
-      // return res.redirect('/api/exercise')
+      // return res.redirect('/api/routines')
+      req.session.save(() => {
+        req.session.user_id = newUser.id;
+        req.session.logged_in = true;
+        
+        // res.json({ user: newUser, message: 'You are now logged in!' });
+        return res.render('/exercise')
+      });
     }
-  // req.session.save(() => {
-  //   req.session.user_id = newUser.id;
-  //   req.session.logged_in = true;
-    
-  //   res.json({ user: newUser, message: 'You are now logged in!' });
-  //  res.redirect('/api/exercise')
-  //   return;
-  // });
 
 } catch (err){
    return res.json(console.log(err))

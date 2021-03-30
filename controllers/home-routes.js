@@ -1,26 +1,23 @@
 const router = require('express').Router();
 const passport = require('passport')
 // const { Muscle, Exercise } = require('../models');
-const withAuth = require('../utils/auth');
 const { Muscle, Exercise, Equipment, Exercise_Equipment, User } = require('../models');
 // const withAuth = require('../utils/auth');
 
 // This gets the home route and renders the homepage template
 router.get('/', (req, res) => {
-  console.log('HECK!')
+
   // renders homepage that has a call to action, buttons to link
   res.render('homepage');
   // we will probably need try/catch auth code on every page to check if user is logged in.
 });
 
 
-
-
 // User clicks 'About' nav-item, gets the about route and renders the about template
 router.get('/about', (req, res) => {
   // sample page, equivalent to /muscles -> /muscles/:id -> /exercises -> /exercise/:id
   res.render('about');
-   // we will probably need try/catch auth code on every page to check if user is logged in.
+  // we will probably need try/catch auth code on every page to check if user is logged in.
 });
 
 router.get('/muscle', async (req, res) => {
@@ -49,18 +46,18 @@ router.get('/muscle', async (req, res) => {
 router.get('/muscle/:id', async (req, res) => {
   try {
     const dbMuscleData = await Muscle.findByPk(req.params.id, {
-        include: [
-          {
-            model: Exercise,
-            attributes: [
-              'id',
-              'category_id',
-              'name',
-              'description',
-            ],
-          },
-        ],
-      });
+      include: [
+        {
+          model: Exercise,
+          attributes: [
+            'id',
+            'category_id',
+            'name',
+            'description',
+          ],
+        },
+      ],
+    });
     const muscle = dbMuscleData.get({ plain: true });
     console.log('\n');
     // console.log(muscle);
@@ -76,28 +73,28 @@ router.get('/muscle/:id', async (req, res) => {
 router.get('/exercise/:id', async (req, res) => {
   try {
     const dbExercise = await Exercise.findByPk(req.params.id, {
-        include: [
-          {
-            model: Muscle,
-            attributes: [
-              'id',
-              'name',
-              'image_url_main',
-            ],
-          },
-          {
-            model: Equipment,
-            attributes: [
-              'name',
-            ],
-          }
-        ],
-      });
-      const exercise = dbExercise.get({ plain: true });
-      // console.log('test');
-      // console.log(exercise.equipment);
-      // console.log(exercise.equipment[0].name);
-      // console.log(exercise.equipment.name);
+      include: [
+        {
+          model: Muscle,
+          attributes: [
+            'id',
+            'name',
+            'image_url_main',
+          ],
+        },
+        {
+          model: Equipment,
+          attributes: [
+            'name',
+          ],
+        }
+      ],
+    });
+    const exercise = dbExercise.get({ plain: true });
+    // console.log('test');
+    // console.log(exercise.equipment);
+    // console.log(exercise.equipment[0].name);
+    // console.log(exercise.equipment.name);
     // console.log(exercise.muscles[0].image_url_main);
     // console.log(exercise.description);
     res.render('exercise', { exercise });
@@ -109,12 +106,12 @@ router.get('/exercise/:id', async (req, res) => {
 
 
 router.get('/routines', (req, res) => {
-  console.log('AGGGHLASDFLJASDFLJS')
-    // if (!req.session.loggedIn) { res.redirect('/login');  } else {
+  if (!req.session.loggedIn) { res.redirect('/login'); }
+  else {
 
-  // we will probably need try/catch auth code on every page to check if user is logged in.    
-  res.render('routines');
-// end of elose statement }
+    // we will probably need try/catch auth code on every page to check if user is logged in.    
+    res.render('routines');
+  }
 });
 
 
@@ -123,31 +120,31 @@ router.get('/routines', (req, res) => {
 // note this is made with session.loggedIn copy paste
 router.get('/login', async (req, res, next) => {
   // If the user is already logged in, redirect to the homepage
-    if (req.session.loggedIn) {
+  if (req.session.loggedIn) {
     res.redirect('/routines')
     return;
   }
-    res.render('login');
-    return;
-  }); 
-  
+  res.render('login');
+  return;
+});
+
 //  GET ROUTE for signup page
 
-  router.get('/signup', (req, res) => {
-    // if (req.session.loggedIn) {
-    //   res.redirect('/');
-    //   return;
-    // }
-  
-    res.render('signup');
-    // return;
-  });
+router.get('/signup', (req, res) => {
+  // if (req.session.loggedIn) {
+  //   res.redirect('/');
+  //   return;
+  // }
+
+  res.render('signup');
+  return;
+});
 
 
 
 
-   
-  
+
+
 
 
 module.exports = router;

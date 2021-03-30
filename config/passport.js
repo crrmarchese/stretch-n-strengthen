@@ -44,9 +44,6 @@ module.exports = function (passport) {
   passport.serializeUser((user, done) => {
     return done(null, user.googleID)
   })
-  // passport.serializeUser(function (user, done) {
-  //   return done(null, user.id);
-  // });
 
   passport.deserializeUser((id, done) => {
    return Google.findByPk(id).then(user => done(null, user)).catch((err) => done(err, null))
