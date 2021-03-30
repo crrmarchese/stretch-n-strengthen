@@ -37,13 +37,6 @@ const sess = {
   })
 };
 
-// // PASSPORT CONFIG
-// require('./config/passport')(passport)
-
-
-// // const hbs = exphbs.create({ helpers });
-
-// // Handlebars stuff, can be found in class assignments
 
 // Middleware
 app.use(session(sess));
