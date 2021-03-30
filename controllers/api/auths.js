@@ -7,12 +7,10 @@ const withAuth = require('../../utils/auth')
 
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile']  }))
 
-// google auth callback
-
 // /auth/google/callback
 router.get(
   '/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/', }),
+  passport.authenticate('google', { failureRedirect: '/', successRedirect: '/routines' }),
   (req, res) => {
     console.log('heck')
     res.redirect('/routines')
@@ -54,12 +52,6 @@ router.post('/signup', async (req, res, next) => {
 
         res.status(200).json(newUser)
       })
-      // req.session.save(() => {
-      //     req.session.id = newUser.id;
-      //     req.session.logged_in = true;
-
-      //     res.status(200).json(newUser).next()
-      // })
   } catch (err) {
     console.log(err)
     return res.status(400).json(err)
@@ -67,10 +59,6 @@ router.post('/signup', async (req, res, next) => {
 });
 
 // POST ROUTE FOR LOGIN 
-
-// router.post('/login',
-//   passport.authenticate('local', { successRedirect: '/routines',
-//                                    failureRedirect: '/login' }));
 
 
 router.post('/login', withAuth, 
@@ -107,15 +95,6 @@ try {
 }
 });
 
-// router.post('/login', 
-// passport.authenticate('local', { failureRedirect: '/login'}), 
-// function(req, res) {
-//   res.redirect('/login');
-// },
-// passport.authenticate('local', {successRedirect: '/routines'}), 
-// function(req, res) {
-//   res.redirect('/routines')
-// })
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {

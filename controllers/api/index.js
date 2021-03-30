@@ -4,8 +4,8 @@ const muscleRoutes = require('./muscle-routes');
 const equipmentRoutes = require('./equipment-routes');
 const userRoutes = require('./equipment-routes');
 const routineRoutes = require('./routine-routes')
-const auth = require('./auths')
 const withAuth = require('../../utils/auth')
+
 
 router.use('/exercise', exerciseRoutes);
 router.use('/muscle', muscleRoutes);

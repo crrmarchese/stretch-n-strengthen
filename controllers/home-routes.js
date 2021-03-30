@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const passport = require('passport')
-const { Muscle, Exercise, User } = require('../models');
+const { Muscle, Exercise } = require('../models');
 const withAuth = require('../utils/auth');
 
 // This gets the home route and renders the homepage template
 router.get('/', (req, res) => {
+  console.log('HECK!')
   // renders homepage that has a call to action, buttons to link
   res.render('homepage');
-
   // we will probably need try/catch auth code on every page to check if user is logged in.
 });
 
@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
 router.get('/about', (req, res) => {
   // sample page, equivalent to /muscles -> /muscles/:id -> /exercises -> /exercise/:id
   res.render('about');
-
    // we will probably need try/catch auth code on every page to check if user is logged in.
 });
 
@@ -98,6 +97,7 @@ router.get('/exercise/:id', async (req, res) => {
 
 
 router.get('/routines', (req, res) => {
+  console.log('AGGGHLASDFLJASDFLJS')
     // if (!req.session.loggedIn) { res.redirect('/login');  } else {
 
   // we will probably need try/catch auth code on every page to check if user is logged in.    

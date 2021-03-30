@@ -6,7 +6,6 @@ const path = require('path');
 
 // Controllers
 const controllers = require('./controllers');
-// const routes = require('./controllers/');
 
 // Express
 const express = require('express');
@@ -37,8 +36,6 @@ const sess = {
   })
 };
 
-// // const hbs = exphbs.create({ helpers });
-
 // Middleware
 app.use(session(sess));
 app.engine('handlebars', hbs.engine);
@@ -46,23 +43,23 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(controllers);
 
-//PASSPORT
-app.use(session({
-  secret: 'secret secret',
-  resave: false,
-  saveUninitialized: false, // don't create a session until something is stored 
-  // store value here (how to use with mysql?)
-}));
+//PASSPORT 
+// app.use(session({
+  //   secret: 'secret secret',
+  //   resave: false,
+  //   saveUninitialized: false, // don't create a session until something is stored 
+  //   // store value here (how to use with mysql?)
+  // }));
+  
+  // PASSPORT MIDDLEWARE
+  app.use(passport.initialize())
+  app.use(passport.session())
+  require('./config/passport')(passport);
+  app.use(controllers);
 
-// PASSPORT MIDDLEWARE
-app.use(passport.initialize())
-app.use(passport.session())
-require('./config/passport')(passport);
 
-
-app.use('/auth', require('./controllers/api/auths'));
+// app.use('/auth', require('./controllers/api/auths'));
 
 
 sequelize.sync({ force: false }).then(() => {
