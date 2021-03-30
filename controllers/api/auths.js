@@ -22,9 +22,17 @@ router.get('/logout', (req, res) => {
   res.redirect('/')
 })
 
+// router.get('login', async( req, res ) => {
+//   if(req.session.logged_in){
+//     res.redirect('/routines')
+//     return;
+//   } res.render('login')
+//     return;
+// })
+
 router.get('/login', async (req, res, next) => {
   // If the user is already logged in, redirect to the homepage
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
     res.redirect('/routines')
     // .next()
     return;

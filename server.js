@@ -45,12 +45,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //PASSPORT 
-app.use(session({
-    secret: 'secret secret',
-    resave: false,
-    saveUninitialized: false, // don't create a session until something is stored 
-    // store value here (how to use with mysql?)
-  }));
+// app.use(session({
+//     secret: 'secret secret',
+//     resave: false,
+//     saveUninitialized: false, // don't create a session until something is stored 
+//     // store value here (how to use with mysql?)
+//   }));
   
   // PASSPORT MIDDLEWARE
   app.use(passport.initialize())
