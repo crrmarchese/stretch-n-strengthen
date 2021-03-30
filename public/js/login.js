@@ -46,8 +46,21 @@ const loginFormHandler = async (event) => {
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
 
+    const url = "http://localhost:3001/login"
+    $('#signupbtn').on('click', function () {
+     $.post(url, 
+      {
+        "email": email,
+        "password": password
+      }, 
+    ).then((response) => {
+      document.location.replace('http://localhost:3001/routines')
+      console.log(response)
+      console.log("yay")
+    })
+  });
 
-    //    if ( email && password) {
+     //    if ( email && password) {
     //   const response = await fetch('/api/users', {
     //     method: 'POST',
     //     body: JSON.stringify({ email, password }),
@@ -60,20 +73,6 @@ const loginFormHandler = async (event) => {
     //     alert('Failed to sign up.');
     //   }
     // }
-    const url = "http://localhost:3001/login"
-    $('#signupbtn').on('click', function () {
-     $.post(url, 
-     {
-       email: $('#email-signup'),
-       password: $('password-signup')
-     }, 
-    ).then((response) => {
-      document.location.replace('http://localhost:3001/routines')
-      console.log(response)
-      console.log("yay")
-    })
-  });
-
 };
 
   
