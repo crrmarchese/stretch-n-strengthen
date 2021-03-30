@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Muscle, Exercise, User } = require('../models');
+const { Muscle, Exercise, Equipment, Exercise_Equipment, User } = require('../models');
 // const withAuth = require('../utils/auth');
 
 // This gets the home route and renders the homepage template
@@ -33,7 +33,7 @@ router.get('/muscle', async (req, res) => {
     const muscles = dbMuscleData.map((muscle) =>
       muscle.get({ plain: true })
     );
-    console.log(muscles[0]);
+    // console.log(muscles[0]);
     res.render('muscles', {
       muscles,
     });
@@ -61,8 +61,8 @@ router.get('/muscle/:id', async (req, res) => {
       });
     const muscle = dbMuscleData.get({ plain: true });
     console.log('\n');
-    console.log(muscle);
-    console.log(muscle[0]);
+    // console.log(muscle);
+    // console.log(muscle[0]);
     console.log('\n');
     res.render('muscle-specific', { muscle });
   } catch (err) {
@@ -83,10 +83,20 @@ router.get('/exercise/:id', async (req, res) => {
               'image_url_main',
             ],
           },
+          {
+            model: Equipment,
+            attributes: [
+              'name',
+            ],
+          }
         ],
       });
-    const exercise = dbExercise.get({ plain: true });
-    console.log(exercise.muscles[0].image_url_main);
+      const exercise = dbExercise.get({ plain: true });
+      // console.log('test');
+      // console.log(exercise.equipment);
+      // console.log(exercise.equipment[0].name);
+      // console.log(exercise.equipment.name);
+    // console.log(exercise.muscles[0].image_url_main);
     // console.log(exercise.description);
     res.render('exercise', { exercise });
   } catch (err) {
@@ -119,7 +129,21 @@ router.get('/login', async (req, res, next) => {
   // Otherwise, render the 'login' template
     res.render('login');
     return;
-  });  
+  }); 
+  
+//  GET ROUTE for signup page
+
+  router.get('/signup', (req, res) => {
+    // if (req.session.loggedIn) {
+    //   res.redirect('/');
+    //   return;
+    // }
+  
+    res.render('signup');
+    // return;
+  });
+
+
 
   // POST ROUTE FOR SIGNUP 
 router.post('/signup', async (req, res, next) => {
@@ -188,6 +212,10 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+   
+  
+
 
 module.exports = router;
 
