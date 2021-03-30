@@ -44,12 +44,12 @@
           <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        {{!-- {{#if loggedIn}} --}}
-                        {{!-- <a class="link" href="/" id="logout">Logout</a> --}}
-                        {{!-- <button id="logout" class="btn-no-style">Logout</button> --}}
-                        {{!-- {{else}} --}}
+                        {{#if loggedIn}}
+                        <a class="link" href="/" id="logout">Logout</a>
+                        <button id="logout" class="btn-no-style">Logout</button>
+                        {{else}}
                         <a class="button button-login" href="/login">Log in</a>
-                        {{!-- {{/if}} --}}
+                        {{/if}}
                     </div>
                 </div>
           </div>
