@@ -5,7 +5,7 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const Google = require('../models/Google')
 require('dotenv').config()
 
-module.exports = function (passport) {
+// module.exports = function (passport) {
   passport.use(
     new GoogleStrategy(
       {
@@ -49,7 +49,7 @@ module.exports = function (passport) {
   passport.deserializeUser((id, done) => {
    return Google.findByPk(id).then(user => done(null, user)).catch((err) => done(err, null))
   });
-}
+// }
 
 // module.exports = function(passport) {
 //   passport.use(new LocalStrategy({

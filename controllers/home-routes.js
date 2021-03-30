@@ -7,7 +7,6 @@ const { Muscle, Exercise, Equipment, Exercise_Equipment, User } = require('../mo
 
 // This gets the home route and renders the homepage template
 router.get('/', (req, res) => {
-  console.log('HECK!')
   // renders homepage that has a call to action, buttons to link
   res.render('homepage');
   // we will probably need try/catch auth code on every page to check if user is logged in.
