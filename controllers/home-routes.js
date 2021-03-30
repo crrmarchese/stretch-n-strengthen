@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport')
-const { Muscle, Exercise } = require('../models');
+// const { Muscle, Exercise } = require('../models');
 const withAuth = require('../utils/auth');
 const { Muscle, Exercise, Equipment, Exercise_Equipment, User } = require('../models');
 // const withAuth = require('../utils/auth');
