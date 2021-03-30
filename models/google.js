@@ -10,6 +10,7 @@ Google.init(
         googleID: {
             type: DataTypes.STRING,
             allowNull: false,
+            primaryKey: true,
         },
         displayName: {
             type: DataTypes.STRING,
@@ -29,18 +30,11 @@ Google.init(
         },
     },
     {
-
-        hooks: {
-            beforeCreate: async (newGoogleData) => {
-                newGoogleData.password = await bcrypt.hash(newGoogleData, 10);
-                return newGoogleData;
-            },
-        },
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Google'
+        modelName: 'google'
     }
 )
 
