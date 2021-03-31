@@ -95,12 +95,11 @@ router.get('/exercise/:id', async (req, res) => {
 
 
 router.get('/routines', (req, res) => {
-
   // this if / else breaks it 
   // if (!req.session.loggedIn) { res.redirect('/login'); }
   // else {
     res.render('routines');
-  // }
+ //  }
 });
 
 

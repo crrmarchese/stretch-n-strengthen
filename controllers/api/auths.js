@@ -4,7 +4,6 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const { User } = require('../../models/User')
-const withAuth = require('../../utils/auth')
 
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
 
@@ -31,23 +30,24 @@ router.get('login', async( req, res ) => {
 })
 
 // get request for signup page
-router.get('/signup', async (req, res, next) => {
+router.get('/signup', async (req, res) => {
   res.render('signup')
 })
 
 // POST ROUTE FOR SIGNUP 
 // something going wrong on the front end, page keeps refreshing 
-router.post('/signup', async (req, res, next) => {
+router.post('/signup', async (req, res) => {
   try {
     console.log('amiworking')
     const newUser = await User.create({
       email: req.body.email,
       password: req.body.password
     });
-    res.json({ user: newUser, message: 'Signed up!'})
-    req.session.save(() => {
+  //  return res.json({ user: newUser, message: 'Signed up!'})
+   return req.session.save(() => {
+      req.session.userID = newUser.id;
       req.session.loggedIn = true;
-      return res.render('/routines')
+      res.redirect('/routines')
       // res.status(200).json(newUser)
     })
   } catch (err) {
@@ -76,7 +76,6 @@ router.post('/login', async (req, res) => {
         return res.render('/routines')
       });
     }
-
   } catch (err) {
     return res.json(console.log(err))
   }

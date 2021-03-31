@@ -43,14 +43,6 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-//PASSPORT 
-// app.use(session({
-//     secret: 'secret secret',
-//     resave: false,
-//     saveUninitialized: false, // don't create a session until something is stored 
-//     // store value here (how to use with mysql?)
-//   }));
   
   // PASSPORT MIDDLEWARE
   app.use(passport.initialize())
@@ -59,7 +51,6 @@ app.use(express.static(path.join(__dirname, 'public')));
   app.use(controllers);
 
 
-// app.use('/auth', require('./controllers/api/auths'));
 
 
 sequelize.sync({ force: false }).then(() => {

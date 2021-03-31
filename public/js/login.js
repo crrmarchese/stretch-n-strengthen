@@ -39,22 +39,20 @@ const loginFormHandler = async (event) => {
         "email": email,
         "password": password
       }, 
-    ).then((response) => {
+    )
+    .then((response) => {
       document.location.replace('http://localhost:3001/routines')
-      console.log(response)
       console.log("yay")
+      // console.log(response)
     })
   });
 };
 
-  
-  document
-    .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
-  
-  document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
-  
+
+  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+
+
+  document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+
 
   });
