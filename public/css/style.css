@@ -296,6 +296,22 @@ div.muscle-background {
     .ss-list-group-item {
         width: 40%;
     }
+
+    .d-block-desktop-only {
+        flex-basis: auto;
+    }
+    
+    .is-full-desktop-only {
+        width: 100%;
+        display: block;
+        flex-basis: auto;
+    }
+
+    .text-align-desktop-only h2,
+    .text-align-desktop-only .equipment-name,
+    .button-login-align {
+        text-align: center;
+    }
 }
 /* Widescreen between 1216px and 1407px */
 @media screen and (min-width: 1216px) {
