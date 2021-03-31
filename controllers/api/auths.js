@@ -3,65 +3,53 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
-const { User }  = require('../../models/User')
+const { User } = require('../../models/User')
 const withAuth = require('../../utils/auth')
 
-router.get('/auth/google', passport.authenticate('google', { scope: ['profile']  }))
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
 
 // /auth/google/callback
 router.get(
-  '/auth/google/callback', 
+  '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/', successRedirect: '/routines' }),
   (req, res) => {
     console.log('heck')
     res.redirect('/routines')
-}) 
+  })
 
 router.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
 
-// router.get('login', async( req, res ) => {
-//   if(req.session.logged_in){
-//     res.redirect('/routines')
-//     return;
-//   } res.render('login')
-//     return;
-// })
-
-router.get('/login', async (req, res, next) => {
-  // If the user is already logged in, redirect to the homepage
-    if (req.session.loggedIn) {
+// something fishy here
+router.get('login', async( req, res ) => {
+  if(req.session.loggedIn){
     res.redirect('/routines')
-    // .next()
     return;
   }
-  // we will probably need try/catch auth code on every page to check if user is logged in.
-  // Otherwise, render the 'login' template
-    res.render('login');
-    return;
-  });  
+})
 
-// get reqeust for signup page
-  router.get('/signup', async(req, res, next) => {
-    res.render('signup')
-  })
+// get request for signup page
+router.get('/signup', async (req, res, next) => {
+  res.render('signup')
+})
 
-  // POST ROUTE FOR SIGNUP 
-  // was '/signup' need a sign in HTML page for this post to work 
+// POST ROUTE FOR SIGNUP 
+// something going wrong on the front end, page keeps refreshing 
 router.post('/signup', async (req, res, next) => {
   try {
-      const newUser = await User.create({
-        email: req.body.email,
-        password: req.body.password
-      });
-
-      req.session.save(() => {
-        req.session.loggedIn = true;
-
-        res.status(200).json(newUser)
-      })
+    console.log('amiworking')
+    const newUser = await User.create({
+      email: req.body.email,
+      password: req.body.password
+    });
+    res.json({ user: newUser, message: 'Signed up!'})
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      return res.render('/routines')
+      // res.status(200).json(newUser)
+    })
   } catch (err) {
     console.log(err)
     return res.status(400).json(err)
@@ -69,41 +57,32 @@ router.post('/signup', async (req, res, next) => {
 });
 
 // POST ROUTE FOR LOGIN 
-
-
-router.post('/login',
-async (req, res) => {
-try {
-  const newUser = await User.findOne({ where: { email: req.body.email } });
-
-  if (!newUser) {
-    return res.status(401).json({ message: 'Incorrect email or password, please try again' });
-  }
-
-  const validPassword = await newUser.checkPassword(req.body.password);
-
-  if (!validPassword) {
-   return res.status(401).json({ message: 'Incorrect email or password, please try again' });
-   
-  }
+// this works swimmingly
+router.post('/login', async (req, res) => {
+  try {
+    const newUser = await User.findOne({ where: { email: req.body.email } });
+    if (!newUser) {
+      return res.status(401).json({ message: 'Incorrect email or password, please try again' });
+    }
+    const validPassword = await newUser.checkPassword(req.body.password);
+    if (!validPassword) {
+      return res.status(401).json({ message: 'Incorrect email or password, please try again' });
+    }
     else {
-      res.json({ user: newUser, message: 'Now logged in!'});
-      // return res.redirect('/api/routines')
+      res.json({ user: newUser, message: 'Now logged in!' });
       req.session.save(() => {
-        req.session.user_id = newUser.id;
-        req.session.logged_in = true;
-        
-        // res.json({ user: newUser, message: 'You are now logged in!' });
-        return res.render('/exercise')
+        req.session.userID = newUser.id;
+        req.session.loggedIn = true;
+        return res.render('/routines')
       });
     }
 
-} catch (err){
-   return res.json(console.log(err))
-}
+  } catch (err) {
+    return res.json(console.log(err))
+  }
 });
 
-
+// this one should work, will need to test it
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
