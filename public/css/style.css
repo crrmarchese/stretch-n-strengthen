@@ -266,6 +266,10 @@ div.muscle-background {
     .info-box {
        padding: 1.25rem; 
     }
+
+    .hero-subtitle {
+        padding: 0 .35rem;
+    }
 }
 
 /* Tablet between 769px  and 1023px*/
@@ -273,6 +277,7 @@ div.muscle-background {
     .hero-title{
         font-size: 2.625rem;
     }
+    
     .hero-subtitle {
         font-size: 3rem;
     }
@@ -295,6 +300,22 @@ div.muscle-background {
 
     .ss-list-group-item {
         width: 40%;
+    }
+
+    .d-block-desktop-only {
+        flex-basis: auto;
+    }
+    
+    .is-full-desktop-only {
+        width: 100%;
+        display: block;
+        flex-basis: auto;
+    }
+
+    .text-align-desktop-only h2,
+    .text-align-desktop-only .equipment-name,
+    .button-login-align {
+        text-align: center;
     }
 }
 /* Widescreen between 1216px and 1407px */
