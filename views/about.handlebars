@@ -1,6 +1,6 @@
 <section id="about-intro" class="section">
      <div class="container">
-        <h1 class="title is-size-1">About</h1>
+        <h1 class="title is-size-1-desktop">About</h1>
           <div class="columns">
             <div class="column is-full">
               <p>Welcome to Stretch and Strengthen. If you're new to working out and want to ease into a fitness routine, this site is for you. You can create your own home fitness routines and save them to come back to or switch up as you progress along. Simply <a href="/signup">sign up</a> to access your routines page.</p> 
@@ -10,7 +10,6 @@
 </section>
 <section id="about-exercise-details" class="section exercise-details">
     <div class="container">
-        {{!-- <h2 class="title is-size-2">Sample Routine</h2> --}}
           {{!-- Large screen --}}
           <div class="columns is-mobile is-centered is-hidden-touch">
               {{!-- Column 50% --}}
@@ -18,25 +17,37 @@
 
               {{!-- Nested column --}}
                 <div class="columns is-mobile is-multiline">
-                    <div class="column is-narrow-desktop">
+                    <div class="column is-narrow-widescreen d-block-desktop-only">
                         <figure>
                           <div class="muscle-background mx-auto" style="background-image: url('https://wger.de/static/images/muscles/main/muscle-1.svg'),
   url('https://wger.de/static/images/muscles/muscular_system_front.svg');">
                           </div>
                         </figure>
                     </div>
-                    <div class="column">
-                      <h2 class="title is-size-2">Biceps Curls With Barbell</h2>
+                    <div class="column is-full-desktop-only">
+                      <h2 class="title is-size-2-desktop">Biceps Curls With Barbell</h2>
                       <p>Hold the Barbell shoulder-wide, the back is straight, the shoulders slightly back, the arms are streched. Bend the arms, bringing the weight up, with a fast movement. Without pausing, let down the bar with a slow and controlled movement.</p>
                       <p>Don't allow your body to swing during the exercise, all work is done by the biceps, which are the only mucles that should move (pay attention to the elbows).</p>
                     </div>
                  </div>
 
-            </div>
+<section id="about-exercise-details" class="section exercise-details">
+  <div class="container">
+    {{!-- <h2 class="title is-size-2">Sample Routine</h2> --}}
+    {{!-- Large screen --}}
+    <div class="columns is-mobile is-centered is-hidden-touch">
+      {{!-- Column 50% --}}
+      <div class="column is-half">
+        {{!-- Nested column --}}
+        <div class="columns is-mobile is-multiline">
+          <div class="column is-narrow-desktop">
+            <figure>
+              <div class="muscle-background mx-auto" style="background-image: url('https://wger.de/static/images/muscles/main/muscle-1.svg'), url('https://wger.de/static/images/muscles/muscular_system_front.svg');"></div>
+            </figure>
           </div>
           {{!-- Mobile and Tablet --}}
           <div class="columns is-tablet is-hidden-desktop">
-            <div class="column">
+            <div class="column is-narrow-tablet">
                 <figure>
                       <div class="muscle-background mx-auto" style="background-image: url('https://wger.de/static/images/muscles/main/muscle-1.svg'),
 url('https://wger.de/static/images/muscles/muscular_system_front.svg');">
@@ -44,25 +55,12 @@ url('https://wger.de/static/images/muscles/muscular_system_front.svg');">
                 </figure>
             </div>
             <div class="column">
-              <h2 class="title is-size-2">Biceps Curls With Barbell</h2>
+              <h2 class="title is-size-2-desktop">Biceps Curls With Barbell</h2>
                       <p>Hold the Barbell shoulder-wide, the back is straight, the shoulders slightly back, the arms are streched. Bend the arms, bringing the weight up, with a fast movement. Without pausing, let down the bar with a slow and controlled movement.</p>
                       <p>Don't allow your body to swing during the exercise, all work is done by the biceps, which are the only mucles that should move (pay attention to the elbows).</p>
             </div>
           </div>
+        </div>
+      </div>
     </div>
 </section>
-
-
-
-
-
-
-
-{{!-- <div class="muscle-background mx-auto" style="background-image: url('https://wger.de/static/images/muscles/main/muscle-1.svg'),
-  url('https://wger.de/static/images/muscles/muscular_system_front.svg');">
-  </div>
-  <div class="exercise-details">
-    <h3>Biceps Curls With Barbell</h3>
-    <p>Hold the Barbell shoulder-wide, the back is straight, the shoulders slightly back, the arms are streched. Bend the arms, bringing the weight up, with a fast movement. Without pausing, let down the bar with a slow and controlled movement.</p>
-    <p>Don't allow your body to swing during the exercise, all work is done by the biceps, which are the only mucles that should move (pay attention to the elbows).</p>
-  </div> --}}
