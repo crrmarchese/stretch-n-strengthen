@@ -1,4 +1,23 @@
-<main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Stretch and Strengthen</title>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/45e97f819a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+   
+   <main>
     <section id="login-section" class="hero is-fullheight">
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -25,15 +44,14 @@
                             <button class="button button-login-inverse is-block is-large is-fullwidth" id="loginbtn" type="submit">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                         </form>
                     </div>
-                    <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-                    <p class="mt-5 mb-4"><a href="/auth/google">Sign In with Google</a></p>
-                    <p><a href="/signup">Sign Up</a></p>
-                  
+                    <a href ="/auth/google/callback" class="g-signin2" data-onsuccess="onSignIn"></a>
+                    <p>
+                        <a href="/signup">Sign Up</a>
+                    </p>
                 </div>
             </div>
         </div>
     </section>
    </main>
-
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="/js/login.js"></script>
+</body>
+</html>
