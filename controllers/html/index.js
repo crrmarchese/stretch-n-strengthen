@@ -1,19 +1,19 @@
 const router = require('express').Router();
-const exerciseRoutes = require('./exercise-page');
-const muscleRoutes = require('./muscle-page');
-const homeRoutes = require('./home-page');
-const aboutRoutes = require('./about-page');
-const loginRoutes = require('./login-page');
-const signupRoutes = require('./signup-page');
-const userRoutes = require('./user-page');
+const exercisePage = require('./exercise-page');
+const musclePage = require('./muscle-page');
+const homePage = require('./home-page');
+const aboutPage = require('./about-page');
+const loginPage = require('./login-page');
+const signupPage = require('./signup-page');
+const userPage = require('./user-page');
 
 
-router.use('/exercise', exerciseRoutes);
-router.use('/muscle', muscleRoutes);
-router.use('/', homeRoutes);
-router.use('/login', loginRoutes);
-router.use('/signup', signupRoutes);
-router.use('/about', aboutRoutes);
-router.use('/user', userRoutes);
+router.use('/exercise', exercisePage);
+router.use('/muscle', musclePage);
+router.use('/', homePage);
+router.use('/login', loginPage);
+router.use('/signup', signupPage);
+router.use('/about', aboutPage);
+router.use('/user', userPage);
 
 module.exports = router;

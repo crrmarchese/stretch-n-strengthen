@@ -5,7 +5,7 @@ const { Routine, Exercise, Routine_Exercise } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const routineData = await Routine.findAll({
-      include: [{model: Routine}],
+      // include: [{model: Routine}],
     });
     res.status(200).json(routineData);
   } catch (err) {
@@ -32,6 +32,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try{
     const routineData = await Routine.create(req.body);
+    console.log(routineData)
     res.status(200).json(routineData);
   } catch (err) {
     res.status(400).json(err)

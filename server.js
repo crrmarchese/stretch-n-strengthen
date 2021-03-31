@@ -44,6 +44,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+console.log(path.join(__dirname, 'public'))
+
 //PASSPORT 
 // app.use(session({
 //     secret: 'secret secret',
@@ -59,7 +61,7 @@ app.use(express.static(path.join(__dirname, 'public')));
   app.use(controllers);
 
 
-// app.use('/auth', require('./controllers/api/auths'));
+  // app.use('/auth', require('./controllers/auth/auth.js'));
 
 
 sequelize.sync({ force: false }).then(() => {

@@ -32,6 +32,7 @@ router.get('/:id', async (req, res) => {
     });
     const user = dbUserData.get({ plain: true });
     res.render('user', { user });
+    return;
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
