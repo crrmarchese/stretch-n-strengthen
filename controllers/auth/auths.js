@@ -8,10 +8,11 @@ router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 
 // /auth/google/callback
 router.get(
   '/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/', successRedirect: '/routine' }),
-  (req, res) => {
-    res.redirect('/routine');
-}) 
+  passport.authenticate('google', { failureRedirect: '/'}),
+  async (req, res) => {
+    res.redirect(`/user/${req.user.dataValues.id}`);
+}
+) 
 
 router.get('/logout', (req, res) => {
   req.logout();
@@ -21,7 +22,8 @@ router.get('/logout', (req, res) => {
 // RYAN - Do we need Async here? What about next?
 router.get('/login', async (req, res, next) => {
     if (req.session.loggedIn) {
-      res.redirect('/routine')
+      const userID = await User.findOne({ where: { email: req.body.email }, attributes: ['id'] });
+      res.redirect(`/user/${userID}`)
     return;
   }
     res.render('login');
