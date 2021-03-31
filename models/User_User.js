@@ -11,14 +11,14 @@ User_User.init(
         primaryKey: true,
       },
       lead_id: {
-        type: DataTypes.UUID,
+        type: DataTypes.STRING,
         references: {
             model: "user",
             key: "id"
         },
       },
       follow_id: {
-          type: DataTypes.UUID,
+          type: DataTypes.STRING,
           references: {
               model: "user",
               key: "id"

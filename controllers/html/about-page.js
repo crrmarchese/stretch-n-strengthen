@@ -1,5 +1,9 @@
 const router = require('express').Router();
-const { Muscle, Exercise } = require('../../models');
 
+// About
+router.get('/', (req, res) => {
+  res.render('about');
+});
 
 module.exports = router;
+

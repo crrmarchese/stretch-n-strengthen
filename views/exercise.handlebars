@@ -1,48 +1,41 @@
 <section class="exercise section">
   <div class="container">
     {{!-- Large screen --}}
-          <div class="columns is-mobile is-centered is-hidden-touch">
-              {{!-- Column 50% --}}
-              <div class="column is-half">
-                <h1 class="title is-size-1 has-text-centered">Exercises</h1>
-                  {{!-- Nested column --}}
-                <div class="columns is-mobile is-multiline">
-                    <div class="column is-narrow-desktop">
-                        <figure>
-                         <div class="muscle-background mx-auto" style="background-image: url({{{ concat 'https://wger.de' exercise.muscles.[0].image_url_main }}}),
-  url({{{ muscEval exercise.muscles.[0].image_url_main }}});">
-                        </div>
-                        </figure>
-                    </div>
-                    <div class="column">
-                      <h2 class="title is-size-2">{{exercise.name}}</h2>
-                      <p class="has-text-weight-bold">Equipment: {{exercise.equipment.[0].name}}</p>
-                      <p>{{{exercise.description}}}</p>
-                      <div><a class="button button-login" href="/login">Add Routine</a></div>
-                    </div>
-                 </div>
-              </div>
+    <div class="columns is-mobile is-centered is-hidden-touch">
+      {{!-- Column 50% --}}
+      <div class="column is-half">
+        <h1 class="title is-size-1 has-text-centered">Exercises</h1>
+        {{!-- Nested column --}}
+        <div class="columns is-mobile is-multiline">
+          <div class="column is-narrow-desktop">
+            <figure>
+              <div class="muscle-background mx-auto" style="background-image: url({{{ concat 'https://wger.de' exercise.muscles.[0].image_url_main }}}), url({{{ muscEval exercise.muscles.[0].image_url_main }}});"></div>
+            </figure>
           </div>
-           {{!-- Mobile and Tablet --}}
-          <div class="columns is-tablet is-hidden-desktop">
-              <div class="column">
-                 <h1 class="title is-size-1 has-text-centered">Exercises</h1>
-                  <figure>
-                      <div class="muscle-background mx-auto" style="background-image: url({{{ concat 'https://wger.de' exercise.muscles.[0].image_url_main }}}),
-    url({{{ muscEval exercise.muscles.[0].image_url_main }}});">
-                      </div>      
-                  </figure>
-              </div>
-              <div class="column">
-                  <h2 class="title is-size-2">{{exercise.name}}</h2>
-                  <p class="has-text-weight-bold">Equipment: {{exercise.equipment.[0].name}}</p>
-                    <p>{{{exercise.description}}}</p>
-                    <div><a class="button button-login" href="/login">Add Routine</a></div>     
-              </div>
+          <div class="column">
+            <h2 class="title is-size-2">{{exercise.name}}</h2>
+            <p class="has-text-weight-bold">Equipment: {{exercise.equipment.[0].name}}</p>
+            <p>{{{exercise.description}}}</p>
+            <div><a class="button button-login" href="/login">Add Routine</a></div>
           </div>
-
-
+        </div>
+      </div>
+    </div>
+    {{!-- Mobile and Tablet --}}
+    <div class="columns is-tablet is-hidden-desktop">
+      <div class="column">
+        <h1 class="title is-size-1 has-text-centered">Exercises</h1>
+        <figure>
+          <div class="muscle-background mx-auto" style="background-image: url({{{ concat 'https://wger.de' exercise.muscles.[0].image_url_main }}}), url({{{ muscEval exercise.muscles.[0].image_url_main }}});">
+          </div>
+        </figure>
+      </div>
+      <div class="column">
+        <h2 class="title is-size-2">{{exercise.name}}</h2>
+        <p class="has-text-weight-bold">Equipment: {{exercise.equipment.[0].name}}</p>
+        <p>{{{exercise.description}}}</p>
+        <div><a class="button button-login" href="/login">Add Routine</a></div>
+      </div>
+    </div>
   </div>
-
 </section>
-

@@ -18,61 +18,63 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
-   <header>
+  <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="#">
-                <img src="../assets/images/logo-main.png" alt="Stay healthy with exercise">
-            </a>
-        
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="nav-navbar-menu">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <img src="../assets/images/logo-main.png" alt="Stay healthy with exercise">
+        </a>
+      
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="nav-navbar-menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
       
         <div id="nav-navbar-menu" class="navbar-menu">
           <div class="navbar-start">
-                <a class="navbar-item" href="/">Home</a>
-                <a class="navbar-item" href="/about">About</a>
-                <a class="navbar-item" href="/muscle">Exercises</a>
-                <a class="navbar-item" href="/routines">Routines</a>
+            <a class="navbar-item" href="/">Home</a>
+            <a class="navbar-item" href="/about">About</a>
+            <a class="navbar-item" href="/muscle">Exercises</a>
+            <a class="navbar-item" href="/routines">Routines</a>
           </div>
 
           <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        {{#if loggedIn}}
-                        <a class="link" href="/" id="logout">Logout</a>
-                        <button id="logout" class="btn-no-style">Logout</button>
-                        {{else}}
-                        <a class="button button-login" href="/login">Log in</a>
-                        {{/if}}
-                    </div>
-                </div>
+            <div class="navbar-item">
+              <div class="buttons">
+                {{#if loggedIn}}
+                  <a class="link" href="/" id="logout">Logout</a>
+                  <button id="logout" class="btn-no-style">Logout</button>
+                {{else}}
+                  <a class="button button-login" href="/login">Log in</a>
+                {{/if}}
+              </div>
+            </div>
           </div>
         </div>
       </nav>
-   </header> 
+   </header>
+
     <main>
       {{{ body }}} 
     </main>
-            
 
-        <footer class="footer">
-            <div class="content has-text-centered">
-              <p>
-                <strong>Nothing will work unless you do.</strong> This app is the work of Ryan Royalty, Toni Powell, Jonathan Hammond, Bjorn Yourey, and Cathy Marchese.
-              </p>
-            </div>
-          </footer>
-   <!-- Custom JS -->
-	<script src="../js/script.js"></script>  
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Nothing will work unless you do.</strong> This app is the work of Ryan Royalty, Toni Powell, Jonathan Hammond, Bjorn Yourey, and Cathy Marchese.
+        </p>
+      </div>
+    </footer>
+
+  <script src="../js/script.js"></script>  
 
     {{!-- {{#if loggedIn}} --}}
     {{!-- <script src="/js/logout.js"></script> --}}
   {{!-- {{/if}} --}}
 </body>
+
 </html>

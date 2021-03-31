@@ -1,10 +1,8 @@
 const passport = require('passport')
 const Sequelize = require('sequelize');
 const sequelize = require('./connection')
-// const User = require('../models').User
-// const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const Google = require('../models/Google')
+const { User } = require('../models/User');
 require('dotenv').config()
 
 module.exports = function (passport) {
@@ -18,22 +16,21 @@ module.exports = function (passport) {
 
       },
       async (req, accessToken, refreshToken, profile, done) => {
-        console.log(profile)
         const newGoogle = {
-          googleID: profile.id,
+          id: profile.id,
           displayName: profile.displayName,
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
-          image: profile.photos[0].value
+          image: profile.photos[0].value,
+          email: profile.emails[0].value
         }
 
         try {
-          let google = await Google.findByPk( profile.id )
-          console.log(google)
+          let google = await User.findByPk( profile.id )
           if (google) {
             return done(null, google)
           } else {
-            google = await Google.create(newGoogle)
+            google = await User.create(newGoogle)
             return done(null, google)
           }
         } catch (err) {
@@ -42,31 +39,10 @@ module.exports = function (passport) {
       }))
 
   passport.serializeUser((user, done) => {
-    return done(null, user.googleID)
+    return done(null, user.id)
   })
 
   passport.deserializeUser((id, done) => {
-   return Google.findByPk(id).then(user => done(null, user)).catch((err) => done(err, null))
+   return User.findByPk(id).then(user => done(null, user)).catch((err) => done(err, null))
   });
 }
-
-// module.exports = function(passport) {
-//   passport.use(new LocalStrategy({
-//     usernameField: 'email',
-//     passwordField: 'password',
-//     session: false
-//   },
-//   function(email, password, done) {
-//     User.findOne({ where: { 'email': email} }, function (err, user){
-//       if (err) {return done(err)}
-//       if (!User){
-//         return done(null, false, { message: 'incorrect username or password'});
-//       }
-//       if (!User.validPassword(password)) {
-//         return done(null, false, { message: 'incorrect username or password'});
-//       }
-//       return done(null, User)
-//     })
-//   }
-// ));
-// }
