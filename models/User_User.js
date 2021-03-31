@@ -20,8 +20,8 @@ User_User.init(
       follow_id: {
           type: DataTypes.STRING,
           references: {
-              model: "user",
-              key: "id"
+            model: "user",
+            key: "id"
           }
         },
       },
