@@ -3,7 +3,6 @@ const { User, Routine, User_User} = require('../../models');
 
 router.get('/:id', async (req, res) => {
   try {
-    console.log(req.params.id)
     const dbUserData = await User.findByPk(req.params.id, {
       include: [
         {
@@ -32,7 +31,6 @@ router.get('/:id', async (req, res) => {
       }
     });
     const user = dbUserData.get({ plain: true });
-    console.log(user)
     res.render('user', { user });
   } catch (err) {
     console.log(err);
