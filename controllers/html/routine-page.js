@@ -1,23 +1,21 @@
 const router = require('express').Router();
-const { User, Routine, Routine_Exercise, Exercise} = require('../../models');
+const { User, Routine, Routine_Exercise, Exercise } = require('../../models');
 
-router.get('/:id/:routine', async (req, res) => {
+router.get('/:routine', async (req, res) => {
   try {
-    const dbUserData = await User.findByPk(req.params.id, {
+    const dbRoutineData = await Routine.findByPk(req.params.routine, {
       include: [
         {
-          model: Routine,
-          required: false 
+          model: Exercise,
+          required: false
         }
       ],
       required: false,
-      attributes: {
-        exclude: ['password'],
-      }
     });
-    
-    const user = dbUserData.get({ plain: true });
-    res.render('user', { user });
+
+    const routine = dbRoutineData.get({ plain: true });
+    console.log(routine)
+    res.render('routine', { routine });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
