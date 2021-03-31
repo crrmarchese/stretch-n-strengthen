@@ -3,16 +3,17 @@ const passport = require('passport')
 // const { Muscle, Exercise } = require('../models');
 const { Muscle, Exercise, Equipment, Exercise_Equipment, User } = require('../models');
 
+// ==========================================================
+//  All public routes, available to any user logged in or not 
+// ==========================================================
 
-// This gets the home route and renders the homepage template
+
 router.get('/', (req, res) => {
   res.render('homepage');
 });
 
-
 // User clicks 'About' nav-item, gets the about route and renders the about template
 router.get('/about', (req, res) => {
-  // sample page, equivalent to /muscles -> /muscles/:id -> /exercises -> /exercise/:id
   res.render('about');
   // we will probably need try/catch auth code on every page to check if user is logged in.
 });
@@ -29,7 +30,6 @@ router.get('/muscle', async (req, res) => {
     const muscles = dbMuscleData.map((muscle) =>
       muscle.get({ plain: true })
     );
-    // console.log(muscles[0]);
     res.render('muscles', {
       muscles,
     });
@@ -57,8 +57,6 @@ router.get('/muscle/:id', async (req, res) => {
     });
     const muscle = dbMuscleData.get({ plain: true });
     console.log('\n');
-    // console.log(muscle);
-    // console.log(muscle[0]);
     console.log('\n');
     res.render('muscle-specific', { muscle });
   } catch (err) {
@@ -88,12 +86,6 @@ router.get('/exercise/:id', async (req, res) => {
       ],
     });
     const exercise = dbExercise.get({ plain: true });
-    // console.log('test');
-    // console.log(exercise.equipment);
-    // console.log(exercise.equipment[0].name);
-    // console.log(exercise.equipment.name);
-    // console.log(exercise.muscles[0].image_url_main);
-    // console.log(exercise.description);
     res.render('exercise', { exercise });
   } catch (err) {
     console.log(err);
@@ -104,11 +96,9 @@ router.get('/exercise/:id', async (req, res) => {
 
 router.get('/routines', (req, res) => {
 
-  // this breaks it 
+  // this if / else breaks it 
   // if (!req.session.loggedIn) { res.redirect('/login'); }
   // else {
-
-    // we will probably need try/catch auth code on every page to check if user is logged in.    
     res.render('routines');
   // }
 });
@@ -129,7 +119,6 @@ router.get('/signup', (req, res) => {
     res.redirect('/');
     return;
   }
-
   res.render('signup');
   return;
 });
