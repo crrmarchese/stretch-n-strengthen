@@ -266,6 +266,10 @@ div.muscle-background {
     .info-box {
        padding: 1.25rem; 
     }
+
+    .hero-subtitle {
+        padding: 0 .35rem;
+    }
 }
 
 /* Tablet between 769px  and 1023px*/
@@ -273,6 +277,7 @@ div.muscle-background {
     .hero-title{
         font-size: 2.625rem;
     }
+    
     .hero-subtitle {
         font-size: 3rem;
     }
