@@ -68,7 +68,13 @@ p {
 
 .button-login,
 .button-login-inverse:hover,
-.button-signup-inverse:hover {
+.button-signup-inverse:hover,
+.button.button-login:active,
+.button.button-login:focus,
+.button-login-inverse:active,
+.button-login-inverse:focus,
+.button-signup-inverse:active,
+.button-signup-inverse:focus {
     background-color: var(--bright-red);
     border-color: #e53c2b;
     color: var(--white);
