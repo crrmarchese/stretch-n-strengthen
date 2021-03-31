@@ -1,4 +1,23 @@
-<main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up-Stretch and Strengthen</title>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">  
+    <!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/45e97f819a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+   
+   <main>
     <section id="login-section" class="hero is-fullheight">
         <div class="hero-body hero-signup">
             <div class="container has-text-centered">
@@ -11,6 +30,12 @@
                             <img src="./assets/images/logo-main.png">
                         </figure>
                             <form class="form signup-form">
+                                <div class="field">
+                                    <div class="control name-signup">
+                                        <input class="input is-large" type="text" id="name-signup" placeholder=" Your Name" autofocus="">
+                                    </div>
+                                </div>
+
 
                                 <div class="field">
                                     <div class="control email-signup">
@@ -26,10 +51,7 @@
 
                                 <button class="button is-block button-signup-inverse is-large is-fullwidth" id="signupbtn" type="submit">Sign up </button>
                             </form>
-                            
-                            <p class="mt-5 mb-4"><a href="/auth/google">Sign Up with Google</a></p>
-                            <p><a href="/login">Login</a></p>
-                                
+                            <p class="mt-4"><a href="/login">Login</a></p>
                     </div>
                 </div>
                     
@@ -38,7 +60,5 @@
 
     </section>
    </main>
-
-    <!-- javascript file-->
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="../js/login.js"></script>
+</body>
+</html>

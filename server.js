@@ -37,15 +37,12 @@ const sess = {
 };
 
 // Middleware
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-
-console.log(path.join(__dirname, 'public'))
+app.use(express.static(path.join(__dirname, 'public')));
 
 //PASSPORT 
 // app.use(session({
@@ -62,7 +59,7 @@ console.log(path.join(__dirname, 'public'))
   app.use(controllers);
 
 
-  // app.use('/auth', require('./controllers/auth/auth.js'));
+// app.use('/auth', require('./controllers/api/auths'));
 
 
 sequelize.sync({ force: false }).then(() => {

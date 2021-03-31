@@ -1,8 +1,10 @@
 const passport = require('passport')
 const Sequelize = require('sequelize');
 const sequelize = require('./connection')
+// const User = require('../models').User
+// const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const { User } = require('../models/User');
+const Google = require('../models/Google')
 require('dotenv').config()
 
 module.exports = function (passport) {
@@ -12,25 +14,26 @@ module.exports = function (passport) {
         passReqToCallback: true,
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: 'http://localhost:3001/auth/google/callback',
-        passReqToCallback   : true
+        callbackURL: 'http://localhost:3001/auth/google/callback'
+
       },
       async (req, accessToken, refreshToken, profile, done) => {
+        console.log(profile)
         const newGoogle = {
-          id: profile.id,
+          googleID: profile.id,
           displayName: profile.displayName,
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
-          image: profile.photos[0].value,
-          email: profile.emails[0].value
+          image: profile.photos[0].value
         }
 
         try {
-          let google = await User.findByPk( profile.id )
+          let google = await Google.findByPk( profile.id )
+          console.log(google)
           if (google) {
             return done(null, google)
           } else {
-            google = await User.create(newGoogle)
+            google = await Google.create(newGoogle)
             return done(null, google)
           }
         } catch (err) {
@@ -39,10 +42,31 @@ module.exports = function (passport) {
       }))
 
   passport.serializeUser((user, done) => {
-    return done(null, user.id)
+    return done(null, user.googleID)
   })
 
   passport.deserializeUser((id, done) => {
-   return User.findByPk(id).then(user => done(null, user)).catch((err) => done(err, null))
+   return Google.findByPk(id).then(user => done(null, user)).catch((err) => done(err, null))
   });
 }
+
+// module.exports = function(passport) {
+//   passport.use(new LocalStrategy({
+//     usernameField: 'email',
+//     passwordField: 'password',
+//     session: false
+//   },
+//   function(email, password, done) {
+//     User.findOne({ where: { 'email': email} }, function (err, user){
+//       if (err) {return done(err)}
+//       if (!User){
+//         return done(null, false, { message: 'incorrect username or password'});
+//       }
+//       if (!User.validPassword(password)) {
+//         return done(null, false, { message: 'incorrect username or password'});
+//       }
+//       return done(null, User)
+//     })
+//   }
+// ));
+// }
