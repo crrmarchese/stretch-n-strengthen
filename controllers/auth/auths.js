@@ -17,7 +17,7 @@ router.get(
 
 // RYAN - Do we need Async here? What about next?
 // router.get('/login', async (req, res) => {
-//     if (req.session.loggedIn) {
+//     if (!req.session.loggedIn) {
 //       const userID = await User.findOne({ where: { email: req.body.email }, attributes: ['id'] });
 //       res.redirect(`/user/${userID}`)
 //     return;
@@ -41,8 +41,8 @@ router.post('/signup', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
-
-      res.status(200).json(newUser)
+      res.redirect(`/user/${newUser.id}`)
+      
     })
   } catch (err) {
     console.log(err)
@@ -54,21 +54,19 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const newUser = await User.findOne({ where: { email: req.body.email } });
-
     if (!newUser) {
       return res.status(401).json({ message: 'Incorrect email or password, please try again' });
     }
-
     const validPassword = await newUser.checkPassword(req.body.password);
 
     if (!validPassword) {
       return res.status(401).json({ message: 'Incorrect email or password, please try again' });
     } else {
-      res.status(200).json({ user: newUser, message: 'Now logged in!' });
+      // res.status(200).json({ user: newUser, message: 'Now logged in!' });
       req.session.save(() => {
         req.session.userID = newUser.id;
         req.session.loggedIn = true;
-        return res.render('/exercise');
+        return res.redirect(`/user/${newUser.id}`);
       });
     }
   } catch (err) {
