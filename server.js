@@ -62,8 +62,6 @@ console.log(path.join(__dirname, 'public'))
   app.use(controllers);
 
 
-  // app.use('/auth', require('./controllers/auth/auth.js'));
-
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
