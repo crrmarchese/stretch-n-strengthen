@@ -5,6 +5,7 @@ const equipmentRoutes = require('./equipment-routes');
 const userRoutes = require('./equipment-routes');
 const routineRoutes = require('./routine-routes');
 
+
 router.use('/exercise', exerciseRoutes);
 router.use('/muscle', muscleRoutes);
 router.use('/equipment', equipmentRoutes);
