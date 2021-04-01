@@ -38,6 +38,26 @@ module.exports = function (passport) {
         }
       }))
 
+      // passport.use(new LocalStrategy({
+      //   usernameField: 'email',
+      //   passwordField: 'password',
+      //   session: false
+      // },
+      // function(email, password, done) {
+      //   User.findOne({ where: { 'email': email} }, function (err, user){
+      //     if (err) {return done(err)}
+      //     if (!User){
+      //       return done(null, false, { message: 'incorrect username or password'});
+      //     }
+      //     if (!User.validPassword(password)) {
+      //       return done(null, false, { message: 'incorrect username or password'});
+      //     }
+      //     return done(null, User)
+      //   })
+      // }
+      // ));
+
+
   passport.serializeUser((user, done) => {
     return done(null, user.id)
   })
@@ -46,3 +66,6 @@ module.exports = function (passport) {
    return User.findByPk(id).then(user => done(null, user)).catch((err) => done(err, null))
   });
 }
+
+// module.exports = function(passport) {
+// }

@@ -16,15 +16,16 @@ router.get(
 
 
 // RYAN - Do we need Async here? What about next?
-// router.get('/login', async (req, res) => {
-//     if (!req.session.loggedIn) {
-//       const userID = await User.findOne({ where: { email: req.body.email }, attributes: ['id'] });
-//       res.redirect(`/user/${userID}`)
-//     return;
-//   }
-//     res.render('login');
-//     return;
-//   });  
+router.get('/login' , (req, res) => {
+    if (!req.session.loggedIn) {
+      // const userID = await User.findOne({ where: { email: req.body.email }, attributes: ['id'] });
+      res.render('login');
+      return;
+    } else {
+      res.redirect(`/user/${req.user.dataValues.id}`);
+      return;
+    }
+  });  
 
 // RYAN - Do we need Async here? What about next?
 router.get('/signup', (req, res) => {
