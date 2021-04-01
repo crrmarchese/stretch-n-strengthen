@@ -1,20 +1,15 @@
 const router = require('express').Router();
-const homeRoutes = require('./home-routes.js');
-// const apiRoutes = require('./apii');
+const htmlRoutes = require('./html');
 const apiRoutes = require('./api');
-const authRoutes = require('./api/auths');
-const withAuth = require('../utils/auth');
+const authRoutes = require('./auth/auths.js');
 
-
-// might have to refactor this.. currently set to /api routes require login.
 router.use('/', authRoutes);
 router.use('/api', apiRoutes);
-router.use('/', homeRoutes);
-// router.use('/auth', authRoutes);
+router.use('/',htmlRoutes);
 
-router.use((req, res) => {
-  res.send('<h1>Wrong Route!</h1>');
-});
+// router.use((req, res) => {
+//   res.send('<h1>Wrong Route!</h1>');
+// });
 
 module.exports = router;
 
