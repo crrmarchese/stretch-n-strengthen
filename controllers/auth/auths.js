@@ -11,6 +11,7 @@ router.get(
   '/auth/google/callback',
   passport.authenticate(['google', 'local'], { failureRedirect: '/' }),
   async (req, res) => {
+    console.log(req.user)
     res.redirect(`/user/${req.user.dataValues.id}`);
   }
 )
