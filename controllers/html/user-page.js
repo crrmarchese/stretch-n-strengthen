@@ -3,6 +3,7 @@ const { User, Routine, User_User} = require('../../models');
 
 router.get('/:id', async (req, res) => {
   try {
+    console.log(req.user);
     const dbUserData = await User.findByPk(req.params.id, {
       include: [
         {

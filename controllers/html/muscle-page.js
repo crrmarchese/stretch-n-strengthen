@@ -7,7 +7,11 @@ router.get('/', async (req, res) => {
     const muscles = dbMuscleData.map((muscle) =>
       muscle.get({ plain: true })
     );
-    res.render('muscles', { muscles });
+  // res.render('about', data);
+    res.render('muscles', { 
+      muscles,
+      user: req.user 
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -32,7 +36,10 @@ router.get('/:id', async (req, res) => {
     const muscle = dbMuscleData.get({ plain: true });
     console.log('\n');
     console.log('\n');
-    res.render('muscle-specific', { muscle });
+    res.render('muscle-specific', { 
+      muscle,
+      user: req.user 
+     });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
