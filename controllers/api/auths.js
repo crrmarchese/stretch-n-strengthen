@@ -22,23 +22,11 @@ router.get('/logout', (req, res) => {
   res.redirect('/')
 })
 
-// router.get('login', async( req, res ) => {
-//   if(req.session.logged_in){
-//     res.redirect('/routines')
-//     return;
-//   } res.render('login')
-//     return;
-// })
-
-router.get('/login', async (req, res, next) => {
-  // If the user is already logged in, redirect to the homepage
+router.get('/login', async (req, res) => {
     if (req.session.loggedIn) {
     res.redirect('/routines')
-    // .next()
     return;
   }
-  // we will probably need try/catch auth code on every page to check if user is logged in.
-  // Otherwise, render the 'login' template
     res.render('login');
     return;
   });  
@@ -49,7 +37,6 @@ router.get('/login', async (req, res, next) => {
   })
 
   // POST ROUTE FOR SIGNUP 
-  // was '/signup' need a sign in HTML page for this post to work 
 router.post('/signup', async (req, res, next) => {
   try {
       const newUser = await User.create({
@@ -69,8 +56,6 @@ router.post('/signup', async (req, res, next) => {
 });
 
 // POST ROUTE FOR LOGIN 
-
-
 router.post('/login',
 async (req, res) => {
 try {
@@ -90,8 +75,8 @@ try {
       res.json({ user: newUser, message: 'Now logged in!'});
       // return res.redirect('/api/routines')
       req.session.save(() => {
-        req.session.user_id = newUser.id;
-        req.session.logged_in = true;
+        req.session.userId = newUser.id;
+        req.session.loggedIn = true;
         
         // res.json({ user: newUser, message: 'You are now logged in!' });
         return res.render('/exercise')

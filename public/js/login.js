@@ -23,20 +23,6 @@ const loginFormHandler = async (event) => {
       console.log("yay")
     })
   });
-  
-    // if (email && password) {
-    //   const response = await fetch('/api/exercise', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ email, password }),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   });
-  
-    //   if (response.ok) {
-    //     document.location.replace('/api/exercise');
-    //   } else {
-    //     alert(response.statusText);
-    //   }
-    // }
   };
   
   const signupFormHandler = async (event) => {
@@ -59,36 +45,9 @@ const loginFormHandler = async (event) => {
       console.log("yay")
     })
   });
-
-     //    if ( email && password) {
-    //   const response = await fetch('/api/users', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ email, password }),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   });
-  
-    //   if (response.ok) {
-    //     document.location.replace('/api/exercise');
-    //   } else {
-    //     alert('Failed to sign up.');
-    //   }
-    // }
 };
 
   
-    // if ( email && password) {
-    //   const response = await fetch('/api/users', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ email, password }),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   });
-  
-    //   if (response.ok) {
-    //     document.location.replace('/api/exercise');
-    //   } else {
-    //     alert('Failed to sign up.');
-    //   }
-    // }
   
   document
     .querySelector('.login-form')
