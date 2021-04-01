@@ -117,9 +117,13 @@ router.get('/routines', (req, res) => {
 // GET ROUTE FOR LOGIN PAGE 
 
 // note this is made with session.loggedIn copy paste
-router.get('/login', async (req, res, next) => {
-  res.render('login');
-  return;
+router.get('/login', async (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  // res.render('login');
+  // return;
 });
 
 //  GET ROUTE for signup page
