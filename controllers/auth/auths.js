@@ -20,7 +20,6 @@ router.get(
 // RYAN - Do we need Async here? What about next?
 router.get('/login', (req, res) => {
   if (!req.session.loggedIn) {
-    // const userID = await User.findOne({ where: { email: req.body.email }, attributes: ['id'] });
     res.render('login');
     return;
   } else {
