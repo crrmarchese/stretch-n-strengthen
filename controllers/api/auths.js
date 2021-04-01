@@ -90,8 +90,8 @@ try {
       res.json({ user: newUser, message: 'Now logged in!'});
       // return res.redirect('/api/routines')
       req.session.save(() => {
-        req.session.user_id = newUser.id;
-        req.session.logged_in = true;
+        req.session.userId = newUser.id;
+        req.session.loggedIn = true;
         
         // res.json({ user: newUser, message: 'You are now logged in!' });
         return res.render('/exercise')
