@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
+const ensureAuth = require('../../utils/auth')
 const { User } = require('../../models/User')
 
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
@@ -8,7 +9,7 @@ router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 
 // /auth/google/callback
 router.get(
   '/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
+  passport.authenticate(['google', 'local'], { failureRedirect: '/' }),
   async (req, res) => {
     res.redirect(`/user/${req.user.dataValues.id}`);
   }
@@ -16,16 +17,16 @@ router.get(
 
 
 // RYAN - Do we need Async here? What about next?
-router.get('/login' , (req, res) => {
-    if (!req.session.loggedIn) {
-      // const userID = await User.findOne({ where: { email: req.body.email }, attributes: ['id'] });
-      res.render('login');
-      return;
-    } else {
-      res.redirect(`/user/${req.user.dataValues.id}`);
-      return;
-    }
-  });  
+router.get('/login', (req, res) => {
+  if (!req.session.loggedIn) {
+    // const userID = await User.findOne({ where: { email: req.body.email }, attributes: ['id'] });
+    res.render('login');
+    return;
+  } else {
+    res.redirect(`/user/${req.user.dataValues.id}`);
+    return;
+  }
+});  
 
 // RYAN - Do we need Async here? What about next?
 router.get('/signup', (req, res) => {
