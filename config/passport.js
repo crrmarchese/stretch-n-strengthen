@@ -2,7 +2,7 @@ const passport = require('passport')
 const Sequelize = require('sequelize');
 const sequelize = require('./connection')
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-// const LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const { User } = require('../models/User');
 require('dotenv').config()
 
@@ -14,7 +14,7 @@ module.exports = function (passport) {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: '/auth/google/callback',
-        passReqToCallback   : true
+        passReqToCallback: true
       },
       async (req, accessToken, refreshToken, profile, done) => {
         const newGoogle = {
@@ -27,7 +27,7 @@ module.exports = function (passport) {
         }
 
         try {
-          let google = await User.findByPk( profile.id )
+          let google = await User.findByPk(profile.id)
           if (google) {
             return done(null, google)
           } else {
@@ -39,24 +39,24 @@ module.exports = function (passport) {
         }
       }))
 
-      // passport.use(new LocalStrategy({
-      //   usernameField: 'email',
-      //   passwordField: 'password',
-      //   session: false
-      // },
-      // function(email, password, done) {
-      //   User.findOne({ where: { 'email': email} }, function (err, user){
-      //     if (err) {return done(err)}
-      //     if (!User){
-      //       return done(null, false, { message: 'incorrect username or password'});
-      //     }
-      //     if (!User.validPassword(password)) {
-      //       return done(null, false, { message: 'incorrect username or password'});
-      //     }
-      //     return done(null, User)
-      //   })
-      // }
-      // ));
+  passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    session: false
+  },
+    function (email, password, done) {
+      User.findOne({ where: { 'email': email } }, function (err, user) {
+        if (err) { return done(err) }
+        if (!User) {
+          return done(null, false, { message: 'incorrect username or password' });
+        }
+        if (!User.validPassword(password)) {
+          return done(null, false, { message: 'incorrect username or password' });
+        }
+        return done(null, User)
+      })
+    }
+  ));
 
 
   passport.serializeUser((user, done) => {
@@ -64,7 +64,7 @@ module.exports = function (passport) {
   })
 
   passport.deserializeUser((id, done) => {
-   return User.findByPk(id).then(user => done(null, user)).catch((err) => done(err, null))
+    return User.findByPk(id).then(user => done(null, user)).catch((err) => done(err, null))
   });
 }
 
