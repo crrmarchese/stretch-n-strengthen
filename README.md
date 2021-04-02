@@ -4,7 +4,7 @@
 
 
 
-<h1 align="center">Stretch-N-Stengthen</h1> 
+<h1 align="center">Stretch-N-Strengthen</h1> 
 <p align="center">Working out! 💪 Be back soon</p>
 
 ## Deployment
