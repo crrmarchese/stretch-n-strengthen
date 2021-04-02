@@ -3,10 +3,13 @@ const logout = async () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
+
+    
   
     if (response.ok) {
       document.location.replace('/');
     } else {
+      console.log(req.user);
       alert('Failed to log out.');
     }
   };
