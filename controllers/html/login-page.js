@@ -4,7 +4,7 @@ const router = require('express').Router();
 
 router.get('/', async (req, res) => {
   if (!req.session.loggedIn) {
-    console.log(req.session)
+    // console.log(req.session)
     res.render('login');
     return;
   } else if (ensureAuth){
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   } 
   
 });
-
+//{req.session.userID}
 
 // router.get('/login', (req, res) => {
 //   if (!req.session.loggedIn) {
