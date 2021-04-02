@@ -38,7 +38,7 @@
                         </p>
                         <ul class="ss-list-group">
                             {{#each this.followMap as |this|}}
-                            {{> followers-details-remove}}
+                            {{> followers-details}}
                             {{/each}}
                         </ul>
 
@@ -54,7 +54,7 @@
                         </p>
                         <ul class="ss-list-group">
                             {{#each this.leadMap as |this|}}
-                            {{> followers-details-remove}}
+                            {{> followers-details}}
                             {{/each}}
                         </ul>
                     </nav>
@@ -69,7 +69,7 @@
                     <p class="panel-heading">
                         Routines<span id="newRoutine" class="button">New</span>
                     <ul class="ss-list-group">
-                        {{#each this.this.user.routines as |this|}}
+                        {{#each this.user.routines as |this|}}
                         {{> user-routine-details}}
                         {{/each}}
                     </ul>

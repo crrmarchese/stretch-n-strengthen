@@ -16,7 +16,6 @@ router.get('/:id', async (req, res) => {
           as: 'lead',
           include: [{ model: User }],
           required: false,
-          separate: true 
         },
         {
           model: Routine,
@@ -28,10 +27,14 @@ router.get('/:id', async (req, res) => {
         exclude: ['password'],
       }
     })
+
     const user = dbUserData.get({plain: true});
+  console.log(user)
+
     const followMap = user.follow.map((ele) => ele.user)
     const leadMap = user.lead.map((ele) => ele.user)
 
+    console.log(leadMap)
     res.render('user', { user, followMap, leadMap });
     return;
   } catch (err) {
