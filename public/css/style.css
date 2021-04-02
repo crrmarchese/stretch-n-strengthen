@@ -26,6 +26,10 @@ h3 {
     font-weight: 700;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
 /* Sticky Footer */
 main {
     flex: 1;
@@ -98,11 +102,14 @@ p {
 .button-classic {
     background-color: var(--strong-blue);
     color: var(--white);
+    border-color: #2472a4;
+   
 }
 
 .button-classic:hover {
     background-color: var(--bright-blue);
     color: var(--white);
+    border-color: #2472a4;        
 }
 
  /*** Login and Signup ***/
