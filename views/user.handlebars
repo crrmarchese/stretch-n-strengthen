@@ -50,11 +50,11 @@
                                 <button id="newRoutine" class="button button-login card-header-button">New</button>
                             </p>
                             <div class="panel-block">
-                         <ul class="ss-list-group">
-                            {{#each this.followMap as |this|}}
-                            {{> followers-details}}
-                            {{/each}}
-                        </ul>
+                    <ul class="ss-list-group">
+                        {{#each this.user.routines as |this|}}
+                        {{> user-routine-details}}
+                        {{/each}}
+                    </ul>
                             </div>
                         </article>
                 
@@ -76,22 +76,6 @@
 
             </div>
                         
-        </div>
-
-        <!--Col 2-->
-        <div class="column is-one-half">
-            <div id="routineList" class="column">
-                <nav class="panel card-formatting">
-                    <p class="panel-heading">
-                        Routines<span id="newRoutine" class="button">New</span>
-                    <ul class="ss-list-group">
-                        {{#each this.user.routines as |this|}}
-                        {{> user-routine-details}}
-                        {{/each}}
-                    </ul>
-                    </p>
-                </nav>
-            </div>
         </div>
     </div>
 </div>
