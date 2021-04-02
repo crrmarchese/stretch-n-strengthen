@@ -265,6 +265,15 @@ div.muscle-background {
     background-repeat: no-repeat;
 }
 
+/*** Panels ***/
+.panel-heading {
+    color: var(--white);
+    background: var(--light-grayish-cyan) url('../assets/images/panel-heading-bg.png') center top/cover no-repeat;
+}
+.panel-heading.panel-heading-button {
+    display: flex;
+    justify-content: space-between;
+}
 
 /******** MEDIA QUERIES *******/
 /* Mobile up to 768px */
