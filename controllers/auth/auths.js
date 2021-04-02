@@ -32,9 +32,9 @@ router.post('/signup', async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
       console.log(newUser)
-     return res.redirect(`/`)
-    // return res.redirect(`/user/${req.session.userID}`)
-      
+      return res.redirect(`/`)
+      // return res.redirect(`/user/${req.session.userID}`)
+
     })
   } catch (err) {
     console.log(err)
@@ -76,7 +76,8 @@ router.post('/logout', (req, res) => {
     req.session.destroy(() => {
       res.status(204).end();
     });
-  } else {
+  }
+  else {
     res.status(404).end();
   }
 });
