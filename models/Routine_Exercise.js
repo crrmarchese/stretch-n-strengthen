@@ -18,7 +18,7 @@ Routine_Exercise.init(
         },
       },
       exercise_id: {
-          type: DataTypes.UUID,
+          type: DataTypes.INTEGER,
           references: {
               model: 'exercise',
               key: 'id'

@@ -42,18 +42,15 @@
           <a class="navbar-item" href="/">Home</a>
           <a class="navbar-item" href="/about">About</a>
           <a class="navbar-item" href="/muscle">Exercises</a>
-          <a class="navbar-item" href="/routines">Routines</a>
+          {{!-- {{#if user}} --}}
+          <a class="navbar-item" href="/user/{{user.id}}">Routines</a>
+          {{!-- {{/if}} --}}
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              {{#if user}}
-              <a class="button button-login btn-no-style" href="/" id="logout">Logout</a>
-              {{!-- <button id="logout" class="button button-login btn-no-style">Logout</button> --}}
-              {{else}}
               <a class="button button-login" href="/login">Log in</a>
-              {{/if}}
             </div>
           </div>
         </div>
@@ -76,10 +73,12 @@
   <!-- Custom JS -->
   <script src="../js/script.js"></script>
   <script src="../js/post-routine.js"></script>
+  <script src="../js/post-exercise-routine.js"></script>
+    <script src="../js/post-followers.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  {{#if user}}
+  {{!-- {{#if user}} --}}
   <script src="/js/logout.js"></script>
-  {{/if}}
+  {{!-- {{/if}} --}}
 </body>
 
 </html>
