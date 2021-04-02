@@ -41,7 +41,7 @@
             <a class="navbar-item" href="/about">About</a>
             <a class="navbar-item" href="/muscle">Exercises</a>
             {{#if loggedIn}}
-            <a class="navbar-item" href="/routines">Profile</a>
+            <a class="navbar-item" href="/routines" data-id={{LoggedIn.id}}>Routines</a>
             {{/if}}
           </div>
 
