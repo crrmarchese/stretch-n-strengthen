@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Exercise, Equipment } = require('../../models');
+const { Exercise, Equipment, Muscle } = require('../../models');
 
 router.get('/:id', async (req, res) => {
   try {
@@ -22,6 +22,7 @@ router.get('/:id', async (req, res) => {
       ],
     });
     const exercise = dbExercise.get({ plain: true });
+    console.log(exercise)
     res.render('exercise', { exercise });
   } catch (err) {
     console.log(err);

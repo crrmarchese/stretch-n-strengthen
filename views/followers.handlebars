@@ -8,55 +8,30 @@
                     <p class="panel-heading">
                         Profile
                     </p>
-                    <div id="profile" class="columns" data-userid="{{this.user.id}}">
+                    <div id="profile" class="columns" data-userid="{{user.id}}">
                         <div class="column is-one-quarter">
-                            <img src={{this.user.image}} alt="User Image">
+                            <img src={{user.image}} alt="User Image">
                         </div>
                         <div class="column is-three-quarters">
-                            <p>First Name: <span>{{this.user.firstName}}</span></p>
-                            <p>Last Name: <span>{{this.user.lastName}}</span></p>
-                            <p>Email: <span>{{this.user.email}}</span></p>
+                            <p>First Name: <span>{{user.firstName}}</span></p>
+                            <p>Last Name: <span>{{user.lastName}}</span></p>
+                            <p>Email: <span>{{user.email}}</span></p>
                         </div>
                     </div>
                 </nav>
             </div>
-            <!--Followers-->
-            <div class="row">
-                <div class="column">
-                    <div>
-                        <a class="panel-heading" href="/followers/{{this.user.id}}">Browse Profiles</a>
-                    </div>
-                </div>
-            </div>
-
 
             <div class="row">
                 <div class="column">
                     <nav id="followersList" class="panel card-formatting">
                         <p class="panel-heading">
                             Following
-                        </p>
                         <ul class="ss-list-group">
                             {{#each this.followMap as |this|}}
                             {{> followers-details-remove}}
                             {{/each}}
                         </ul>
-
-                    </nav>
-                </div>
-            </div>
-            <!--Following-->
-            <div class="row">
-                <div class="column">
-                    <nav id="followersList" class="panel card-formatting">
-                        <p class="panel-heading">
-                            Followers
                         </p>
-                        <ul class="ss-list-group">
-                            {{#each this.leadMap as |this|}}
-                            {{> followers-details-remove}}
-                            {{/each}}
-                        </ul>
                     </nav>
                 </div>
             </div>
@@ -64,13 +39,13 @@
 
         <!--Col 2-->
         <div class="column is-one-half">
-            <div id="routineList" class="column">
+            <div id="usersList" class="column">
                 <nav class="panel card-formatting">
                     <p class="panel-heading">
-                        Routines<span id="newRoutine" class="button">New</span>
+                        Users
                     <ul class="ss-list-group">
-                        {{#each this.this.user.routines as |this|}}
-                        {{> user-routine-details}}
+                        {{#each this.allUsers as |this|}}
+                            {{> followers-details-add}}
                         {{/each}}
                     </ul>
                     </p>

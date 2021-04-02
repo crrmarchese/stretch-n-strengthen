@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 3001;
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ helpers });
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
 // Sequelize
 const sequelize = require('./config/connection');
