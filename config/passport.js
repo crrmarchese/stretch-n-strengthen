@@ -67,6 +67,3 @@ module.exports = function (passport) {
     return User.findByPk(id).then(user => done(null, user)).catch((err) => done(err, null))
   });
 }
-
-// module.exports = function(passport) {
-// }

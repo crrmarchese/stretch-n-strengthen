@@ -24,7 +24,6 @@ $(document).ready(function () {
   };
   document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 })
-
   //NEED TO CHANGE DOCUMENT.LOCATION.REPLACE WITH /USER INFO HERE
 //   const loginFormHandler = async (event) => {
 //     event.preventDefault();

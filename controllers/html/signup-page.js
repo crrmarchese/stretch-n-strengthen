@@ -22,8 +22,6 @@ router.get('/signup', (req, res) => {
     res.redirect(`/user/${req.session.userID}`)
     return;
   } 
-
-
 })
 // if (req.session.loggedIn) {
 //   res.redirect('/');

@@ -82,15 +82,3 @@ router.post('/logout', (req, res) => {
 });
 
 module.exports = router;
-
-
-// RYAN - Do we need Async here? What about next?
-// router.get('/login', (req, res) => {
-//   if (!req.session.loggedIn) {
-//     res.render('login');
-//     return;
-//   } else {
-//     res.redirect(`/user/${req.user.dataValues.id}`);
-//     return;
-//   }
-// });  

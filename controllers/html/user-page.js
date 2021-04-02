@@ -1,10 +1,11 @@
 const router = require('express').Router();
+const { ensureAuth } = require('../../utils/auth')
 const { User, Routine, User_User} = require('../../models');
 
-router.get('/:id', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     console.log(req.user);
-    const dbUserData = await User.findByPk(req.params.id, {
+    const dbUserData = await User.findByPk(req.session.userID, {
       include: [
         {
           model: User_User,
