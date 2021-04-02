@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { User, Routine, Routine_Exercise, Exercise } = require('../../models');
+const { User, Routine, Routine_Exercise, Exercise, Exercise_Muscle } = require('../../models');
 
-router.get('/:routine', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const dbRoutineData = await Routine.findByPk(req.params.routine, {
+    const dbRoutineData = await Routine.findByPk(req.params.id, {
       include: [
         {
           model: Exercise,
@@ -13,9 +13,15 @@ router.get('/:routine', async (req, res) => {
       required: false,
     });
 
+    const exercise = await Exercise.findAll({raw: true, required: false});
     const routine = dbRoutineData.get({ plain: true });
-    console.log(routine)
-    res.render('routine', { routine });
+    routine.exercises.forEach((ele1) => {
+      let index = exercise.findIndex(ele2 => ele2.id === ele1.id)
+      exercise.splice(index, 1)
+    })
+
+    res.render('routine', { routine, exercise });
+    
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
