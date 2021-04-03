@@ -1,81 +1,82 @@
- <section id="user-stats" class="section">
-        <div class="container">
-            <h2 class="title is-size-2">User Profile</h2>
-            <div class="columns is-centered has-same-height">
-                <!--Col 1-->
-                <div class="column is-one-half">
-                    <!--Profile-->
-                   
-                        <article id="followersList" class="panel card-formatting">
-                            <p class="panel-heading">
-                                Profile
-                            </p>
-                            <div class="panel-block">
-                                <div id="profile" class="columns" data-userid="{{user.id}}">
-                                    <div class="column is-one-quarter">
-                                        <img src={{user.image}} alt="User Image">
-                                    </div>
-                                    <div class="column is-three-quarters">
-                                        <p>First Name: <span>{{this.user.firstName}}</span></p>
-                                        <p>Last Name: <span>{{this.user.lastName}}</span></p>
-                                        <p>Email: <span>{{this.user.email}}</span></p>
-                                    </div>
-                                </div>
+<section id="user-stats" class="section">
+    <div class="container">
+        <h2 class="title is-size-2">User Profile</h2>
+        <div class="columns is-centered has-same-height">
+            <!--Col 1-->
+            <div class="column is-one-half">
+                <!--Profile-->
+                <article id="followersList" class="panel card-formatting">
+                    <p class="panel-heading">
+                        Profile
+                    </p>
+                    <div class="panel-block">
+                        <div id="profile" class="columns" data-userid="{{this.user.id}}">
+                            <div class="column is-one-quarter">
+                                <img src={{this.user.image}} alt="User Image">
                             </div>
-                            
-                        </article>
-                </div>
-                <!--Followers-->
-                <div class="column is-one-half">
-                    <article id="followersList" class="panel card-formatting">
-                        <p class="panel-heading">
-                            Following
-                        </p>
-                        <div class="panel-block">
-
+                            <div class="column is-three-quarters">
+                                <p>First Name: <span>{{this.user.firstName}}</span></p>
+                                <p>Last Name: <span>{{this.user.lastName}}</span></p>
+                                <p>Email: <span>{{this.user.email}}</span></p>
+                            </div>
                         </div>
-                    </article>
-                </div>
-                 
+                    </div>
+
+                </article>
+            </div>
+            <!--Followers-->
+            <div class="column is-one-half">
+                <article id="followersList" class="panel card-formatting">
+                    <p class="panel-heading panel-heading-button">
+                        Following
+                        <a href="/followers/{{this.user.id}}"><button id="followers" class="button button-login card-header-button">Browse</button></a>
+
+                    </p>
+                    <div class="panel-block">
+
+                    </div>
+                </article>
             </div>
 
-            <div class="columns is-centered has-same-height mt-4">
-                <!--Col 2-->
-                <!--Routines-->
-                <div class="column is-one-half">
-                   
-                        <article id="routineList" class="panel card-formatting">
-                            <p class="panel-heading panel-heading-button">
-                                Routines
-                                <button id="newRoutine" class="button button-login card-header-button">New</button>
-                            </p>
-                            <div class="panel-block">
-                    <ul class="ss-list-group">
-                        {{#each this.user.routines as |this|}}
-                        {{> user-routine-details}}
-                        {{/each}}
-                    </ul>
-                            </div>
-                        </article>
-                
-                </div>
-                <div class="column is-one-half">
-                    <article id="followersList" class="panel card-formatting">
-                        <p class="panel-heading">
-                            Followers
-                        </p>
-                        <div class="panel-block">
+        </div>
+
+        <div class="columns is-centered has-same-height mt-4">
+            <!--Col 2-->
+            <!--Routines-->
+            <div class="column is-one-half">
+
+                <article id="routineList" class="panel card-formatting">
+                    <p class="panel-heading panel-heading-button">
+                        Routines
+                        <button id="newRoutine" class="button button-login card-header-button">New</button>
+                    </p>
+                    <div class="panel-block">
+                        <ul class="ss-list-group">
+                            {{#each this.user.routines as |this|}}
+                            {{> user-routine-details}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+            <div class="column is-one-half">
+                <article id="followersList" class="panel card-formatting">
+                    <p class="panel-heading">
+                        Followers
+                    </p>
+                    <div class="panel-block">
                         <ul class="ss-list-group">
                             {{#each this.leadMap as |this|}}
                             {{> followers-details}}
                             {{/each}}
                         </ul>
-                        </div>
-                    </article>
-                </div>
-
+                    </div>
+                </article>
             </div>
-                        
+
         </div>
+
     </div>
-</div>
+    </div>
+    </div>

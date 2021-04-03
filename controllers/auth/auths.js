@@ -30,10 +30,11 @@ router.post('/signup', async (req, res) => {
     });
 
     req.session.save(() => {
+      req.session.userID = newUser.id;
       req.session.loggedIn = true;
       console.log(newUser)
-     return res.redirect(`/`)
-    // return res.redirect(`/user/${req.session.userID}`)
+    //  return res.redirect(`/`)
+    return res.redirect(`/`)
       
     })
   } catch (err) {
@@ -82,15 +83,3 @@ router.post('/logout', (req, res) => {
 });
 
 module.exports = router;
-
-
-// RYAN - Do we need Async here? What about next?
-// router.get('/login', (req, res) => {
-//   if (!req.session.loggedIn) {
-//     res.render('login');
-//     return;
-//   } else {
-//     res.redirect(`/user/${req.user.dataValues.id}`);
-//     return;
-//   }
-// });  
