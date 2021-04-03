@@ -1,23 +1,27 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-        $(".addUser").on('click', (event) => {
+    $(".addUserButton").on('click', (event) => {
+        event.stopPropagation();
         const leadId = $(event.currentTarget).data('userid');
         const userId = $('#profile').data('userid');
-        const data = {follow_id: userId, lead_id: leadId};
+        console.log(leadId)
+        console.log(userId)
+        const data = { follow_id: userId, lead_id: leadId };
         $.post(`/api/followers/${userId}&${leadId}`, data).then((response) => {
             window.location.reload();
-         })
+        })
     });
 
-        $(".removeUser").on('click', (event) => {
+    $(".removeUserButton").on('click', (event) => {
+        event.stopPropagation();
         const followId = $(event.currentTarget).data('userid');
         const userId = $('#profile').data('userid');
         $.ajax({
             url: `/api/followers/${userId}&${followId}`,
             type: 'DELETE',
-            success: ((result) => { 
+            success: ((result) => {
                 window.location.reload();
             })
         });
     });
-})
+});

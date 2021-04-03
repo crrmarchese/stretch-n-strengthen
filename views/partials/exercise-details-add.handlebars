@@ -1,5 +1,15 @@
 <li class="ss-list-group-item addExercise" data-exId="{{id}}">
-    <span>{{name}}</span><span>  <a href="/exercise/{{id}}" target="_blank">details</a></span>
-    <div class="card-body">
+  <div class="columns">
+    <div class="column is-one-fifth">
+      <button class="button addExerciseButton" data-exId="{{id}}">Add</button>
     </div>
+
+    <div class="column is-three-fifths">
+      <span>{{name}}</span>></span>
+    </div>
+
+    <div class="column is-one-fifth">
+       <button class="button" data-exId="{{id}}"}><a href="/exercise/{{id}}" target="_blank">Details</a></button>
+    </div>
+  </div>
 </li>

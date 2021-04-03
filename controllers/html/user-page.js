@@ -6,18 +6,6 @@ router.get('/:id', async (req, res) => {
     const dbUserData = await User.findByPk(req.params.id, {
       include: [
         {
-          model: User_User,
-          as: 'follow',
-          include: [{ model: User }],
-          required: false 
-        },
-        {
-          model: User_User,
-          as: 'lead',
-          include: [{ model: User }],
-          required: false,
-        },
-        {
           model: Routine,
           required: false 
         }
@@ -28,12 +16,48 @@ router.get('/:id', async (req, res) => {
       }
     })
 
-    const user = dbUserData.get({plain: true});
-    console.log(user)
+    const dbFollowData = await User_User.findAll({
+      raw: true,
+      nest: true,
+      where: {
+        follow_id: req.params.id
+      },
+      include: [
+        {
+          model: User,
+          as: 'lead',
+          required: false,
+          attributes: {
+            exclude: ['password'],
+          } 
+        }
+      ],
+      required: false,
+    })
 
-    const followMap = user.follow.map((ele) => ele.user)
-    const leadMap = user.lead.map((ele) => ele.user)
+    const dbLeadData = await User_User.findAll({
+      raw: true,
+      nest: true,
+      where: {
+        lead_id: req.params.id
+      },
+      include: [
+        {
+          model: User,
+          as: 'follow',
+          required: false,
+          attributes: {
+            exclude: ['password'],
+          } 
+        }
+      ],
+    })
 
+
+    const user = dbUserData.get({plain: true})
+    const leadMap = dbLeadData
+    const followMap = dbFollowData
+    console.log(followMap)
     console.log(leadMap)
     res.render('user', { user, followMap, leadMap });
     return;

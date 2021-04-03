@@ -26,11 +26,14 @@
             </div>
             <!--Followers-->
             <div class="column is-one-half">
-                <article id="followersList" class="panel card-formatting">
+                <article id="followingList" class="panel card-formatting">
                     <p class="panel-heading panel-heading-button">
                         Following
-                        <a href="/followers/{{this.user.id}}"><button id="followers" class="button button-login card-header-button">Browse</button></a>
-
+                        <button id="browseFollowers"
+                                class="button button-login card-header-button">Browse</button>
+                        {{#each this.followMap as |this|}}
+                        {{> followers-details-follow}}
+                        {{/each}}
                     </p>
                     <div class="panel-block">
 
@@ -62,15 +65,14 @@
             </div>
             <div class="column is-one-half">
                 <article id="followersList" class="panel card-formatting">
-                    <p class="panel-heading">
+                    <p class="panel-heading panel-heading-button">
                         Followers
+                        {{#each this.leadMap as |this|}}
+                        {{> followers-details-lead}}
+                        {{/each}}
                     </p>
                     <div class="panel-block">
-                        <ul class="ss-list-group">
-                            {{#each this.leadMap as |this|}}
-                            {{> followers-details}}
-                            {{/each}}
-                        </ul>
+
                     </div>
                 </article>
             </div>
