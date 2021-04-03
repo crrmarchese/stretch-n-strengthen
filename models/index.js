@@ -86,20 +86,21 @@ User.belongsToMany(User, {
 
 User_User.belongsTo(User, {
   foreignKey: 'follow_id',
+  as: 'follow'
 });
 
 User.hasMany(User_User, {
   foreignKey: 'follow_id',
-  as: 'follow'
 });
 
 User_User.belongsTo(User, {
   foreignKey: 'lead_id',
+  as: 'lead'
 });
 
 User.hasMany(User_User, {
   foreignKey: 'lead_id',
-  as: 'lead'
+
 });
 
 module.exports = { Exercise, Category, Equipment, Muscle, Routine, User, Exercise_Equipment, Exercise_Muscle, Routine_Exercise, User_User };
