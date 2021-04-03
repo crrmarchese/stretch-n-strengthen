@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-        $(".addUser").on('click', (event) => {
+        $(".addUserButton").on('click', (event) => {
+            event.stopPropagation();
         const leadId = $(event.currentTarget).data('userid');
         const userId = $('#profile').data('userid');
         const data = {follow_id: userId, lead_id: leadId};
@@ -9,7 +10,8 @@ $(document).ready(function() {
          })
     });
 
-        $(".removeUser").on('click', (event) => {
+        $(".removeUserButton").on('click', (event) => {
+            event.stopPropagation();
         const followId = $(event.currentTarget).data('userid');
         const userId = $('#profile').data('userid');
         $.ajax({
@@ -20,4 +22,4 @@ $(document).ready(function() {
             })
         });
     });
-})
+});

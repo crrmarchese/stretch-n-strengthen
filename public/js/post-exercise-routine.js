@@ -1,21 +1,27 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-        $(".addExercise").on('click', (event) => {
+    $(".addExerciseButton").on('click', (event) => {
+        event.stopPropagation();
         const exId = $(event.currentTarget).data('exid');
         const routineId = $('#routineData').data('routineid');
-        const data = {routine_id: routineId, exercise_id: exId};
+        // const codeBlock = $(`.addExercise [data-exid=${exId}]`);
+        const data = { routine_id: routineId, exercise_id: exId };
         $.post(`/api/routine/${routineId}&${exId}`, data).then((response) => {
             window.location.reload();
-         })
+        })
     });
 
-        $(".removeExercise").on('click', (event) => {
+    $(".removeExerciseButton").on('click', (event) => {
+        event.stopPropagation();
         const exId = $(event.currentTarget).data('exid');
         const routineId = $('#routineData').data('routineid');
+        console.log(exId)
+        console.log(routineId)
+        // const codeBlock = $(`.removeExercise [data-exid=${exId}]`);
         $.ajax({
             url: `/api/routine/${routineId}&${exId}`,
             type: 'DELETE',
-            success: ((result) => { 
+            success: ((result) => {
                 window.location.reload();
             })
         });
