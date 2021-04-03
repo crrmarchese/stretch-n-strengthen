@@ -30,6 +30,7 @@ router.post('/signup', async (req, res) => {
     });
 
     req.session.save(() => {
+      req.session.userID = newUser.id;
       req.session.loggedIn = true;
       console.log(newUser)
       return res.redirect(`/`)
