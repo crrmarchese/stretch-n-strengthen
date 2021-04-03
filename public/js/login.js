@@ -5,7 +5,6 @@ $(document).ready(function () {
 
     //NEED TO CHANGE DOCUMENT.LOCATION.REPLACE WITH /USER INFO HERE
     event.preventDefault();
-    console.log("HELELLOOOKJSDLFJASLDKFLK")
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
     if (email && password) {
