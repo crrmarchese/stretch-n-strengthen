@@ -50,7 +50,12 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
+              {{#if user}}
+              <a class="button button-login btn-no-style" href="/" id="logout">Logout</a>
+              {{!-- <button id="logout" class="button button-login btn-no-style">Logout</button> --}}
+              {{else}}
               <a class="button button-login" href="/login">Log in</a>
+              {{/if}}
             </div>
           </div>
         </div>
@@ -74,7 +79,7 @@
   <script src="../js/script.js"></script>
   <script src="../js/post-routine.js"></script>
   <script src="../js/post-exercise-routine.js"></script>
-    <script src="../js/post-followers.js"></script>
+  <script src="../js/post-followers.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   {{!-- {{#if user}} --}}
   <script src="/js/logout.js"></script>

@@ -8,7 +8,7 @@ $(document).ready(function() {
                         description: "testDescription"
                     };
         $.post("/api/routine", data).then((response) => { 
-            window.location.assign(`http://stretch-n-strengthen.herokuapp.com//routine/${response.id}`)
+            window.location.assign(`/routine/${response.id}`)
          })
 
     });
