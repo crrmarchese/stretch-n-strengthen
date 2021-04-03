@@ -232,6 +232,10 @@ p {
     margin-bottom: 0;
 }
 
+.ss-list-group.ss-list-group-full-width {
+    width: 100%;
+}
+
 .ss-list-group-item {
     position: relative;
     display: block;
@@ -263,6 +267,7 @@ p {
     color: inherit;
     display: block;
 }
+
 
  /*** API images ***/
 div.muscle-background {
