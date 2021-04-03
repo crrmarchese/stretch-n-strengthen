@@ -50,7 +50,12 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
+              {{#if user}}
+              <a class="button button-login btn-no-style" href="/" id="logout">Logout</a>
+              {{!-- <button id="logout" class="button button-login btn-no-style">Logout</button> --}}
+              {{else}}
               <a class="button button-login" href="/login">Log in</a>
+              {{/if}}
             </div>
           </div>
         </div>
