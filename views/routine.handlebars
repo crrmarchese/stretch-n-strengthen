@@ -4,27 +4,24 @@
             <!--Col 1-->
             <div class="column is-one-half">
                 <!--Profile-->
-               
-                    <article id="routineData" class="panel card-formatting" data-routineid="{{this.routine.id}}">
+                <div class="row">
+                    <nav id="routineData" class="panel card-formatting" data-routineid="{{this.routine.id}}">
                         <p class="panel-heading">
                             Routine Info
                         </p>
-                        <div class="panel-block">
-                            <div class="columns">
-                                <div class="column is-three-quarters">
-                                    <p>ID: <span>{{this.routine.id}}</span></p>
-                                    <p>Name: <span>{{this.routine.name}}</span></p>
-                                    <p>Description: <span>{{this.routine.email}}</span></p>
-                                </div>
+                        <div class="columns">
+                            <div class="column is-three-quarters">
+                                <p>ID: <span>{{this.routine.id}}</span></p>
+                                <p>Name: <span>{{this.routine.name}}</span></p>
+                                <p>Description: <span>{{this.routine.email}}</span></p>
                             </div>
                         </div>
-                    </article>
-             </div> 
-
+                    </nav>
+                </div>
                 <!--Followers-->
-            <div class="column is-one-half">
-                    <div id="currentList">
-                        <article class="panel card-formatting">
+                <div class="row">
+                    <div id="currentList" class="column">
+                        <nav class="panel card-formatting">
                             <p class="panel-heading">
                                 Current Exercises
                             </p>
@@ -33,16 +30,16 @@
                                 {{> exercise-details-remove}}
                                 {{/each}}
                             </ul>
-                        </article>
+                        </nav>
                     </div>
-            </div>
+                </div>
                 <!--Following-->
-        </div>
-        <div class="columns">
+            </div>
+
             <!--Col 2-->
             <div class="column is-one-half">
-                <div id="addList">
-                    <article class="panel card-formatting">
+                <div id="addList" class="column">
+                    <nav class="panel card-formatting">
                         <p class="panel-heading">
                             Add Exercises
                         </p>
@@ -51,7 +48,7 @@
                             {{> exercise-details-add}}
                             {{/each}}
                         </ul>
-                    </article>
+                    </nav>
                 </div>
             </div>
         </div>
