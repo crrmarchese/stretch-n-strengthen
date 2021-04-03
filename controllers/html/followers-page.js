@@ -49,6 +49,7 @@ router.get('/:id', async (req, res) => {
     })
 
     const followMap = dbFollowData
+    console.log(followMap)
 
     res.render('followers', { user, allUsers, followMap });
     return;

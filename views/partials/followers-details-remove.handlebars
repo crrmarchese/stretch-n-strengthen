@@ -1,6 +1,16 @@
-<li class="ss-list-group-item removeUser" data-userId="{{id}}">
-    <span>{{displayName}}</span> <span> <a href="/user/{{id}}" target="_blank">details</a></span>
-    <div class="card-body">
-        {{email}}
+<li class="ss-list-group-item removeUser" data-userId="{{lead.id}}">
+  <div class="columns">
+    <div class="column is-one-fifth">
+      <button class="button removeUserButton" data-userId="{{lead.id}}">Remove</button>
     </div>
+
+    <div class="column is-three-fifths">
+      <p>{{lead.displayName}}</p>
+            <p>{{lead.email}}</p>
+    </div>
+
+    <div class="column is-one-fifth">
+       <button class="button" data-userId="{{lead.id}}"}><a href="/user/{{lead.id}}" target="_blank">Details</a></button>
+    </div>
+  </div>
 </li>
