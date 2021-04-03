@@ -1,45 +1,54 @@
-
-    <div class="container">
-        <div class="columns">
-            <!--Col 1-->
-            <div class="column is-one-half">
-                <!--Profile-->
-                <div class="row">
-                        <nav id="followersList" class="panel card-formatting">
-                            <p class="panel-heading">
-                                Profile
-                            </p>
-                            <div class="columns">
-                                <div class="column is-three-quarters">
-                                    <p>ID: <span>{{routine.id}}</span></p>
-                                    <p>Name: <span>{{routine.name}}</span></p>
-                                    <p>Description: <span>{{routine.email}}</span></p>
-                                </div>
-                            </div>
-                        </nav>
-                </div>
-                <!--Followers-->
-                <div class="row">
-                    <div class="column">
-                        <nav id="followersList" class="panel card-formatting">
-                            <p class="panel-heading">
-                                Routines
-                            </p>
-                        </nav>
+<div class="container">
+    <div class="columns">
+        <!--Col 1-->
+        <div class="column is-one-half">
+            <!--Profile-->
+            <div class="row">
+                <nav id="routineData" class="panel card-formatting" data-routineid="{{this.routine.id}}">
+                    <p class="panel-heading">
+                        Routine Info
+                    </p>
+                    <div class="columns">
+                        <div class="column is-three-quarters">
+                            <p>ID: <span>{{this.routine.id}}</span></p>
+                            <p>Name: <span>{{this.routine.name}}</span></p>
+                            <p>Description: <span>{{this.routine.email}}</span></p>
+                        </div>
                     </div>
-                </div>
-                <!--Following-->
+                </nav>
             </div>
-
-            <!--Col 2-->
-            <div class="column is-one-half">
-                <div class="column">
-                    <nav id="routineList" class="panel card-formatting">
+            <!--Followers-->
+            <div class="row">
+                <div id="currentList" class="column">
+                    <nav class="panel card-formatting">
                         <p class="panel-heading">
-                            Exercises
+                            Current Exercises
                         </p>
+                        <ul class="ss-list-group">
+                            {{#each this.routine.exercises as |this|}}
+                            {{> exercise-details-remove}}
+                            {{/each}}
+                        </ul>
                     </nav>
                 </div>
             </div>
+            <!--Following-->
+        </div>
+
+        <!--Col 2-->
+        <div class="column is-one-half">
+            <div id="addList" class="column">
+                <nav class="panel card-formatting">
+                    <p class="panel-heading">
+                        Add Exercises
+                    </p>
+                    <ul class="ss-list-group">
+                        {{#each this.exercise as |this|}}
+                        {{> exercise-details-add}}
+                        {{/each}}
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
+</div>

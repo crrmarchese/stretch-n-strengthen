@@ -15,6 +15,7 @@ $(document).ready(function () {
         headers: { 'Content-Type': 'application/json' },
       }).then((response) => {
         if (response.ok) {
+          console.log(response)
           document.location.replace('/');
         } else {
           alert('Failed to log in.');

@@ -40,9 +40,20 @@ router.post('/', async (req, res) => {
 
 router.post('/:routine&:exercise', async (req, res) => {
   try {
-    const routineExerciseData = await Routine_Exercise.create({
-      routine_id: req.params.routine,
-      exercise_id: req.params.exercise,
+    const routineExerciseData = await Routine_Exercise.create(req.body);
+    res.status(200).json(routineExerciseData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.delete('/:routine&:exercise', async (req, res) => {
+  try {
+    const routineExerciseData = await Routine_Exercise.destroy({
+      where: { 
+        routine_id: req.params.routine,
+        exercise_id: req.params.exercise  
+      }
     });
     res.status(200).json(routineExerciseData);
   } catch (err) {

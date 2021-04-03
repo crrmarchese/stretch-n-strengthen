@@ -16,9 +16,9 @@
                                         <img src={{user.image}} alt="User Image">
                                     </div>
                                     <div class="column is-three-quarters">
-                                        <p>First Name: <span>{{user.firstName}}</span></p>
-                                        <p>Last Name: <span>{{user.lastName}}</span></p>
-                                        <p>Email: <span>{{user.email}}</span></p>
+                                        <p>First Name: <span>{{this.user.firstName}}</span></p>
+                                        <p>Last Name: <span>{{this.user.lastName}}</span></p>
+                                        <p>Email: <span>{{this.user.email}}</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,11 @@
                                 <button id="newRoutine" class="button button-login card-header-button">New</button>
                             </p>
                             <div class="panel-block">
-                                    
+                    <ul class="ss-list-group">
+                        {{#each this.user.routines as |this|}}
+                        {{> user-routine-details}}
+                        {{/each}}
+                    </ul>
                             </div>
                         </article>
                 
@@ -61,7 +65,11 @@
                             Followers
                         </p>
                         <div class="panel-block">
-
+                        <ul class="ss-list-group">
+                            {{#each this.leadMap as |this|}}
+                            {{> followers-details}}
+                            {{/each}}
+                        </ul>
                         </div>
                     </article>
                 </div>
@@ -69,4 +77,5 @@
             </div>
                         
         </div>
-</section>
+    </div>
+</div>
