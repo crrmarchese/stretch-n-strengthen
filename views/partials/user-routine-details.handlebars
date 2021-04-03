@@ -1,8 +1,17 @@
+
 <li class="ss-list-group-item userRoutine" data-routineId="{{id}}">
-    <a href="/routine/{{id}}">
-    <span>{{name}}</span>
-    <div class="card-body">
-      <p>Desciption: {{description}}</p>
+  <div class="columns">
+    <div class="column is-one-fifth">
+      <button class="button removeRoutineButton" data-routineId="{{id}}">Remove</button>
     </div>
-    </a>
+
+    <div class="column is-three-fifths">
+      <p>{{name}}</p>
+      <p>{{description}}</p>
+    </div>
+
+    <div class="column is-one-fifth">
+       <button class="button" data-exId="{{id}}"}><a href="/routine/{{id}}" target="_blank">Details</a></button>
+    </div>
+  </div>
 </li>
