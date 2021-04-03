@@ -50,6 +50,14 @@ router.get('/:id', async (req, res) => {
 
     const followMap = dbFollowData
     console.log(followMap)
+    console.log(allUsers)
+
+    followMap.forEach((ele1) => {
+      let index =  allUsers.findIndex(ele2 => ele2.id === ele1.lead.id);
+      allUsers.splice(index, 1)
+    })
+
+
 
     res.render('followers', { user, allUsers, followMap });
     return;

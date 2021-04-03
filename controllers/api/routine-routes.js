@@ -61,4 +61,17 @@ router.delete('/:routine&:exercise', async (req, res) => {
   }
 });
 
+router.delete('/:routine', async (req, res) => {
+  try {
+    const routineData = await Routine.destroy({
+      where: { 
+        id: req.params.routine,
+      }
+    });
+    res.status(200).json(routineData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
