@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
     })
 
     const user = dbUserData.get({plain: true});
-  console.log(user)
+    console.log(user)
 
     const followMap = user.follow.map((ele) => ele.user)
     const leadMap = user.lead.map((ele) => ele.user)
