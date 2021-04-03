@@ -26,7 +26,7 @@
                     <nav id="followersList" class="panel card-formatting">
                         <p class="panel-heading">
                             Following
-                        <ul class="ss-list-group">
+                        <ul class="ss-list-group ss-list-group-full-width">
                             {{#each this.followMap as |this|}}
                             {{> followers-details-remove}}
                             {{/each}}
@@ -43,7 +43,7 @@
                 <nav class="panel card-formatting">
                     <p class="panel-heading">
                         Users
-                    <ul class="ss-list-group">
+                    <ul class="ss-list-group ss-list-group-full-width">
                         {{#each this.allUsers as |this|}}
                             {{> followers-details-add}}
                         {{/each}}
