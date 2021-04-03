@@ -18,10 +18,12 @@ Routine.init(
             },
         },
         name: {
+            defaultValue: "Default Routine Name!!",
             type: DataTypes.STRING,
             allowNull: false
         },
         description: {
+            defaultValue: "Here the user will be able to put in a detailed description of the routine that they are creating.",
             type: DataTypes.STRING
         },
     },
