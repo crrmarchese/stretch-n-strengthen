@@ -20,15 +20,6 @@ Category.hasMany(Exercise, {
     foreignKey: 'category_id',
   });
 
-// // Many Exercise Pics to One Exercise
-// Exercise_Pic.belongsTo(Exercise, {
-//   foreignKey: 'exercise_id',
-// });
-
-// Exercise.hasMany(Exercise_Pic, {
-//   foreignKey: 'exercise_id',
-// });
-
 // Many Routines to One User
 Routine.belongsTo(User, {
     foreignKey: 'user_id',

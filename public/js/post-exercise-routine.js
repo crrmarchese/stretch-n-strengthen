@@ -1,6 +1,10 @@
 $(document).ready(function() {
 
-        $(".addExercise").on('click', (event) => {
+
+    $("[href*='/exercise/'").on('click', (event) => {
+        event.stopPropogation();
+    })
+        $(".addExercise").on('click', (event) => {      
         const exId = $(event.currentTarget).data('exid');
         const routineId = $('#routineData').data('routineid');
         const data = {routine_id: routineId, exercise_id: exId};
